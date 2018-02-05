@@ -8,6 +8,7 @@ const storeFactory = (initState = {}) => {
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
   return createStore(
     reducers,
+    initState,
     composeEnhancers(applyMiddleware(...middleware))
   );
 };

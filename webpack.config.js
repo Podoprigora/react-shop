@@ -1,31 +1,41 @@
-const webpack = require('webpack');
-const path = require('path');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const autoprefixer = require('autoprefixer');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+/* eslint-disable */
+
+const webpack = require("webpack");
+const path = require("path");
+const CleanWebpackPlugin = require("clean-webpack-plugin");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const vendorsLibs = [
-  'react', 'react-dom', 'prop-types', 'redux',
-  'axios', 'redux-form', 'react-router-dom', 'normalizr', 'redux-thunk',
-  'lodash', 'react-transition-group', 'classnames', 'uuid'
+  "react",
+  "react-dom",
+  "prop-types",
+  "redux",
+  "axios",
+  "redux-form",
+  "react-router-dom",
+  "normalizr",
+  "redux-thunk",
+  "lodash",
+  "react-transition-group",
+  "classnames",
+  "uuid"
 ];
 
-const pathToClean = ['dist'];
+const pathToClean = ["dist"];
 
 module.exports = {
   entry: {
-    bundle: './src/index.js',
+    bundle: "./src/index.js",
     vendor: vendorsLibs
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: '/',
-    filename: '[name].[chunkhash:16].js',
-    sourceMapFilename: '[file].map'
+    path: path.resolve(__dirname, "dist"),
+    publicPath: "/",
+    filename: "[name].[chunkhash:16].js",
+    sourceMapFilename: "[file].map"
   },
-  devtool: 'inline-source-map',
+  devtool: "inline-source-map",
   module: {
     rules: [
       {
@@ -33,14 +43,14 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           {
-            loader: 'babel-loader',
+            loader: "babel-loader",
             options: {
               presets: ["babel-preset-env", "react", "stage-0"],
               plugins: ["transform-class-properties"]
             }
           },
           {
-            loader: 'eslint-loader'
+            loader: "eslint-loader"
           }
         ]
       },
@@ -50,26 +60,24 @@ module.exports = {
           fallback: "style-loader",
           use: [
             {
-              loader: 'css-loader',
+              loader: "css-loader",
               options: {
                 minimize: true,
                 sourceMap: true
               }
             },
             {
-              loader: 'resolve-url-loader'
+              loader: "resolve-url-loader"
             },
             {
-              loader: 'postcss-loader',
+              loader: "postcss-loader",
               options: {
                 sourceMap: true,
-                plugins: (loader) => [
-                  require('autoprefixer')
-                ]
+                plugins: () => [require("autoprefixer")]
               }
             },
             {
-              loader: 'sass-loader',
+              loader: "sass-loader",
               options: {
                 sourceMap: true
               }
@@ -78,51 +86,57 @@ module.exports = {
         })
       },
       {
-        test: '/\.json$/',
+        test: "/.json$/",
         use: [
           {
-            loader: 'json-loader'
+            loader: "json-loader"
           }
         ]
       },
       {
-          test: /\.(woff2?|ttf|eot|svg)$/,
-          use: [
-            {
-              loader: "file-loader",
-              options: {
-                name: 'resources/fonts/[hash].[ext]',
-                publicPath: '../'
-              }
+        test: /\.(woff2?|ttf|eot|svg)$/,
+        include: /fonts/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "resources/fonts/[hash].[ext]",
+              publicPath: "../"
             }
+          }
+        ]
+      },
+      {
+        test: /\.(png|jp(e*)g|svg)$/,
+        exclude: /fonts/,
+        use: [
+          {
+            loader: "url-loader",
+            options: {
+              limit: 8000,
+              name: "resources/images/[hash]-[name].[ext]",
+              publicPath: "../"
+            }
+          }
         ]
       }
     ]
   },
   devServer: {
     historyApiFallback: true,
-    contentBase: './'
+    contentBase: "./"
   },
   plugins: [
     new CleanWebpackPlugin(pathToClean),
     new webpack.optimize.CommonsChunkPlugin({
-      names: ['vendor', 'manifest']
+      names: ["vendor", "manifest"]
     }),
     new ExtractTextPlugin({
-      filename:  'resources/styles.[contenthash:16].css',
+      filename: "resources/styles.[contenthash:16].css",
       allChunks: true
     }),
     new HtmlWebpackPlugin({
-      template: 'public/index.html'
-    }),
-    // new UglifyJSPlugin({
-    //   sourceMap: true,
-    //   warnings: false
-    // }),
-    // new webpack.DefinePlugin({
-    //   'process.env': {
-    //     'NODE_ENV': JSON.stringify('production')
-    //    }
-    //  })
+      template: "public/index.html"
+    })
   ]
-}
+};
