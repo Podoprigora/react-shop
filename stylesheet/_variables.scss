@@ -14,10 +14,10 @@ $colors: map-merge((
   "gray-lighten-2": #e0e0e0,
   "gray-lighten-1": #bdbdbd,
   "gray":           #9e9e9e,
-  "grey-darken-1":  #757575,
-  "grey-darken-2":  #616161,
-  "grey-darken-3":  #424242,
-  "grey-darken-4":  #212121
+  "gray-darken-1":  #757575,
+  "gray-darken-2":  #616161,
+  "gray-darken-3":  #424242,
+  "gray-darken-4":  #212121
 ), $colors);
 
 $theme-colors: () !default;
@@ -26,7 +26,7 @@ $font-family-base: "Roboto", Arial, sans-serif;
 $font-size-base: 14px;
 $font-weight-base: 400;
 $line-height-base: 1;
-$body-color: color("grey-darken-4");
+$body-color: color("gray-darken-4");
 $body-bg: color("white");
 
 $space: $font-size-base;

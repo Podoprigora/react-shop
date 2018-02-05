@@ -9,7 +9,7 @@ const MainLayout = props => {
   return (
     <div className="main">
       <Header />
-      <div className="main_content">Content</div>
+      <div className="main_content" />
     </div>
   );
 };

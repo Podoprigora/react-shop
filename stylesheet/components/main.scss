@@ -25,7 +25,7 @@ body {
 .resp-content {
   position: relative;
   margin: 0 auto;
-  max-width: 990px;
+  max-width: 1140px;
   padding: 0 15px 0 15px;
 }
 
@@ -40,12 +40,83 @@ body {
   }
 
   .logo {
+    display: block;
+    background-image: url("images/react-shop.png");
     width: 120px;
     height: 50px;
-    background-image: url("images/react-shop.svg");
+  }
 
-    span {
-      display: none;
+  .search-bar {
+    flex: 1;
+    margin: 0 40px;
+
+    form {
+      display: flex;
+      flex-flow: row nowrap;
+      max-width: 350px;
+
+      .input-wrap {
+        flex: 1;
+        display: flex;
+        flex-flow: row nowrap;
+        background-color: color("gray-lighten-3");
+        padding: 5px;
+        border-radius: 3px;
+
+        input {
+          flex: 1;
+          padding: 0 5px;
+          background-color: transparent;
+          font-weight: 500;
+          border: 0;
+          outline: none;
+        }
+
+        .icon {
+          width: 36px;
+          font-size: 24px;
+          color: color("gray-darken-2");
+          background: transparent;
+          border: none;
+          cursor: pointer;
+          outline: none;
+        }
+      }
+    }
+  }
+
+  .buttons {
+    flex: 1;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+
+    .icon {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      margin-right: 8px;
+      background: transparent;
+      color: color("gray-darken-1");
+      border: none;
+      border-radius: 50%;
+      font-size: 26px;
+      font-weight: 400;
+      outline: none;
+      cursor: pointer;
+
+      &::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        line-height: 40px;
+      }
+
+      &:hover {
+        background: color("gray-lighten-3");
+      }
     }
   }
 }
