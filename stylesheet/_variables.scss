@@ -8,6 +8,7 @@ $colors: map-merge((
   "white": #fff,
   "black": #000,
 
+  //Gray
   "gray-lighten-5": #fafafa,
   "gray-lighten-4": #f5f5f5,
   "gray-lighten-3": #eeeeee,
@@ -17,18 +18,44 @@ $colors: map-merge((
   "gray-darken-1":  #757575,
   "gray-darken-2":  #616161,
   "gray-darken-3":  #424242,
-  "gray-darken-4":  #212121
+  "gray-darken-4":  #212121,
+
+  //Light Green
+  "light-green-lighten-1": #a1c878,
+  "light-green": #8bc34a,
+  "light-green-darken-1": #7cb342,
+  "light-green-darken-2": #689f38,
+  "light-green-darken-3": #558b2f,
+  "light-green-darken-4": #33691e
+
 ), $colors);
 
 $theme-colors: () !default;
 
-$font-family-base: "Roboto", Arial, sans-serif;
+/* prettier-ignore */
+$theme-colors: map-merge((
+  "primary": color("light-green-darken-1"),
+  "primary-lighten-1": color("light-green-lighten-1"),
+  "primary-darken-1": color("light-green-darken-3"),
+
+  "border": color("gray-lighten-3")
+), $theme-colors);
+
+//
+// Greackpoints
+//
+$breakpoints: (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px) !default;
+$container-max-widths: (sm: 540px, md: 720px, lg: 960px, xl: 1140px) !default;
+
+//
+// Body
+//
+$font-family-base: "Lato", "Roboto", Arial, sans-serif;
 $font-size-base: 14px;
 $font-weight-base: 400;
 $line-height-base: 1;
 $body-color: color("gray-darken-4");
 $body-bg: color("white");
-
 $space: $font-size-base;
 $headings-margin-bottom: ($space / 2);
 $paragraph-margin-bottom: $font-size-base;

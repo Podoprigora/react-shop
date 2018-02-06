@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Lato:300,400,500,700|Roboto:400,500,700|Catamaran:300,400,500,700|Satisfy:400,700);
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,500,700|Roboto:400,500,700);
 @import "../base";
 
 html,
@@ -25,12 +25,15 @@ body {
 .resp-content {
   position: relative;
   margin: 0 auto;
-  max-width: 1140px;
   padding: 0 15px 0 15px;
+
+  @include media-breakpoint-up(xl) {
+    @include container-max-width(xl);
+  }
 }
 
 .main__header {
-  border-bottom: 1px solid color("gray-lighten-3");
+  border-bottom: 1px solid theme-colors("border");
 
   .resp-content {
     display: flex;

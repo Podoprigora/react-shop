@@ -16,7 +16,6 @@ const vendorsLibs = [
   "react-router-dom",
   "normalizr",
   "redux-thunk",
-  "lodash",
   "react-transition-group",
   "classnames",
   "uuid"
