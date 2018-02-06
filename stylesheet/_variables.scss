@@ -27,7 +27,6 @@ $colors: map-merge((
   "light-green-darken-2": #689f38,
   "light-green-darken-3": #558b2f,
   "light-green-darken-4": #33691e
-
 ), $colors);
 
 $theme-colors: () !default;
@@ -38,6 +37,7 @@ $theme-colors: map-merge((
   "primary-lighten-1": color("light-green-lighten-1"),
   "primary-darken-1": color("light-green-darken-3"),
 
+  "text": color("gray-darken-2"),
   "border": color("gray-lighten-3")
 ), $theme-colors);
 
@@ -45,11 +45,10 @@ $theme-colors: map-merge((
 // Greackpoints
 //
 $breakpoints: (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px) !default;
+// Container Max Widths
 $container-max-widths: (sm: 540px, md: 720px, lg: 960px, xl: 1140px) !default;
 
-//
 // Body
-//
 $font-family-base: "Lato", "Roboto", Arial, sans-serif;
 $font-size-base: 14px;
 $font-weight-base: 400;

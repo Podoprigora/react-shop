@@ -7,7 +7,7 @@
   @return null;
 }
 
-@function theme-colors($key) {
+@function theme-color($key) {
   @if map-has-key($theme-colors, $key) {
     @return map-get($theme-colors, $key);
   }

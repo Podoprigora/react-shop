@@ -19,6 +19,7 @@
   },
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/no-array-index-key": 0,
     "no-console": 0,
     "no-unused-vars": 0,
     "no-underscore-dangle": 0,

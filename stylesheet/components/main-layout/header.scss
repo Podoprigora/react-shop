@@ -1,39 +1,5 @@
-@import url(http://fonts.googleapis.com/css?family=Lato:300,400,500,700|Roboto:400,500,700);
-@import "../base";
-
-html,
-body {
-  width: 100%;
-  height: 100%;
-}
-
-body {
-  display: flex;
-  flex-flow: column nowrap;
-}
-
-#root {
-  flex: 1 0 auto;
-  display: flex;
-  flex-flow: column nowrap;
-}
-
-.main {
-  flex: 1 0 auto;
-}
-
-.resp-content {
-  position: relative;
-  margin: 0 auto;
-  padding: 0 15px 0 15px;
-
-  @include media-breakpoint-up(xl) {
-    @include container-max-width(xl);
-  }
-}
-
 .main__header {
-  border-bottom: 1px solid theme-colors("border");
+  border-bottom: 1px solid theme-color("border");
 
   .resp-content {
     display: flex;
@@ -62,7 +28,7 @@ body {
         flex: 1;
         display: flex;
         flex-flow: row nowrap;
-        background-color: color("gray-lighten-3");
+        background-color: color("gray-lighten-4");
         padding: 5px;
         border-radius: 3px;
 
@@ -78,7 +44,7 @@ body {
         .icon {
           width: 36px;
           font-size: 24px;
-          color: color("gray-darken-2");
+          color: theme-color("text");
           background: transparent;
           border: none;
           cursor: pointer;
@@ -122,10 +88,4 @@ body {
       }
     }
   }
-}
-
-.main__content {
-}
-
-.main__footer {
 }
