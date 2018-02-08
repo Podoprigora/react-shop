@@ -22,7 +22,7 @@
     "jsx-a11y/anchor-is-valid": [ "error", {
       "components": [ "Link" ],
       "specialLink": [ "hrefLeft", "hrefRight" ],
-      "aspects": [ "noHref", "invalidHref", "preferButton" ]
+      "aspects": ["preferButton" ]
     }],
     "react/no-array-index-key": 0,
     "no-console": 0,
