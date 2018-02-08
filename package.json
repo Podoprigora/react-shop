@@ -6,8 +6,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "webpack",
-    "serve": "webpack-dev-server",
-    "start": "opener http://localhost:3000 & httpster -p 3000 -d ./dist",
+    "start": "webpack-dev-server",
     "lint": "eslint src"
   },
   "author": "Alexandr Podoprigora",

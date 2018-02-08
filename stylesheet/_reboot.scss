@@ -23,6 +23,11 @@
   box-sizing: border-box; // 1
 }
 
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 html {
   font-family: sans-serif; // 2
   line-height: 1.15; // 3
