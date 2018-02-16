@@ -12,12 +12,10 @@ const MainLayout = props => {
   return (
     <div className="main">
       <Header />
-      <TopNav
-        data={categoriesData}
-        maxVisibleListItems={5}
-        onSelect={path => console.log(path)}
-      />
-      <div className="main__content" />
+      <TopNav data={categoriesData} maxVisibleListItems={5} onSelect={path => console.log(path)} />
+      <div className="main__content">
+        <div className="resp-content">{children}</div>
+      </div>
     </div>
   );
 };

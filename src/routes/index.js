@@ -4,7 +4,7 @@ import { Route } from "react-router-dom";
 import MainLayout from "../components/MainLayout";
 import MainPage from "./MainPage";
 
-import "../../stylesheet/components/components.scss";
+import "../../stylesheet/styles.scss";
 
 const App = () => (
   <MainLayout>

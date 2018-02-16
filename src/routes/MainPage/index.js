@@ -1,5 +1,12 @@
 import React from "react";
 
-const MainPage = () => <div>Home</div>;
+import BrandsList from "./BrandsCarousel";
+import brandsData from "../../../data/brands";
+
+const MainPage = () => (
+  <div>
+    <BrandsList data={brandsData} />
+  </div>
+);
 
 export default MainPage;

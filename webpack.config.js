@@ -106,7 +106,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|jp(e*)g|svg)$/,
+        test: /\.(png|jp(e*)g|svg|webp)$/,
         exclude: /fonts/,
         use: [
           {

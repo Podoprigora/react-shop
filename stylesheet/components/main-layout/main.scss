@@ -1,5 +1,3 @@
-@import url(http://fonts.googleapis.com/css?family=Lato:300,400,500,700|Roboto:400,500,700);
-@import "../base";
 @import "./header";
 @import "./hrmenu";
 
@@ -36,6 +34,10 @@ body {
 
 .main__content {
   min-height: 800px;
+
+  .resp-content {
+    padding: 25px;
+  }
 }
 
 .main__footer {
