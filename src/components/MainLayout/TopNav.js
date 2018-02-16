@@ -18,15 +18,20 @@ class TopNav extends React.Component {
     activeMenuIndex: null
   };
 
+  timeoutID = null;
+
   _toggleMenu = (index = null) => {
     this.setState({ activeMenuIndex: index });
   };
 
   handleMouseOver = index => ev => {
-    this._toggleMenu(index);
+    this.timeoutID = setTimeout(() => {
+      this._toggleMenu(index);
+    }, 166);
   };
 
   handleMouseOut = index => ev => {
+    clearTimeout(this.timeoutID);
     this._toggleMenu();
   };
 
@@ -58,10 +63,7 @@ class TopNav extends React.Component {
         })}
         {showAllCategories && (
           <li>
-            <button
-              className="show-all"
-              onClick={this.handleSelect(parentNode)}
-            >
+            <button className="show-all" onClick={this.handleSelect(parentNode)}>
               all categories
             </button>
           </li>
