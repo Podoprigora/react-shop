@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 
 import storeFactory from "./store";
-import App from "./components/App";
+import App from "./routes";
 
 const store = storeFactory();
 

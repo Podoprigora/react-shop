@@ -1,8 +1,8 @@
 import React from "react";
 import { Route } from "react-router-dom";
 
-import MainLayout from "./MainLayout";
-import Home from "./routes/Home";
+import MainLayout from "../components/MainLayout";
+import Home from "./Home";
 
 import "../../stylesheet/components/components.scss";
 
