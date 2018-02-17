@@ -4,7 +4,7 @@ export default [
     name: "The Stringer - Shirt for Men - Grey",
     brand: "Quiksilver",
     picture: "/data/images/products/quiksilver-the-stringer-shirt-men-grey.jpg",
-    price: "79.95",
+    price: 79.95,
     currency: "EUR"
   },
   {
@@ -12,7 +12,7 @@ export default [
     name: "Walk The Line - Jacket for Women - Green",
     brand: "NAKETANO",
     picture: "/data/images/products/naketano-walk-the-line-jacket-women-green.jpg",
-    price: "129.95",
+    price: 29.95,
     currency: "EUR"
   },
   {
@@ -20,7 +20,7 @@ export default [
     name: "Saksofon Cekmek Tütürütütü - Jacket for Men - Black",
     brand: "NAKETANO",
     picture: "/data/images/products/naketano-saksofon-cekmek-tuetueruetuetue-jacket-men-black.jpg",
-    price: "109.95",
+    price: 9.95,
     currency: "EUR"
   },
   {
@@ -28,7 +28,7 @@ export default [
     name: "Happiness Is My Enemy - Hooded Sweatshirt for Men - Beige",
     brand: "NAKETANO",
     picture: "/data/images/products/naketano-happiness-is-my-enemy-hooded-sweatshirt-men-beige.jpg",
-    price: "74.95",
+    price: 74.95,
     currency: "EUR"
   },
   {
@@ -36,7 +36,7 @@ export default [
     name: "Trk Pk Solid - Sweatshirt for Women - Green",
     brand: "NIKE SPORTSWEAR",
     picture: "/data/images/products/nike-sportswear-trk-pk-solid-sweatshirt-women-green.jpg",
-    price: "64.85",
+    price: 64.85,
     currency: "EUR"
   },
   {
@@ -44,7 +44,7 @@ export default [
     name: "2 Tone Biquet - Knitted Pullover for Women - Green",
     brand: "Iriedaily",
     picture: "/data/images/products/iriedaily-2-tone-biquet-knitted-pullover-women-green.jpg",
-    price: "68.95",
+    price: 68.95,
     currency: "EUR"
   },
   {
@@ -52,7 +52,7 @@ export default [
     name: "Whitehaven - Cardigan for Women - Beige",
     brand: "Rip Curl",
     picture: "/data/images/products/rip-curl-whitehaven-cardigan-women-beige-stripes.jpg",
-    price: "74.90",
+    price: 74.9,
     currency: "EUR"
   },
   {
@@ -60,7 +60,7 @@ export default [
     name: "Ployd - Hooded Sweatshirt for Men - Grey",
     brand: "OXBOW",
     picture: "/data/images/products/oxbow-ployd-hooded-sweatshirt-men-grey.jpg",
-    price: "74.95",
+    price: 74.95,
     currency: "EUR"
   },
   {
@@ -68,7 +68,7 @@ export default [
     name: "Top Air - Functional Top for Men - Black",
     brand: "NIKE SPORTSWEAR",
     picture: "/data/images/products/nike-sportswear-top-air-functional-top-men-black.jpg",
-    price: "89.85",
+    price: 89.85,
     currency: "EUR"
   },
   {
@@ -76,7 +76,7 @@ export default [
     name: "Trajectory Wash Varsity - T-Shirt for Women - Black",
     brand: "Hurley",
     picture: "/data/images/products/hurley-trajectory-wash-varsity-t-shirt-women-grey-black.jpg",
-    price: "39.95",
+    price: 39.95,
     currency: "EUR"
   },
   {
@@ -84,7 +84,7 @@ export default [
     name: "Flying V Raglan - Long-sleeved Shirt for Women - White",
     brand: "Vans",
     picture: "/data/images/products/vans-flying-v-raglan-long-sleeved-shirt-women-white.jpg",
-    price: "34.95",
+    price: 34.95,
     currency: "EUR"
   },
   {
@@ -92,7 +92,7 @@ export default [
     name: "Slogan - Outdoor Shirt for Men - Blue",
     brand: "Jack Wolfskin",
     picture: "/data/images/products/jack-wolfskin-slogan-outdoor-shirt-men-blue.jpg",
-    price: "29.95",
+    price: 29.95,
     currency: "EUR"
   },
   {
@@ -100,7 +100,7 @@ export default [
     name: "Schimpanski - T-Shirt for Men - Blue",
     brand: "NAKETANO",
     picture: "/data/images/products/naketano-schimpanski-t-shirt-men-blue-grey.jpg",
-    price: "29.95",
+    price: 29.95,
     currency: "EUR"
   },
   {
@@ -108,7 +108,7 @@ export default [
     name: "Lustiger Muschiname - T-Shirt for Women - Green",
     brand: "NAKETANO",
     picture: "/data/images/products/naketano-lustiger-muschiname-t-shirt-women-green.jpg",
-    price: "29.95",
+    price: 29.95,
     currency: "EUR"
   },
   {
@@ -116,7 +116,7 @@ export default [
     name: "Front Door - Long-sleeved Shirt for Men - Grey",
     brand: "Quiksilver",
     picture: "/data/images/products/quiksilver-front-door-long-sleeved-shirt-men-grey.jpg",
-    price: "49.95",
+    price: 49.95,
     currency: "EUR"
   }
 ];

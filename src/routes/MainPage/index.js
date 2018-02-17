@@ -6,10 +6,14 @@ import brandsData from "../../../data/brands";
 import BrandnewCarousel from "./BrandnewCarousel";
 import brandnewData from "../../../data/brandnew-products";
 
+import TopsellerCarousel from "./TopsellerCarousel";
+import topsellerData from "../../../data/topseller-products";
+
 const MainPage = () => (
   <div>
     <BrandsCarousel data={brandsData} />
     <BrandnewCarousel data={brandnewData} />
+    <TopsellerCarousel data={topsellerData} />
   </div>
 );
 

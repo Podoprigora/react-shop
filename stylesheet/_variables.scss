@@ -31,7 +31,10 @@ $colors: map-merge((
   // Orange
   "orange-lighten-1": #ffa726,
   "orange":           #ff9800,
-  "orange-darken-1":  #f57c00
+  "orange-darken-1":  #f57c00,
+
+  // Deep orange
+  "red": #f44336
 ), $colors);
 
 $theme-colors: () !default;
