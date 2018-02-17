@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { format as moneyFormat } from "money-formatter";
 
 import FeedCarousel from "../../components/FeedCarousel";
-import { currencySymbol } from "../../components/helpers/render";
 
 class BrandnewCarousel extends React.Component {
   renderItem = data => {
@@ -21,22 +21,15 @@ class BrandnewCarousel extends React.Component {
           <div className="product-item__brand">{brand}</div>
           <div className="product-item__name">{name}</div>
         </h4>
-        {price && (
-          <div className="product-item__price product-price">
-            {currencySymbol(currency)}
-            {price}
-          </div>
-        )}
+        {price && <div className="product-item__price product-price">{moneyFormat(currency, price)}</div>}
         {oldPrice &&
           specialPrice && (
             <div className="product-price-wrap">
               <div className="product-item__price product-price product-price--old">
-                {currencySymbol(currency)}
-                {oldPrice}
+                {moneyFormat(currency, oldPrice)}
               </div>
               <div className="product-item__price product-price product-price--special">
-                {currencySymbol(currency)}
-                {specialPrice}
+                {moneyFormat(currency, specialPrice)}
               </div>
             </div>
           )}

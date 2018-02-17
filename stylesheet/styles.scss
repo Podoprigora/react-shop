@@ -27,6 +27,7 @@
 .product-price {
   font-size: 16px;
   font-weight: 500;
+  line-height: 24px;
 }
 
 .product-price-wrap {
@@ -34,16 +35,18 @@
   flex-flow: row wrap;
   justify-content: center;
   align-items: center;
-}
 
-.product-price--old {
-  font-size: 14px;
-  color: color("gray");
-  text-decoration: line-through;
-}
+  .product-price--old {
+    font-size: 14px;
+    line-height: 20px;
+    color: color("gray");
+    text-decoration: line-through;
+  }
 
-.product-price--special {
-  color: color("red");
+  .product-price--special {
+    color: color("red");
+    margin-left: 6px;
+  }
 }
 
 .carousel-container {
@@ -150,10 +153,6 @@
       font-size: 14px;
       font-weight: 400;
       white-space: normal;
-    }
-
-    .product-item__price {
-      margin: 6px 4px 0 0;
     }
 
     .product-item__flag {
