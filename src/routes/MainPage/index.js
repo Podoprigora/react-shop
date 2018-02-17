@@ -1,11 +1,15 @@
 import React from "react";
 
-import BrandsList from "./BrandsCarousel";
+import BrandsCarousel from "./BrandsCarousel";
 import brandsData from "../../../data/brands";
+
+import BrandnewCarousel from "./BrandnewCarousel";
+import brandnewData from "../../../data/brandnew-products";
 
 const MainPage = () => (
   <div>
-    <BrandsList data={brandsData} />
+    <BrandsCarousel data={brandsData} />
+    <BrandnewCarousel data={brandnewData} />
   </div>
 );
 

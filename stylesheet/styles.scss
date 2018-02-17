@@ -3,8 +3,59 @@
 @import "./base";
 @import "./components/components";
 
+.product-flag--new {
+  padding: 4px;
+  font-size: 10px;
+  text-transform: uppercase;
+  color: theme-color("primary");
+  border: 1px solid theme-color("primary");
+  border-radius: 3px;
+}
+
 .carousel-container {
+  padding: 20px 0;
+
   .carousel-container__header {
+    position: relative;
+    margin-bottom: 12px;
+
+    .carousel-container__title {
+      display: inline-block;
+      font-size: 24px;
+      line-height: 24px;
+      font-weight: 400;
+      color: theme-color("text");
+      margin: 0 15px;
+    }
+
+    .carousel-container__viewall {
+      display: inline-block;
+      position: relative;
+      padding-right: 16px;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      color: theme-color("primary");
+      cursor: pointer;
+
+      &:hover {
+        color: theme-color("link-hover");
+
+        &::before {
+          transform: translateX(2px);
+        }
+      }
+
+      &::before {
+        content: "\e409";
+        position: absolute;
+        top: -1px;
+        right: 0;
+        font-family: "materialicon";
+        transform: translateX(0);
+        transition: transform 0.2s;
+      }
+    }
   }
 }
 
@@ -19,7 +70,63 @@
       width: 100%;
     }
   }
+
+  .feed-carousel__control::before {
+    font-size: 24px;
+  }
 }
 
 .products-carousel {
+  .products-carousel__item {
+    position: relative;
+    width: 202px;
+    margin: 0 2px 6px 0;
+    padding: 10px;
+    border: 0px solid color("gray-lighten-3");
+    border-width: 0 1px 1px 0;
+    text-align: center;
+    cursor: pointer;
+
+    @include media-breakpoint-down(md) {
+      width: 120px;
+    }
+
+    .product-item__img {
+      display: block;
+      margin: 0 auto;
+      margin-bottom: 5px;
+
+      img {
+        display: inline-block;
+        max-width: 100%;
+        min-height: 200px;
+        border: 0;
+      }
+    }
+
+    .product-item__brand {
+      font-weight: 500;
+      text-transform: uppercase;
+      line-height: 24px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .product-item__name {
+      font-size: 14px;
+      font-weight: 400;
+      white-space: normal;
+    }
+
+    .product-item__price {
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .product-item__flag {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+  }
 }
