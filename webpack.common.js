@@ -35,7 +35,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, "dist"),
-    publicPath: "/",
+    publicPath: "",
     filename: "[name].[hash:16].js",
     sourceMapFilename: "[file].map"
   },
