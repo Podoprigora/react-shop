@@ -4,7 +4,7 @@ export default [
     items: [
       {
         title: "Jackets",
-        picture: "/data/images/categories/streetwear-jackets.jpg",
+        picture: "data/images/categories/streetwear-jackets.jpg",
         items: [
           { title: "Winter Coats" },
           { title: "Down Jackets" },
@@ -23,7 +23,7 @@ export default [
       },
       {
         title: "Jumpers",
-        picture: "/data/images/categories/streetwear-jumpers.jpg",
+        picture: "data/images/categories/streetwear-jumpers.jpg",
         items: [
           { title: "Hoodies" },
           { title: "Zip Up Hoodies" },
@@ -35,7 +35,7 @@ export default [
       },
       {
         title: "Trousers",
-        picture: "/data/images/categories/streetwear-trousers.jpg",
+        picture: "data/images/categories/streetwear-trousers.jpg",
         items: [
           { title: "Chinos" },
           { title: "Cargo Trousers" },
@@ -52,7 +52,7 @@ export default [
       },
       {
         title: "Jeans",
-        picture: "/data/images/categories/streetwear-jeans.jpg",
+        picture: "data/images/categories/streetwear-jeans.jpg",
         items: [
           { title: "Skinny Jeans" },
           { title: "Destroyed Jeans" },
@@ -69,7 +69,7 @@ export default [
       },
       {
         title: "Shirts",
-        picture: "/data/images/categories/streetwear-shirts.jpg",
+        picture: "data/images/categories/streetwear-shirts.jpg",
         items: [
           { title: "Flannel Shirts" },
           { title: "Slim Fit Shirts" },
@@ -79,12 +79,12 @@ export default [
       },
       {
         title: "Knitwear",
-        picture: "/data/images/categories/streetwear-knitwear.jpg",
+        picture: "data/images/categories/streetwear-knitwear.jpg",
         items: [{ title: "Knitted Jumpers" }, { title: "Cardigans" }]
       },
       {
         title: "Dresses",
-        picture: "/data/images/categories/streetwear-dresses.jpg",
+        picture: "data/images/categories/streetwear-dresses.jpg",
         items: [
           { title: "Long Sleeve Dresses" },
           { title: "Maxi Dresses" },
@@ -96,12 +96,12 @@ export default [
       },
       {
         title: "Skirts",
-        picture: "/data/images/categories/streetwear-skirts.jpg",
+        picture: "data/images/categories/streetwear-skirts.jpg",
         items: [{ title: "Mini Skirts" }, { title: "Maxi Skirts" }, { title: "Denim Skirts" }, { title: "Midi Skirts" }]
       },
       {
         title: "T-Shirts",
-        picture: "/data/images/categories/streetwear-t-shirts.jpg",
+        picture: "data/images/categories/streetwear-t-shirts.jpg",
         items: [
           { title: "T-Shirts" },
           { title: "Long Sleeve Tops" },
@@ -114,7 +114,7 @@ export default [
       },
       {
         title: "Shorts",
-        picture: "/data/images/categories/streetwear-shorts.jpg",
+        picture: "data/images/categories/streetwear-shorts.jpg",
         items: [
           { title: "Hot Pants" },
           { title: "Denim Shorts" },
@@ -125,12 +125,12 @@ export default [
       },
       {
         title: "Underwear",
-        picture: "/data/images/categories/streetwear-underwear.jpg",
+        picture: "data/images/categories/streetwear-underwear.jpg",
         items: [{ title: "Boxer Shorts" }, { title: "Sports Bra" }, { title: "Knickers" }, { title: "Undershirts" }]
       },
       {
         title: "Blouse-Tunics",
-        picture: "/data/images/categories/streetwear-blouse-tunics.jpg",
+        picture: "data/images/categories/streetwear-blouse-tunics.jpg",
         items: [{ title: "Blouse" }, { title: "Tunics" }]
       }
     ]
@@ -140,37 +140,37 @@ export default [
     items: [
       {
         title: "Trainers",
-        picture: "/data/images/categories/shoes-trainers.jpg",
+        picture: "data/images/categories/shoes-trainers.jpg",
         items: [{ title: "Low-top Trainers" }, { title: "High-top Trainers" }, { title: "Slip-ons" }]
       },
       {
         title: "Winter Shoes",
-        picture: "/data/images/categories/shoes-winter-shoes.jpg",
+        picture: "data/images/categories/shoes-winter-shoes.jpg",
         items: [{ title: "Winter Boots" }]
       },
       {
         title: "Boots",
-        picture: "/data/images/categories/shoes-boots.jpg",
+        picture: "data/images/categories/shoes-boots.jpg",
         items: [{ title: "Fashion Boots" }, { title: "Ankle Boots" }]
       },
       {
         title: "Skate Shoes",
-        picture: "/data/images/categories/shoes-skate-shoes.jpg",
+        picture: "data/images/categories/shoes-skate-shoes.jpg",
         items: [{ title: "Skate Shoes Low" }, { title: "Skate Shoes High" }]
       },
       {
         title: "Ballet Pumps",
-        picture: "/data/images/categories/shoes-ballet-pumps.jpg",
+        picture: "data/images/categories/shoes-ballet-pumps.jpg",
         items: []
       },
       {
         title: "Sandals",
-        picture: "/data/images/categories/shoes-sandals.jpg",
+        picture: "data/images/categories/shoes-sandals.jpg",
         items: [{ title: "Toe Separator" }, { title: "Sandals" }]
       },
       {
         title: "Shoes Accessories",
-        picture: "/data/images/categories/shoes-shoes-accessories.jpg",
+        picture: "data/images/categories/shoes-shoes-accessories.jpg",
         items: [{ title: "Shoelaces" }, { title: "Shoe Care" }, { title: "Insoles" }]
       }
     ]
@@ -180,7 +180,7 @@ export default [
     items: [
       {
         title: "Backpacks",
-        picture: "/data/images/categories/accessories-backpacks.jpg",
+        picture: "data/images/categories/accessories-backpacks.jpg",
         items: [
           { title: "Canvas Backpacks" },
           { title: "Everyday Backpacks" },
@@ -194,7 +194,7 @@ export default [
       },
       {
         title: "Caps",
-        picture: "/data/images/categories/accessories-caps.jpg",
+        picture: "data/images/categories/accessories-caps.jpg",
         items: [
           { title: "Snapback Caps" },
           { title: "Trucker Caps" },
@@ -205,7 +205,7 @@ export default [
       },
       {
         title: "Beanies",
-        picture: "/data/images/categories/accessories-beanies.jpg",
+        picture: "data/images/categories/accessories-beanies.jpg",
         items: [
           { title: "Beanies" },
           { title: "Knitted Hats" },
@@ -218,7 +218,7 @@ export default [
       },
       {
         title: "Scarves",
-        picture: "/data/images/categories/accessories-scarves.jpg",
+        picture: "data/images/categories/accessories-scarves.jpg",
         items: [
           { title: "Neck Warmers" },
           { title: "Knitted Scarves" },
@@ -229,17 +229,17 @@ export default [
       },
       {
         title: "Gloves",
-        picture: "/data/images/categories/accessories-gloves.jpg",
+        picture: "data/images/categories/accessories-gloves.jpg",
         items: [{ title: "Fingerless Gloves" }, { title: "Knitted Gloves" }, { title: "Mittens" }]
       },
       {
         title: "Socks",
-        picture: "/data/images/categories/accessories-socks.jpg",
+        picture: "data/images/categories/accessories-socks.jpg",
         items: [{ title: "Long Socks" }, { title: "Ankle Socks" }, { title: "Sports Socks" }]
       },
       {
         title: "Belts",
-        picture: "/data/images/categories/accessories-belts.jpg",
+        picture: "data/images/categories/accessories-belts.jpg",
         items: [
           { title: "Fabric Belts" },
           { title: "Leather Belts" },
@@ -249,7 +249,7 @@ export default [
       },
       {
         title: "Bags",
-        picture: "/data/images/categories/accessories-bags.jpg",
+        picture: "data/images/categories/accessories-bags.jpg",
         items: [
           { title: "Purses" },
           { title: "Sports Bags" },
@@ -263,17 +263,17 @@ export default [
       },
       {
         title: "Wallets",
-        picture: "/data/images/categories/accessories-wallets.jpg",
+        picture: "data/images/categories/accessories-wallets.jpg",
         items: [{ title: "Leather Wallets" }, { title: "Faux Leather Wallets" }, { title: "Cloth Wallet" }]
       },
       {
         title: "Sunglasses",
-        picture: "/data/images/categories/accessories-sunglasses.jpg",
+        picture: "data/images/categories/accessories-sunglasses.jpg",
         items: [{ title: "Fashion Glasses" }, { title: "Sports Glasses" }]
       },
       {
         title: "Watches",
-        picture: "/data/images/categories/accessories-watches.jpg",
+        picture: "data/images/categories/accessories-watches.jpg",
         items: [{ title: "Analog Watches" }, { title: "Digital Watches" }, { title: "Chronographs" }]
       }
     ]
@@ -283,7 +283,7 @@ export default [
     items: [
       {
         title: "Swimwear",
-        picture: "/data/images/categories/water-sports-swimwear.jpg",
+        picture: "data/images/categories/water-sports-swimwear.jpg",
         items: [
           { title: "Bikinis" },
           { title: "Swim Shorts" },
@@ -298,7 +298,7 @@ export default [
       },
       {
         title: "Wetsuits",
-        picture: "/data/images/categories/water-sports-wetsuits.jpg",
+        picture: "data/images/categories/water-sports-wetsuits.jpg",
         items: [
           { title: "Wetsuits" },
           { title: "Wetsuit Boots" },
@@ -310,7 +310,7 @@ export default [
       },
       {
         title: "Wakeboarding",
-        picture: "/data/images/categories/water-sports-wakeboarding.jpg",
+        picture: "data/images/categories/water-sports-wakeboarding.jpg",
         items: [
           { title: "Wakeboards" },
           { title: "Wakeboard Bindings" },
@@ -321,7 +321,7 @@ export default [
       },
       {
         title: "Surfboards",
-        picture: "/data/images/categories/water-sports-surfboard.jpg",
+        picture: "data/images/categories/water-sports-surfboard.jpg",
         items: [
           { title: "Shortboard Surf" },
           { title: "River Surfboard" },
@@ -331,17 +331,17 @@ export default [
       },
       {
         title: "Stand Up Paddling",
-        picture: "/data/images/categories/water-sports-stand-up-paddling.jpg",
+        picture: "data/images/categories/water-sports-stand-up-paddling.jpg",
         items: [{ title: "SUP Boards" }, { title: "SUP Paddles" }, { title: "SUP Accessories" }]
       },
       {
         title: "Rash Vests",
-        picture: "/data/images/categories/water-sports-rash-vests.jpg",
+        picture: "data/images/categories/water-sports-rash-vests.jpg",
         items: []
       },
       {
         title: "Surfing Accessories",
-        picture: "/data/images/categories/water-sports-surfing-accessories.jpg",
+        picture: "data/images/categories/water-sports-surfing-accessories.jpg",
         items: [
           { title: "Surfboard Bag" },
           { title: "Surfboard Leashes" },
@@ -358,7 +358,7 @@ export default [
     items: [
       {
         title: "Skateboards",
-        picture: "/data/images/categories/skate-skateboards.jpg",
+        picture: "data/images/categories/skate-skateboards.jpg",
         items: [
           { title: "Complete Boards" },
           { title: "Skateboard Decks" },
@@ -373,7 +373,7 @@ export default [
       },
       {
         title: "Longboards",
-        picture: "/data/images/categories/skate-longboards.jpg",
+        picture: "data/images/categories/skate-longboards.jpg",
         items: [
           { title: "Longboard Complete" },
           { title: "Longboard Trucks" },
@@ -383,7 +383,7 @@ export default [
       },
       {
         title: "Cruiser Skateboards",
-        picture: "/data/images/categories/skate-cruiser-skateboards.jpg",
+        picture: "data/images/categories/skate-cruiser-skateboards.jpg",
         items: [
           { title: "Complete Cruisers" },
           { title: "Cruiser Decks" },
@@ -393,7 +393,7 @@ export default [
       },
       {
         title: "Skate Protector",
-        picture: "/data/images/categories/skate-skate-protector.jpg",
+        picture: "data/images/categories/skate-skate-protector.jpg",
         items: [{ title: "Skate Gloves" }, { title: "Skate Helmets" }, { title: "Skate Protector Others" }]
       }
     ]
@@ -403,7 +403,7 @@ export default [
     items: [
       {
         title: "Snowboards",
-        picture: "/data/images/categories/snowboard-shop-snowboards.jpg",
+        picture: "data/images/categories/snowboard-shop-snowboards.jpg",
         items: [
           { title: "Freeride Snowboards" },
           { title: "Freestyle Snowboards" },
@@ -413,7 +413,7 @@ export default [
       },
       {
         title: "Snowboard Clothing",
-        picture: "/data/images/categories/snowboard-shop-snowboard-clothing.jpg",
+        picture: "data/images/categories/snowboard-shop-snowboard-clothing.jpg",
         items: [
           { title: "Snowboard Jackets" },
           { title: "Snowboard Pants" },
@@ -426,7 +426,7 @@ export default [
       },
       {
         title: "Snowboard Bindings",
-        picture: "/data/images/categories/snowboard-shop-snowboard-bindings.jpg",
+        picture: "data/images/categories/snowboard-shop-snowboard-bindings.jpg",
         items: [
           { title: "Soft Bindings" },
           { title: "Splitboard Bindings" },
@@ -435,7 +435,7 @@ export default [
       },
       {
         title: "Snowboard Boots",
-        picture: "/data/images/categories/snowboard-shop-snowboard-boots.jpg",
+        picture: "data/images/categories/snowboard-shop-snowboard-boots.jpg",
         items: [
           { title: "Freestyle Snowboard Boots" },
           { title: "Freeride Snowboard Boots" },
@@ -444,37 +444,37 @@ export default [
       },
       {
         title: "Snowboard Helmets",
-        picture: "/data/images/categories/snowboard-shop-snowboard-helmets.jpg",
+        picture: "data/images/categories/snowboard-shop-snowboard-helmets.jpg",
         items: [{ title: "Snowboard Helmets" }, { title: "Snowboard Helmet Accessories" }]
       },
       {
         title: "Snowboard Goggles",
-        picture: "/data/images/categories/snowboard-shop-snowboard-goggles.jpg",
+        picture: "data/images/categories/snowboard-shop-snowboard-goggles.jpg",
         items: [{ title: "Snowboard Goggles" }, { title: "Snowboard Goggles Spare Lense" }]
       },
       {
         title: "Snowboard Backpacks",
-        picture: "/data/images/categories/snowboard-shop-snowboard-backpacks.jpg",
+        picture: "data/images/categories/snowboard-shop-snowboard-backpacks.jpg",
         items: [{ title: "Avalanche Backpacks" }, { title: "Protector Backpacks" }]
       },
       {
         title: "Snowboard Protectors",
-        picture: "/data/images/categories/snowboard-shop-snowboard-protectors.jpg",
+        picture: "data/images/categories/snowboard-shop-snowboard-protectors.jpg",
         items: []
       },
       {
         title: "Snowboard Bags",
-        picture: "/data/images/categories/snowboard-shop-snowboard-bags.jpg",
+        picture: "data/images/categories/snowboard-shop-snowboard-bags.jpg",
         items: []
       },
       {
         title: "Snowboard Boot Bags",
-        picture: "/data/images/categories/snowboard-shop-snowboard-boot-bags.jpg",
+        picture: "data/images/categories/snowboard-shop-snowboard-boot-bags.jpg",
         items: []
       },
       {
         title: "Snowboarding Safety",
-        picture: "/data/images/categories/snowboard-shop-snowboarding-safety.jpg",
+        picture: "data/images/categories/snowboard-shop-snowboarding-safety.jpg",
         items: [
           { title: "Avalanche Transceiver" },
           { title: "Avalanche Shovel" },
@@ -485,7 +485,7 @@ export default [
       },
       {
         title: "Snowboarding Accessories",
-        picture: "/data/images/categories/snowboard-shop-snowboarding-accessories.jpg",
+        picture: "data/images/categories/snowboard-shop-snowboarding-accessories.jpg",
         items: [{ title: "Snowboard Crampons" }, { title: "Splitboard Skins" }, { title: "Snowboard Tuning" }]
       }
     ]
@@ -495,7 +495,7 @@ export default [
     items: [
       {
         title: "Ski Clothing",
-        picture: "/data/images/categories/ski-shop-ski-clothing.jpg",
+        picture: "data/images/categories/ski-shop-ski-clothing.jpg",
         items: [
           { title: "Ski Jackets" },
           { title: "Ski Pants" },
@@ -509,47 +509,47 @@ export default [
       },
       {
         title: "Ski Goggles",
-        picture: "/data/images/categories/ski-shop-ski-goggles.jpg",
+        picture: "data/images/categories/ski-shop-ski-goggles.jpg",
         items: [{ title: "Ski Goggles" }, { title: "Spare Lenses" }]
       },
       {
         title: "Ski Helmets",
-        picture: "/data/images/categories/ski-shop-ski-helmets.jpg",
+        picture: "data/images/categories/ski-shop-ski-helmets.jpg",
         items: []
       },
       {
         title: "Ski Poles",
-        picture: "/data/images/categories/ski-shop-ski-poles.jpg",
+        picture: "data/images/categories/ski-shop-ski-poles.jpg",
         items: [{ title: "Ski Poles" }, { title: "Ski Touring Poles" }]
       },
       {
         title: "Ski Boots",
-        picture: "/data/images/categories/ski-shop-ski-boots.jpg",
+        picture: "data/images/categories/ski-shop-ski-boots.jpg",
         items: [{ title: "Freeride Ski Boots" }, { title: "Freestyle Ski Boots" }]
       },
       {
         title: "Ski Bindings",
-        picture: "/data/images/categories/ski-shop-ski-bindings.jpg",
+        picture: "data/images/categories/ski-shop-ski-bindings.jpg",
         items: [{ title: "Freeride Ski Bindings" }, { title: "Touring Bindings" }]
       },
       {
         title: "Ski Backpacks",
-        picture: "/data/images/categories/ski-shop-ski-backpacks.jpg",
+        picture: "data/images/categories/ski-shop-ski-backpacks.jpg",
         items: [{ title: "Protector Backpacks" }, { title: "Avalanche Backpacks" }]
       },
       {
         title: "Ski Protector",
-        picture: "/data/images/categories/ski-shop-ski-protector.jpg",
+        picture: "data/images/categories/ski-shop-ski-protector.jpg",
         items: []
       },
       {
         title: "Ski Bootbags",
-        picture: "/data/images/categories/ski-shop-ski-bootbags.jpg",
+        picture: "data/images/categories/ski-shop-ski-bootbags.jpg",
         items: []
       },
       {
         title: "Ski Safety",
-        picture: "/data/images/categories/ski-shop-ski-safety.jpg",
+        picture: "data/images/categories/ski-shop-ski-safety.jpg",
         items: [
           { title: "Avalanche Transceiver" },
           { title: "Avalanche Shovel" },
@@ -559,7 +559,7 @@ export default [
       },
       {
         title: "Ski Accessories",
-        picture: "/data/images/categories/ski-shop-ski-accessories.jpg",
+        picture: "data/images/categories/ski-shop-ski-accessories.jpg",
         items: [{ title: "Ski Skins" }, { title: "Ski Tuning" }, { title: "Ski Tuning" }]
       }
     ]
@@ -569,7 +569,7 @@ export default [
     items: [
       {
         title: "Outdoor Clothing",
-        picture: "/data/images/categories/outdoor-outdoor-clothing.jpg",
+        picture: "data/images/categories/outdoor-outdoor-clothing.jpg",
         items: [
           { title: "Outdoor Jackets" },
           { title: "Outdoor Pants" },
@@ -583,12 +583,12 @@ export default [
       },
       {
         title: "Outdoorshoes",
-        picture: "/data/images/categories/outdoor-outdoorshoes.jpg",
+        picture: "data/images/categories/outdoor-outdoorshoes.jpg",
         items: [{ title: "Trekking Shoes" }, { title: "Slippers" }, { title: "Hiking Shoes" }]
       },
       {
         title: "Outdoor Equipment",
-        picture: "/data/images/categories/outdoor-outdoor-equipment.jpg",
+        picture: "data/images/categories/outdoor-outdoor-equipment.jpg",
         items: [
           { title: "Backpacks" },
           { title: "Action Cameras" },
