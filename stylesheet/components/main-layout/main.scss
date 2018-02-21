@@ -34,11 +34,17 @@ body {
 
 .main__content {
   min-height: 300px;
-
-  .resp-content {
-    padding: 25px 0;
-  }
+  padding: 25px 0;
 }
 
 .main__footer {
+  padding: 25px;
+  background: color("gray-lighten-5");
+  border-top: 1px solid color("gray-lighten-3");
+
+  .copyright {
+    font-size: 14px;
+    font-weight: 500;
+    color: theme-color("text");
+  }
 }
