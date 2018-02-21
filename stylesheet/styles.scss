@@ -21,7 +21,7 @@
 
 .product-flag--hot {
   color: color("red");
-  border: 1px solid theme-color("red");
+  border: 1px solid color("red");
 }
 
 .product-price {
@@ -116,7 +116,7 @@
 .products-carousel {
   .products-carousel__item {
     position: relative;
-    width: 202px;
+    width: 176px;
     margin: 0 2px 6px 0;
     padding: 10px;
     border: 0px solid color("gray-lighten-3");

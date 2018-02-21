@@ -24,6 +24,10 @@ class TopNav extends React.Component {
     this.setState({ activeMenuIndex: index });
   };
 
+  handleTouchStart = index => ev => {
+    this._toggleMenu(index);
+  };
+
   handleMouseOver = index => ev => {
     this.timeoutID = setTimeout(() => {
       this._toggleMenu(index);

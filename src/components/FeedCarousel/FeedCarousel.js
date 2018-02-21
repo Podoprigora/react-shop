@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import _debounce from "lodash/debounce";
+import debounce from "lodash/debounce";
 import EventListener from "react-event-listener";
 import ScrollbarSize from "react-scrollbar-size";
 import { getNormalizedScrollLeft, detectScrollType } from "normalize-scroll-left";
@@ -100,7 +100,7 @@ class FeedCarousel extends React.Component {
     this.disableScrollSliderChangeHandler = false;
   };
 
-  handleResise = _debounce(() => {
+  handleResise = debounce(() => {
     this.updateScrollControlState();
     this.updateScrollSliderState();
   }, 166);

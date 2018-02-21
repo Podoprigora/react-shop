@@ -1,5 +1,4 @@
 /* eslint-disable */
-
 const webpack = require("webpack");
 const path = require("path");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
@@ -17,7 +16,13 @@ const vendorsLibs = [
   "normalizr",
   "redux-thunk",
   "react-transition-group",
+  "react-scrollbar-size",
+  "react-event-listener",
   "classnames",
+  "dragdealer",
+  "money-formatter",
+  "normalize-scroll-left",
+  "scroll",
   "uuid"
 ];
 
@@ -31,10 +36,9 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     publicPath: "/",
-    filename: "[name].[chunkhash:16].js",
+    filename: "[name].[hash:16].js",
     sourceMapFilename: "[file].map"
   },
-  devtool: "inline-source-map",
   module: {
     rules: [
       {
@@ -86,6 +90,7 @@ module.exports = {
       },
       {
         test: "/.json$/",
+        exclude: /node_modules/,
         use: [
           {
             loader: "json-loader"
@@ -106,7 +111,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|jp(e*)g|svg|webp)$/,
+        test: /\.(png|jp(e*)g|svg)$/,
         exclude: /fonts/,
         use: [
           {
@@ -121,12 +126,7 @@ module.exports = {
       }
     ]
   },
-  devServer: {
-    historyApiFallback: true,
-    contentBase: "./"
-  },
   plugins: [
-    new CleanWebpackPlugin(pathToClean),
     new webpack.optimize.CommonsChunkPlugin({
       names: ["vendor", "manifest"]
     }),

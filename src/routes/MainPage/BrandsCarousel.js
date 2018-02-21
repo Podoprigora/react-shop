@@ -17,6 +17,9 @@ class BrandsCarousel extends React.Component {
   render() {
     return (
       <div className="brands-carousel carousel-container">
+        <header className="carousel-container__header">
+          <h3 className="carousel-container__title">Brands</h3>
+        </header>
         <FeedCarousel data={this.props.data} renderItem={this.renderItem} onItemClick={this.onItemClick} />
       </div>
     );
