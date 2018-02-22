@@ -20,6 +20,8 @@ body {
 
 .main {
   flex: 1 0 auto;
+  display: flex;
+  flex-flow: column nowrap;
 }
 
 .resp-content {
@@ -33,12 +35,12 @@ body {
 }
 
 .main__content {
-  min-height: 300px;
+  flex: 1 0 auto;
   padding: 25px 0;
 }
 
 .main__footer {
-  padding: 25px;
+  padding: 25px 0;
   background: color("gray-lighten-5");
   border-top: 1px solid color("gray-lighten-3");
 
@@ -46,5 +48,6 @@ body {
     font-size: 14px;
     font-weight: 500;
     color: theme-color("text");
+    padding: 0 15px;
   }
 }
