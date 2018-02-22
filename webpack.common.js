@@ -1,8 +1,6 @@
 /* eslint-disable */
 const webpack = require("webpack");
 const path = require("path");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const vendorsLibs = [
@@ -26,11 +24,8 @@ const vendorsLibs = [
   "uuid"
 ];
 
-const pathToClean = ["dist"];
-
 module.exports = {
   entry: {
-    bundle: "./src/index.js",
     vendor: vendorsLibs
   },
   output: {
@@ -41,53 +36,6 @@ module.exports = {
   },
   module: {
     rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: "babel-loader",
-            options: {
-              presets: ["babel-preset-env", "react", "stage-0"],
-              plugins: ["transform-class-properties"]
-            }
-          },
-          {
-            loader: "eslint-loader"
-          }
-        ]
-      },
-      {
-        test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: [
-            {
-              loader: "css-loader",
-              options: {
-                minimize: true,
-                sourceMap: true
-              }
-            },
-            {
-              loader: "resolve-url-loader"
-            },
-            {
-              loader: "postcss-loader",
-              options: {
-                sourceMap: true,
-                plugins: () => [require("autoprefixer")]
-              }
-            },
-            {
-              loader: "sass-loader",
-              options: {
-                sourceMap: true
-              }
-            }
-          ]
-        })
-      },
       {
         test: "/.json$/",
         exclude: /node_modules/,
@@ -129,10 +77,6 @@ module.exports = {
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
       names: ["vendor", "manifest"]
-    }),
-    new ExtractTextPlugin({
-      filename: "resources/styles.[contenthash:16].css",
-      allChunks: true
     }),
     new HtmlWebpackPlugin({
       template: "public/index.html"
