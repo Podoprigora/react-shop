@@ -21,7 +21,7 @@ const render = Component => {
   );
 };
 
-render(App);
+setTimeout(() => render(App), process.env.NODE_ENV === "development" ? 500 : 0);
 
 if (module.hot) {
   module.hot.accept("./routes", () => {

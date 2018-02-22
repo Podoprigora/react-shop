@@ -2,6 +2,7 @@
 const merge = require("webpack-merge");
 const common = require("./webpack.common.js");
 const webpack = require("webpack");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = merge(common, {
   entry: {
@@ -37,7 +38,8 @@ module.exports = merge(common, {
           {
             loader: "css-loader",
             options: {
-              sourceMap: true
+              sourceMap: true,
+              minimize: true
             }
           },
           {
@@ -67,5 +69,11 @@ module.exports = merge(common, {
     port: 9000,
     hot: true
   },
-  plugins: [new webpack.NamedModulesPlugin(), new webpack.HotModuleReplacementPlugin()]
+  plugins: [
+    new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      "process.env.NODE_ENV": JSON.stringify("development")
+    })
+  ]
 });
