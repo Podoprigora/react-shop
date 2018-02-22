@@ -1,18 +1,30 @@
+/* eslint-disable */
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
+import { AppContainer } from "react-hot-loader";
 
 import storeFactory from "./store";
 import App from "./routes";
 
 const store = storeFactory();
 
-ReactDOM.render(
-  <BrowserRouter>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </BrowserRouter>,
-  document.getElementById("root")
-);
+const render = Component => {
+  ReactDOM.render(
+    <BrowserRouter>
+      <Provider store={store}>
+        <Component />
+      </Provider>
+    </BrowserRouter>,
+    document.getElementById("root")
+  );
+};
+
+render(App);
+
+if (module.hot) {
+  module.hot.accept("./routes", () => {
+    render(App);
+  });
+}
