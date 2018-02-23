@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import { AppContainer } from "react-hot-loader";
 
 import storeFactory from "./store";
-import App from "./routes";
+import App from "./pages";
 
 const store = storeFactory();
 
@@ -24,7 +24,7 @@ const render = Component => {
 setTimeout(() => render(App), process.env.NODE_ENV === "development" ? 500 : 0);
 
 if (module.hot) {
-  module.hot.accept("./routes", () => {
+  module.hot.accept("./pages", () => {
     render(App);
   });
 }
