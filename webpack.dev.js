@@ -67,6 +67,7 @@ module.exports = merge(common, {
     historyApiFallback: true,
     contentBase: "./",
     port: 9000,
+    compress: true,
     hot: true
   },
   plugins: [

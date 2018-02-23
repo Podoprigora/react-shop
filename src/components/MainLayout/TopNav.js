@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 import classNames from "classnames";
 
 const titleToNavPath = title => {
@@ -18,7 +19,8 @@ class TopNav extends React.Component {
     activeMenuIndex: null
   };
 
-  timeoutID = null;
+  showTimeoutID = null;
+  hideTimeoutID = null;
 
   _toggleMenu = (index = null) => {
     this.setState({ activeMenuIndex: index });
@@ -29,14 +31,17 @@ class TopNav extends React.Component {
   };
 
   handleMouseOver = index => ev => {
-    this.timeoutID = setTimeout(() => {
+    clearTimeout(this.hideTimeoutID);
+    this.showTimeoutID = setTimeout(() => {
       this._toggleMenu(index);
     }, 166);
   };
 
   handleMouseOut = index => ev => {
-    clearTimeout(this.timeoutID);
-    this._toggleMenu();
+    clearTimeout(this.showTimeoutID);
+    this.hideTimeoutID = setTimeout(() => {
+      this._toggleMenu();
+    }, 166);
   };
 
   handleSelect = node => ev => {
@@ -123,7 +128,9 @@ class TopNav extends React.Component {
           })}
         >
           <button onClick={this.handleSelect(node)}>{title}</button>
-          {this.renderSubmenu(submenu, node)}
+          <CSSTransition in={index === activeMenuIndex} classNames="anim-fade" timeout={300}>
+            {this.renderSubmenu(submenu, node)}
+          </CSSTransition>
         </li>
       );
     });

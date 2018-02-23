@@ -55,13 +55,19 @@
         background: theme-color("primary-lighten-1");
         transform: translate3d(0, 150%, 0);
       }
+
+      &:hover {
+        &::after {
+          transform: translate3d(0, 0, 0);
+          transition: transform 0.2s;
+        }
+      }
     }
   }
 
   .hrmenu__item--active {
     > button::after {
       transform: translate3d(0, 0, 0);
-      transition: transform 0.2s;
     }
 
     .hrmenu__submenu {
@@ -185,5 +191,15 @@
     border-radius: 0 0 5px 5px;
     box-shadow: 0 4px 6px -3px rgba(0, 0, 0, 0.4);
     z-index: 1000;
+
+    &.anim-fade-enter {
+      display: block;
+      opacity: 0.8;
+    }
+
+    &.anim-fade-enter-active {
+      opacity: 1;
+      transition: opacity 0.25s ease-in;
+    }
   }
 }
