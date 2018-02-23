@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import classNames from "classnames";
+import isMobile from "ismobilejs";
 
 const titleToNavPath = title => {
   if (!title || title.length === 0) return null;
@@ -34,14 +35,14 @@ class TopNav extends React.Component {
     clearTimeout(this.hideTimeoutID);
     this.showTimeoutID = setTimeout(() => {
       this._toggleMenu(index);
-    }, 166);
+    }, isMobile.any ? 0 : 166);
   };
 
   handleMouseOut = index => ev => {
     clearTimeout(this.showTimeoutID);
     this.hideTimeoutID = setTimeout(() => {
       this._toggleMenu();
-    }, 166);
+    }, isMobile.any ? 0 : 166);
   };
 
   handleSelect = node => ev => {
@@ -127,7 +128,7 @@ class TopNav extends React.Component {
             "hrmenu__item--active": index === activeMenuIndex
           })}
         >
-          <button onClick={this.handleSelect(node)}>{title}</button>
+          <button>{title}</button>
           <CSSTransition in={index === activeMenuIndex} classNames="anim-fade" timeout={300}>
             {this.renderSubmenu(submenu, node)}
           </CSSTransition>
