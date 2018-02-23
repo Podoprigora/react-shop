@@ -42,7 +42,7 @@ class TopNav extends React.Component {
     clearTimeout(this.showTimeoutID);
     this.hideTimeoutID = setTimeout(() => {
       this._toggleMenu();
-    }, 166);
+    }, isMobile.any ? 0 : 166);
   };
 
   handleSelect = node => ev => {
