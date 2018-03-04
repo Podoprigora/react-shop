@@ -31,14 +31,8 @@ class TopNav extends React.Component {
     this.setState({ activeMenuIndex: index });
   };
 
-  handleTouchStart = index => ev => {
-    this._toggleMenu(index);
-  };
-
-  handleMouseOver = index => ev => {
-    if (isMobile.any) {
-      this._toggleMenu(index);
-    } else {
+  handleMenuItemMouseEnter = index => ev => {
+    if (!isMobile.any) {
       clearTimeout(this.hideTimeoutID);
       this.showTimeoutID = setTimeout(() => {
         this._toggleMenu(index);
@@ -46,14 +40,22 @@ class TopNav extends React.Component {
     }
   };
 
-  handleMouseOut = index => ev => {
-    if (isMobile.any) {
-      this._toggleMenu();
-    } else {
+  handleMenuItemMouseLeave = ev => {
+    if (!isMobile.any) {
       clearTimeout(this.showTimeoutID);
       this.hideTimeoutID = setTimeout(() => {
         this._toggleMenu();
       }, 166);
+    }
+  };
+
+  handleMenuItemTouchStart = index => ev => {
+    this._toggleMenu(index);
+  };
+
+  handleNavMouseLeave = ev => {
+    if (isMobile.any) {
+      this._toggleMenu();
     }
   };
 
@@ -134,8 +136,9 @@ class TopNav extends React.Component {
       return (
         <li
           key={index}
-          onMouseEnter={this.handleMouseOver(index)}
-          onMouseLeave={this.handleMouseOut(index)}
+          onTouchStart={this.handleMenuItemTouchStart(index)}
+          onMouseEnter={this.handleMenuItemMouseEnter(index)}
+          onMouseLeave={this.handleMenuItemMouseLeave}
           className={classNames("hrmenu__item", {
             "hrmenu__item--active": index === activeMenuIndex
           })}
@@ -157,7 +160,7 @@ class TopNav extends React.Component {
     const { data } = this.props;
 
     return (
-      <nav className="main__hrmenu">
+      <nav className="main__hrmenu" onMouseLeave={this.handleNavMouseLeave}>
         <div className="resp-content">
           <ul>{this.renderMenu(data)}</ul>
         </div>
