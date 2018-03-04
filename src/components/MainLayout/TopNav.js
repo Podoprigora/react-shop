@@ -20,6 +20,10 @@ class TopNav extends React.Component {
     activeMenuIndex: null
   };
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.state.activeMenuIndex !== nextState.activeMenuIndex;
+  }
+
   showTimeoutID = null;
   hideTimeoutID = null;
 
@@ -32,17 +36,25 @@ class TopNav extends React.Component {
   };
 
   handleMouseOver = index => ev => {
-    clearTimeout(this.hideTimeoutID);
-    this.showTimeoutID = setTimeout(() => {
+    if (isMobile.any) {
       this._toggleMenu(index);
-    }, isMobile.any ? 0 : 166);
+    } else {
+      clearTimeout(this.hideTimeoutID);
+      this.showTimeoutID = setTimeout(() => {
+        this._toggleMenu(index);
+      }, 166);
+    }
   };
 
   handleMouseOut = index => ev => {
-    clearTimeout(this.showTimeoutID);
-    this.hideTimeoutID = setTimeout(() => {
+    if (isMobile.any) {
       this._toggleMenu();
-    }, isMobile.any ? 0 : 166);
+    } else {
+      clearTimeout(this.showTimeoutID);
+      this.hideTimeoutID = setTimeout(() => {
+        this._toggleMenu();
+      }, 166);
+    }
   };
 
   handleSelect = node => ev => {
@@ -129,9 +141,13 @@ class TopNav extends React.Component {
           })}
         >
           <button>{title}</button>
-          <CSSTransition in={index === activeMenuIndex} classNames="anim-fade" timeout={300}>
-            {this.renderSubmenu(submenu, node)}
-          </CSSTransition>
+          <TransitionGroup>
+            {index === activeMenuIndex && (
+              <CSSTransition classNames="anim-fade" timeout={{ enter: 300, exit: 0 }}>
+                {this.renderSubmenu(submenu, node, index)}
+              </CSSTransition>
+            )}
+          </TransitionGroup>
         </li>
       );
     });
