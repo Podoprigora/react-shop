@@ -5,7 +5,7 @@ import Header from "./Header";
 import TopNav from "./TopNav";
 import Footer from "./Footer";
 
-import categoriesData from "../../../data/categories";
+import categoriesData from "../../../../data/categories";
 
 const MainLayout = props => {
   const { children } = props;
