@@ -9,12 +9,10 @@ const Header = params => (
         <span className="logo" />
       </Link>
       <div className="search-bar">
-        <form>
-          <div className="input-wrap">
-            <input type="text" placeholder="What are you looking for?" />
-            <button className="icon icon-search" />
-          </div>
-        </form>
+        <div className="input-wrap">
+          <input type="text" placeholder="What are you looking for?" />
+          <button className="icon icon-search" />
+        </div>
       </div>
       <div className="buttons">
         <button className="icon icon-person_outline" />

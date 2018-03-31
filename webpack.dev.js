@@ -38,8 +38,8 @@ module.exports = merge(common, {
           {
             loader: "css-loader",
             options: {
-              sourceMap: true,
-              minimize: true
+              sourceMap: false,
+              minimize: false
             }
           },
           {
@@ -48,21 +48,21 @@ module.exports = merge(common, {
           {
             loader: "postcss-loader",
             options: {
-              sourceMap: true,
+              sourceMap: false,
               plugins: () => [require("autoprefixer")]
             }
           },
           {
             loader: "sass-loader",
             options: {
-              sourceMap: true
+              sourceMap: false
             }
           }
         ]
       }
     ]
   },
-  devtool: "inline-source-map",
+  devtool: "source-map",
   devServer: {
     historyApiFallback: true,
     contentBase: "./",
