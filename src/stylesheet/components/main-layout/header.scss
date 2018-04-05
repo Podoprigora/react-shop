@@ -29,13 +29,15 @@
         height: 40px;
         padding: 1px 36px 0px 10px;
         background-color: color("gray-lighten-4");
-        border: 1px solid transparent;
+        border: 0;
+        border-bottom: 2px solid transparent;
         border-radius: 3px;
         outline: none;
 
         &:focus {
           background: transparent;
-          border-color: color("gray-lighten-3");
+          border-color: theme-color("primary-lighten-1");
+          border-radius: 0;
 
           & ~ .icon {
             color: theme-color("primary");

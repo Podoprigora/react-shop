@@ -7,7 +7,7 @@ import { getNormalizedScrollLeft, detectScrollType } from "normalize-scroll-left
 import scroll from "scroll";
 
 import ScrollControl from "./ScrollControl";
-import ScrollSlider from ".//ScrollSlider";
+import ScrollSlider from "./ScrollSlider";
 import FeedItem from "./FeedItem";
 
 class FeedCarousel extends React.Component {
@@ -207,7 +207,7 @@ FeedCarousel.propTypes = {
 
 FeedCarousel.defaultProps = {
   enableScrollSlider: false,
-  onItemClick: f => f
+  onItemClick: () => {}
 };
 
 export default FeedCarousel;
