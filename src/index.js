@@ -5,17 +5,12 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { AppContainer } from "react-hot-loader";
 
-import storeFactory from "./store";
 import App from "./pages";
-
-const store = storeFactory();
 
 const render = Component => {
   ReactDOM.render(
     <BrowserRouter>
-      <Provider store={store}>
-        <Component />
-      </Provider>
+      <Component />
     </BrowserRouter>,
     document.getElementById("root")
   );

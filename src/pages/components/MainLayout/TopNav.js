@@ -27,7 +27,7 @@ class TopNav extends React.Component {
   showTimeoutID = null;
   hideTimeoutID = null;
 
-  _toggleMenu = (index = null) => {
+  toggleMenu = (index = null) => {
     this.setState({ activeMenuIndex: index });
   };
 
@@ -35,7 +35,7 @@ class TopNav extends React.Component {
     if (!isMobile.any) {
       clearTimeout(this.hideTimeoutID);
       this.showTimeoutID = setTimeout(() => {
-        this._toggleMenu(index);
+        this.toggleMenu(index);
       }, 166);
     }
   };
@@ -44,24 +44,24 @@ class TopNav extends React.Component {
     if (!isMobile.any) {
       clearTimeout(this.showTimeoutID);
       this.hideTimeoutID = setTimeout(() => {
-        this._toggleMenu();
+        this.toggleMenu();
       }, 166);
     }
   };
 
   handleMenuItemTouchStart = index => ev => {
-    this._toggleMenu(index);
+    this.toggleMenu(index);
   };
 
   handleNavMouseLeave = ev => {
     if (isMobile.any) {
-      this._toggleMenu();
+      this.toggleMenu();
     }
   };
 
   handleSelect = node => ev => {
     ev.preventDefault();
-    this._toggleMenu();
+    this.toggleMenu();
     this.props.onSelect(node);
   };
 

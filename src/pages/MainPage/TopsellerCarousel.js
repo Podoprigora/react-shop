@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { format as moneyFormat } from "money-formatter";
 
-import FeedCarousel from "../../components/FeedCarousel";
+import FeedCarousel from "../components/ui/FeedCarousel";
 
 class BrandnewCarousel extends React.Component {
   renderItem = data => {

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import FeedCarousel from "../../components/FeedCarousel";
+import FeedCarousel from "../components/ui/FeedCarousel";
 
 class BrandsCarousel extends React.Component {
   onItemClick = (ev, data) => {
