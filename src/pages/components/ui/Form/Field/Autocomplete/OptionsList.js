@@ -13,7 +13,7 @@ const OptionsList = props => {
           const matches = match(title, highlight);
           let highlightText = title;
 
-          if (matches && matches.length > 0) {
+          if (matches && matches[0] && matches[0].length > 0) {
             highlightText = `${title.slice(0, matches[0][0])}
               <span>${title.slice(matches[0][0], matches[0][1])}</span>
               ${title.slice(matches[0][1])}`;

@@ -6,7 +6,7 @@ const OptionsContainer = props => {
 
   return (
     <div className="autocomplete__options-container" style={{ maxHeight: height }} ref={containerRef}>
-      {props.children}
+      {React.Children.only(props.children)}
     </div>
   );
 };
