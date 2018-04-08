@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import EventListener from "react-event-listener";
 import classNames from "classnames";
 import debounce from "lodash/debounce";
-import delay from "lodash/delay";
 
+import { DOMHasParent } from "../../../helpers/dom";
 import InputField from "./InputField";
 import OptionsContainer from "./OptionsContainer";
 import OptionsList from "./OptionsList";
@@ -53,6 +53,7 @@ class AutocompleteField extends React.Component {
       options
     };
 
+    this.componentRef = React.createRef();
     this.inputRef = React.createRef();
     this.listContainerRef = React.createRef();
     this.listRef = React.createRef();
@@ -68,17 +69,6 @@ class AutocompleteField extends React.Component {
       });
     }
   }
-
-  _getOption = index => {
-    const { options } = this.state;
-    const { displayName } = this.props;
-    const optionsRow = options[index];
-
-    if (optionsRow) {
-      return optionsRow[displayName];
-    }
-    return null;
-  };
 
   _getPersistQueryOptions = () => {
     const { persistFieldName } = this.props;
@@ -164,12 +154,14 @@ class AutocompleteField extends React.Component {
     }
   };
 
-  handleInputBlur = debounce(ev => {
-    const { isFetching } = this.state;
-    if (!isFetching) {
+  handleBlur = ev => {
+    const { isFetching, isCollapsed } = this.state;
+    const clickedOnComponent = DOMHasParent(ev.target, this.componentRef.current);
+
+    if (!isFetching && !clickedOnComponent && !isCollapsed) {
       this.setState({ isCollapsed: true });
     }
-  }, 166);
+  };
 
   handleInputChange = debounce(value => {
     this._doInputChange(value);
@@ -256,13 +248,14 @@ class AutocompleteField extends React.Component {
         className={classNames("autocomplete", {
           [className]: className
         })}
+        ref={this.componentRef}
       >
+        <EventListener target="document" onClick={this.handleBlur} />
         <InputField
           {...inputProps}
           inputRef={this.inputRef}
           value={inputValue}
           onFocus={this.handleInputFocus}
-          onBlur={this.handleInputBlur}
           onKeyDown={this.handleInputKeyDown}
           onChange={this.handleInputChange}
           onTriggerClick={this.handleInputTriggerClick}
