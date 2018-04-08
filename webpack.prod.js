@@ -8,7 +8,7 @@ const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
 
 module.exports = merge(common, {
   entry: {
-    bundle: "./src/index.js"
+    bundle: ["babel-polyfill", "./src/index.js"]
   },
   output: {
     publicPath: ""
