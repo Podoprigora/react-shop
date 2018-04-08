@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 import AutocompleteField from "../ui/Form/Field/Autocomplete";
-import api from "../../../../data/api";
+import api from "../../../modules/api";
 
 const Header = params => (
   <div className="main__header">

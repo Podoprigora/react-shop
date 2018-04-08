@@ -165,7 +165,7 @@ class AutocompleteField extends React.Component {
 
   handleInputChange = debounce(value => {
     this._doInputChange(value);
-  }, 600);
+  }, 1200);
 
   handleInputKeyDown = (ev, data) => {
     const { keyCode } = ev;
