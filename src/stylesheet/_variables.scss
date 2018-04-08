@@ -47,16 +47,28 @@ $theme-colors: map-merge((
 
   "text":       color("gray-darken-2"),
   "border":     color("gray-lighten-3"),
-  "link-hover": color("orange-darken-1")
+  "link-hover": color("orange-darken-1"),
+  "field-focus": color("light-green-lighten-1")
 ), $theme-colors);
 
 //
 // Greackpoints
 //
-$breakpoints: (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px) !default;
-// Container Max Widths
-$container-max-widths: (sm: 540px, md: 720px, lg: 960px, xl: 1140px) !default;
+$breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+) !default;
 
+// Container Max Widths
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px
+) !default;
 // Body
 $font-family-base: "Roboto", Arial, sans-serif;
 $font-size-base: 14px;

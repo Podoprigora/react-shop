@@ -6,7 +6,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = merge(common, {
   entry: {
-    bundle: "./src/index.js"
+    bundle: ["react-hot-loader/patch", "./src/index.js"]
   },
   module: {
     rules: [
@@ -15,10 +15,13 @@ module.exports = merge(common, {
         exclude: /node_modules/,
         use: [
           {
+            loader: "react-hot-loader/webpack"
+          },
+          {
             loader: "babel-loader",
             options: {
-              presets: ["babel-preset-env", "react", "stage-0"],
-              plugins: ["transform-class-properties"]
+              presets: [["babel-preset-env", { modules: false }], "react", "stage-0"],
+              plugins: ["react-hot-loader/babel", "transform-class-properties"]
             }
           },
           {
@@ -64,10 +67,12 @@ module.exports = merge(common, {
     historyApiFallback: true,
     contentBase: "./",
     port: 9000,
-    compress: false
+    compress: false,
+    hot: true
   },
   plugins: [
     new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       "process.env.NODE_ENV": JSON.stringify("development")
     })
