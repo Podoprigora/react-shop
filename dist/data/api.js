@@ -9,7 +9,7 @@ const api = {
         row =>
           String(row.title)
             .toLowerCase()
-            .indexOf(query) >= 0
+            .indexOf(query.toLowerCase()) >= 0
             ? row
             : false
       )
