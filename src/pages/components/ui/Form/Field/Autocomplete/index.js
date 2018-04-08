@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import EventListener from "react-event-listener";
 import classNames from "classnames";
 import debounce from "lodash/debounce";
-import delay from "lodash/delay";
 
+import { DOMHasParent } from "../../../helpers/dom";
 import InputField from "./InputField";
 import OptionsContainer from "./OptionsContainer";
 import OptionsList from "./OptionsList";
@@ -12,6 +12,8 @@ import OptionsList from "./OptionsList";
 class AutocompleteField extends React.Component {
   static propTypes = {
     minQueryLength: PropTypes.number,
+    isPersistQueryToLocalStorage: PropTypes.bool,
+    persistFieldName: PropTypes.string,
     options: PropTypes.array,
     displayName: PropTypes.string,
     valueField: PropTypes.string,
@@ -25,98 +27,165 @@ class AutocompleteField extends React.Component {
   };
 
   static defaultProps = {
+    isPersistQueryToLocalStorage: true,
+    persistFieldName: "persistQueryOptions",
     displayName: "title",
     valueField: "id",
     minQueryLength: 3
   };
 
-  state = {
-    isFetching: false,
-    isCollapsed: true,
-    selectedOptionIndex: -1,
-    query: "",
-    inputValue: "",
-    options: this.props.options || []
-  };
+  constructor(props) {
+    super(props);
+
+    const persistQueryOptions = this._getPersistQueryOptions() || [];
+    let options = [];
+
+    if (persistQueryOptions.length > 0 && props.isPersistQueryToLocalStorage) {
+      options = persistQueryOptions;
+    }
+
+    this.state = {
+      isFetching: false,
+      isCollapsed: true,
+      isFocused: false,
+      selectedOptionIndex: -1,
+      query: "",
+      inputValue: "",
+      options
+    };
+
+    this.componentRef = React.createRef();
+    this.inputRef = React.createRef();
+    this.listContainerRef = React.createRef();
+    this.listRef = React.createRef();
+    this.selectedOptionRef = null;
+    this.enableScrollIntoView = true;
+  }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (this.selectedOptionRef && this.enableScrollIntoView) {
-      this.selectedOptionRef.scrollIntoView(false);
+      this.selectedOptionRef.scrollIntoView({
+        block: "nearest",
+        inline: "nearest"
+      });
     }
   }
 
-  inputRef = React.createRef();
-  listContainerRef = React.createRef();
-  listRef = React.createRef();
-  selectedOptionRef = null;
-  enableScrollIntoView = true;
+  _getPersistQueryOptions = () => {
+    const { persistFieldName } = this.props;
 
-  _getOption = index => {
-    const { options } = this.state;
-    const { displayName } = this.props;
-    const optionsRow = options[index];
+    return JSON.parse(localStorage.getItem(persistFieldName));
+  };
 
-    if (optionsRow) {
-      return optionsRow[this.props.displayName];
+  _addQueryToLocalStorage = query => {
+    const { displayName, persistFieldName } = this.props;
+    let persistQueryOptions = JSON.parse(localStorage.getItem(persistFieldName)) || [];
+
+    if (persistQueryOptions.length) {
+      persistQueryOptions = persistQueryOptions.filter(row => row[displayName] !== query.trim());
+    } else {
+      persistQueryOptions.push({ _local: true, title: "Clear All" });
     }
-    return null;
+    const newPersistQueryOptions = [{ [displayName]: query.trim(), _local: true }, ...persistQueryOptions];
+    localStorage.setItem(persistFieldName, JSON.stringify(newPersistQueryOptions));
+  };
+
+  _removePersistQueryOptions = () => {
+    const { persistFieldName } = this.props;
+
+    localStorage.removeItem(persistFieldName);
+  };
+
+  _doAsyncRequest = query => {
+    const { asyncRequest, isPersistQueryToLocalStorage } = this.props;
+
+    this.setState({
+      isCollapsed: false,
+      isFetching: true,
+      options: [],
+      selectedOptionIndex: -1,
+      query,
+      inputValue: query
+    });
+
+    asyncRequest(query).then(res => {
+      this.setState({
+        isFetching: false,
+        isCollapsed: res.length === 0,
+        options: res
+      });
+
+      if (isPersistQueryToLocalStorage) {
+        this._addQueryToLocalStorage(query);
+      }
+    });
+  };
+
+  _doInputChange = value => {
+    const { minQueryLength, isPersistQueryToLocalStorage } = this.props;
+
+    if (value.toLowerCase() === "clear all" && isPersistQueryToLocalStorage) {
+      this.setState({
+        isCollapsed: true,
+        query: "",
+        inputValue: "",
+        selectedOptionIndex: -1,
+        options: []
+      });
+      this._removePersistQueryOptions();
+    } else if (value.length >= minQueryLength) {
+      this._doAsyncRequest(value);
+    } else if (value.length === 0) {
+      this.setState({
+        isCollapsed: true,
+        query: "",
+        inputValue: "",
+        selectedOptionIndex: -1,
+        options: isPersistQueryToLocalStorage ? this._getPersistQueryOptions() : []
+      });
+    }
   };
 
   handleInputFocus = ev => {
     const { query, options } = this.state;
     const { minQueryLength } = this.props;
 
-    if (query.length >= minQueryLength && options.length > 0) {
+    if (query.length >= minQueryLength || options.length > 0) {
       this.setState({ isCollapsed: false });
     }
   };
 
-  handleInputBlur = debounce(ev => {
-    this.setState({ isCollapsed: true });
-  }, 166);
+  handleBlur = ev => {
+    const { isFetching, isCollapsed } = this.state;
+    const clickedOnComponent = DOMHasParent(ev.target, this.componentRef.current);
+
+    if (!isFetching && !clickedOnComponent && !isCollapsed) {
+      this.setState({ isCollapsed: true });
+    }
+  };
 
   handleInputChange = debounce(value => {
-    const { minQueryLength, asyncRequest } = this.props;
-
-    if (value.length >= minQueryLength) {
-      this.setState({
-        isCollapsed: false,
-        isFetching: true,
-        options: [],
-        selectedOptionIndex: -1,
-        query: value,
-        inputValue: value
-      });
-
-      asyncRequest(value).then(res => {
-        this.setState({
-          isFetching: false,
-          isCollapsed: res.length === 0,
-          options: res
-        });
-      });
-    } else {
-      this.setState({
-        isCollapsed: true,
-        query: "",
-        inputValue: ""
-      });
-    }
-  }, 300);
+    this._doInputChange(value);
+  }, 600);
 
   handleInputKeyDown = (ev, data) => {
     const { keyCode } = ev;
+    const { displayName } = this.props;
     const { selectedOptionIndex, options } = this.state;
     const optionsLength = options.length;
+    let optionRow = options[selectedOptionIndex];
 
     switch (keyCode) {
       // Enter
-      case 13:
-        this.props.onSelect(this._getOption(selectedOptionIndex));
-        this.setState({
-          isCollapsed: true
-        });
+      case 13: {
+        if (optionRow && optionRow._local) {
+          this._doInputChange(optionRow[displayName]);
+        } else {
+          this.setState({ isCollapsed: true });
+          this.props.onSelect(optionRow[displayName]);
+        }
         break;
+      }
       // Esc
       case 27:
         this.setState({ isCollapsed: true });
@@ -130,14 +199,16 @@ class AutocompleteField extends React.Component {
           newOptionIndex = selectedOptionIndex > 0 ? selectedOptionIndex - 1 : optionsLength - 1;
         }
 
-        this.enableScrollIntoView = true;
+        optionRow = options[newOptionIndex];
 
-        this.setState(prevState => ({
-          selectedOptionIndex: newOptionIndex,
-          inputValue: this._getOption(newOptionIndex),
-          isCollapsed: false
-        }));
-
+        if (optionRow) {
+          this.enableScrollIntoView = true;
+          this.setState(prevState => ({
+            selectedOptionIndex: newOptionIndex,
+            inputValue: optionRow[displayName].toLowerCase() !== "clear all" ? optionRow[displayName] : "",
+            isCollapsed: false
+          }));
+        }
         break;
       }
       default:
@@ -153,13 +224,20 @@ class AutocompleteField extends React.Component {
   };
 
   handleOptionSelect = (ev, index, row) => {
-    this.enableScrollIntoView = false;
-    this.setState(prevState => ({
-      selectedOptionIndex: index,
-      inputValue: row[this.props.displayName],
-      isCollapsed: true
-    }));
-    this.props.onSelect(row[this.props.displayName]);
+    const { displayName } = this.props;
+
+    if (row._local) {
+      this._doInputChange(row[displayName]);
+      this.inputRef.current.focus();
+    } else {
+      this.enableScrollIntoView = false;
+      this.setState(prevState => ({
+        selectedOptionIndex: index,
+        inputValue: row[displayName],
+        isCollapsed: true
+      }));
+      this.props.onSelect(row[displayName]);
+    }
   };
 
   render() {
@@ -171,13 +249,14 @@ class AutocompleteField extends React.Component {
         className={classNames("autocomplete", {
           [className]: className
         })}
+        ref={this.componentRef}
       >
+        <EventListener target="document" onClick={this.handleBlur} />
         <InputField
           {...inputProps}
           inputRef={this.inputRef}
           value={inputValue}
           onFocus={this.handleInputFocus}
-          onBlur={this.handleInputBlur}
           onKeyDown={this.handleInputKeyDown}
           onChange={this.handleInputChange}
           onTriggerClick={this.handleInputTriggerClick}

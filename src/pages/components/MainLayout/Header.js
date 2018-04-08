@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 import AutocompleteField from "../ui/Form/Field/Autocomplete";
-import searchResults from "../../../../data/main-search-results";
 import api from "../../../../data/api";
 
 const Header = params => (
@@ -17,8 +16,7 @@ const Header = params => (
         onSelect={value => {
           console.log(value);
         }}
-        // options={searchResults}
-        inputProps={{ placeholder: "What are you looking for? (jeans or shirts)" }}
+        inputProps={{ placeholder: "What are you looking for? (jeans or shirt)" }}
         className="search-bar"
         listHeight="300px"
       />

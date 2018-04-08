@@ -14,10 +14,8 @@ class InputField extends React.Component {
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    if (nextProps.value && nextProps.value !== prevState.value) {
-      return {
-        value: nextProps.value
-      };
+    if (nextProps.value !== prevState.value) {
+      return { value: nextProps.value };
     }
     return null;
   }
@@ -30,7 +28,7 @@ class InputField extends React.Component {
     const value = ev.target.value;
 
     this.setState({ value });
-    this.props.onChange(value);
+    this.props.onChange(value.trim());
   };
 
   render() {
