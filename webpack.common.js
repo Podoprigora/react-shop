@@ -26,6 +26,7 @@ const vendorsLibs = [
 
 module.exports = {
   entry: {
+    bundle: ["babel-polyfill", "./src/index.js"],
     vendor: vendorsLibs
   },
   output: {

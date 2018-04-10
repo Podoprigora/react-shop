@@ -1,8 +1,9 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 
 import MainLayout from "./components/MainLayout";
 import MainPage from "./MainPage";
+import ProductsPage from "./ProductsPage";
 
 import "../stylesheet/styles.scss";
 
@@ -21,7 +22,8 @@ async function loadData() {
 
 const App = () => (
   <MainLayout>
-    <Route path="/" component={MainPage} />
+    <Route exact path="/" component={MainPage} />
+    <Route exact path="/products" component={ProductsPage} />
   </MainLayout>
 );
 
