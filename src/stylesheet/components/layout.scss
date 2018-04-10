@@ -1,0 +1,15 @@
+.layout-hbox {
+  display: flex;
+  flex-flow: row nowrap;
+
+  .layout-item--fixed {
+    flex: none;
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+  }
+
+  .layout-item--flex {
+    flex: 1;
+  }
+}

@@ -1,14 +1,7 @@
 .products-filters-container {
-  position: static;
   width: 280px;
   min-height: 600px;
   padding: 10px;
   background: color("gray-lighten-4");
   border: 1px solid theme-color("border");
-
-  &.container--fixed {
-    position: fixed;
-    top: 0px;
-    bottom: 0px;
-  }
 }
