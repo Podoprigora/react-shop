@@ -1,6 +1,7 @@
 import React from "react";
 
-import { Layout, FlexPane, FixedWhenScrollPane } from "../components/ui/Layout";
+import DocumentScroll from "../components/ui/DocumentScroll";
+import Layout from "../components/ui/Layout";
 
 import ProductFilters from "./Filters";
 import ProductList from "./List";
@@ -10,7 +11,20 @@ import topsellerData from "../../../data/topseller-products";
 
 const ProductsPage = props => (
   <div>
-    <Layout type="hbox" enableProcessScrollEvent>
+    <DocumentScroll>
+      {({ isEnter }) => (
+        <Layout type="hbox">
+          <Layout.Fixed freezed={isEnter} className="products-filters-container">
+            <ProductFilters />
+          </Layout.Fixed>
+          <Layout.Flex className="products-list-container">
+            <ProductList />
+          </Layout.Flex>
+        </Layout>
+      )}
+    </DocumentScroll>
+    <TopsellerCarousel data={topsellerData} />
+    {/* <Layout type="hbox" enableProcessScrollEvent>
       <FixedWhenScrollPane className="products-filters-container">
         <ProductFilters />
       </FixedWhenScrollPane>
@@ -18,7 +32,7 @@ const ProductsPage = props => (
         <ProductList />
       </FlexPane>
     </Layout>
-    <TopsellerCarousel data={topsellerData} />
+    <TopsellerCarousel data={topsellerData} /> */}
   </div>
 );
 
