@@ -1,15 +1,26 @@
-.layout-hbox {
+.layout-hbox,
+.layout-with-slidebar {
   display: flex;
   flex-flow: row nowrap;
+}
 
-  .layout-item--freezed {
-    flex: none;
-    position: fixed;
-    top: 0px;
-    bottom: 0px;
+.layout-item--freezed {
+  flex: none;
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+}
+
+.layout-item--flex {
+  flex: 1;
+}
+
+.layout-with-slidebar {
+  .layout-item-slidebar {
+    width: 280px;
   }
 
-  .layout-item--flex {
-    flex: 1;
+  .layout-item--freezed ~ .layout-item--flex {
+    margin-left: 280px;
   }
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import classNames from "classnames";
 
 import DocumentScroll from "../components/ui/DocumentScroll";
 import Layout from "../components/ui/Layout";
@@ -10,21 +11,21 @@ import TopsellerCarousel from "../MainPage/TopsellerCarousel";
 import topsellerData from "../../../data/topseller-products";
 
 const ProductsPage = props => (
-  <div>
+  <React.Fragment>
     <DocumentScroll>
       {isEnter => (
-        <Layout type="hbox">
-          <Layout.Fixed freezed={isEnter} className="products-filters-container">
+        <Layout type="with-slidebar">
+          <Layout.Slidebar freezed={isEnter}>
             <ProductFilters />
-          </Layout.Fixed>
-          <Layout.Flex className="products-list-container">
-            <ProductList />
+          </Layout.Slidebar>
+          <Layout.Flex>
+            <ProductList data={topsellerData} />
           </Layout.Flex>
         </Layout>
       )}
     </DocumentScroll>
     <TopsellerCarousel data={topsellerData} />
-  </div>
+  </React.Fragment>
 );
 
 export default ProductsPage;

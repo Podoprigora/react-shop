@@ -12,7 +12,7 @@ class DocumentScroll extends React.PureComponent {
   containerRef = React.createRef();
 
   handleDocumentScroll = ev => {
-    const { top, bottom } = this.containerRef.current.getBoundingClientRect();
+    const { top, bottom, height } = this.containerRef.current.getBoundingClientRect();
     const docHeight = document.documentElement.clientHeight;
 
     this.setState({

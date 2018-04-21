@@ -24,7 +24,7 @@ class BrandnewCarousel extends React.Component {
         {price && <div className="product-item__price product-price">{moneyFormat(currency, price)}</div>}
         {oldPrice &&
           specialPrice && (
-            <div className="product-price-wrap">
+            <div className="product-prices">
               <div className="product-item__price product-price product-price--old">
                 {moneyFormat(currency, oldPrice)}
               </div>
