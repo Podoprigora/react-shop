@@ -11,7 +11,7 @@
   .product-list-item {
     position: relative;
     width: calc(25% - 1px);
-    height: 380px;
+    height: 390px;
     border-style: solid;
     border-width: 0 1px 1px 0px;
     border-color: theme-color("border");
@@ -77,7 +77,7 @@
       &.icon::before {
         font-size: 14px;
         font-weight: 400;
-        color: color("gray");
+        color: color("gray-darken-1");
         margin-right: 4px;
         vertical-align: text-bottom;
       }

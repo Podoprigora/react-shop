@@ -17,10 +17,10 @@
 
 .layout-with-slidebar {
   .layout-item-slidebar {
-    width: 280px;
+    width: 240px;
   }
 
   .layout-item--freezed ~ .layout-item--flex {
-    margin-left: 280px;
+    margin-left: 240px;
   }
 }

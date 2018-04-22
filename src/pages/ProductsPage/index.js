@@ -9,6 +9,7 @@ import ProductList from "./List";
 
 import TopsellerCarousel from "../MainPage/TopsellerCarousel";
 import topsellerData from "../../../data/topseller-products";
+import productsData from "../../../data/products";
 
 const ProductsPage = props => (
   <React.Fragment>
@@ -19,7 +20,7 @@ const ProductsPage = props => (
             <ProductFilters />
           </Layout.Slidebar>
           <Layout.Flex>
-            <ProductList data={topsellerData} />
+            <ProductList data={productsData} />
           </Layout.Flex>
         </Layout>
       )}

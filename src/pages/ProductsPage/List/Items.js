@@ -40,20 +40,7 @@ class ProductListItems extends React.PureComponent {
   };
 
   renderItem = item => {
-    const {
-      id,
-      name,
-      picture,
-      brand,
-      price,
-      oldPrice,
-      specialPrice,
-      currency,
-      sizes,
-      rating,
-      comments,
-      isNew = true
-    } = item;
+    const { id, name, picture, brand, price, oldPrice, specialPrice, currency, sizes, rating, comments, isNew } = item;
     let discount = null;
 
     if (oldPrice && oldPrice > 0 && specialPrice && specialPrice > 0) {
