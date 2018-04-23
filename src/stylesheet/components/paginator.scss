@@ -1,0 +1,57 @@
+.paginator {
+  display: flex;
+  flex-flow: row nowrap;
+
+  .paginator__control {
+    padding: 6px;
+    font-size: 24px;
+    color: theme-color("text");
+    background: transparent;
+    border: 1px solid theme-color("border");
+    border-radius: 3px;
+    outline: 0;
+    cursor: pointer;
+
+    &.paginator__control--disabled {
+      opacity: 0.4;
+      cursor: auto;
+    }
+
+    &:hover:not(.paginator__control--disabled) {
+      color: color("white");
+      border-color: transparent;
+      background: theme-color("primary");
+      transition: all 0.3s ease;
+    }
+  }
+
+  .paginator__list {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    margin: 0 10px;
+    border: 1px solid theme-color("border");
+    border-radius: 3px;
+
+    .paginator__item {
+      margin: 0 1px;
+    }
+
+    .paginator__link {
+      padding: 6px 10px;
+      font-weight: 700;
+      color: theme-color("text");
+      border-radius: 3px;
+      cursor: pointer;
+
+      &.paginator__link--selected,
+      &:hover {
+        color: color("white");
+        background: theme-color("primary");
+        transition: all 0.3s ease;
+      }
+    }
+  }
+}

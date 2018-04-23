@@ -3,6 +3,10 @@
   min-height: 1000px;
 }
 
+.product-list__paginator {
+  margin-top: 10px;
+}
+
 .product-list__content {
   display: flex;
   flex-flow: row wrap;
@@ -10,7 +14,7 @@
 
   .product-list-item {
     position: relative;
-    width: calc(25% - 1px);
+    width: calc(25%);
     height: 390px;
     border-style: solid;
     border-width: 0 1px 1px 0px;

@@ -237,7 +237,7 @@ export default [
     price: 44.95,
     currency: "EUR",
     sizes: ["M", "L"],
-    rating: 2,
+    rating: 3.5,
     comments: 1
   },
   {
