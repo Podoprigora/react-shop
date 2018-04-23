@@ -1,15 +1,34 @@
-.layout-hbox {
+.layout-hbox,
+.layout-with-slidebar {
   display: flex;
   flex-flow: row nowrap;
+}
 
-  .layout-item--fixed {
-    flex: none;
-    position: fixed;
-    top: 0px;
-    bottom: 0px;
+.layout-item--freezed {
+  flex: none;
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+}
+
+.layout-item--flex {
+  flex: 1;
+}
+
+.layout-with-slidebar {
+  .layout-item-slidebar {
+    width: 240px;
   }
 
-  .layout-item--flex {
-    flex: 1;
+  .layout-item--freezed ~ .layout-item--flex {
+    margin-left: 240px;
   }
+}
+
+.layout-position-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
 }

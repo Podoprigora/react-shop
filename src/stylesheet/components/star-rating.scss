@@ -1,0 +1,18 @@
+.star-rating {
+  display: flex;
+  flex-flow: row nowrap;
+
+  .star-rating-item {
+    .icon {
+      font-size: 16px;
+    }
+
+    .star--selected {
+      color: color("orange-lighten-1");
+    }
+
+    .star--empty {
+      color: color("gray-lighten-2");
+    }
+  }
+}

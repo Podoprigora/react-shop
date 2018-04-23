@@ -1,4 +1,5 @@
 import React from "react";
+import classNames from "classnames";
 
 import DocumentScroll from "../components/ui/DocumentScroll";
 import Layout from "../components/ui/Layout";
@@ -8,32 +9,24 @@ import ProductList from "./List";
 
 import TopsellerCarousel from "../MainPage/TopsellerCarousel";
 import topsellerData from "../../../data/topseller-products";
+import productsData from "../../../data/products";
 
 const ProductsPage = props => (
-  <div>
+  <React.Fragment>
     <DocumentScroll>
-      {({ isEnter }) => (
-        <Layout type="hbox">
-          <Layout.Fixed freezed={isEnter} className="products-filters-container">
+      {isEnter => (
+        <Layout type="with-slidebar">
+          <Layout.Slidebar freezed={isEnter}>
             <ProductFilters />
-          </Layout.Fixed>
-          <Layout.Flex className="products-list-container">
-            <ProductList />
+          </Layout.Slidebar>
+          <Layout.Flex>
+            <ProductList data={productsData} total={364} />
           </Layout.Flex>
         </Layout>
       )}
     </DocumentScroll>
     <TopsellerCarousel data={topsellerData} />
-    {/* <Layout type="hbox" enableProcessScrollEvent>
-      <FixedWhenScrollPane className="products-filters-container">
-        <ProductFilters />
-      </FixedWhenScrollPane>
-      <FlexPane className="products-list-container">
-        <ProductList />
-      </FlexPane>
-    </Layout>
-    <TopsellerCarousel data={topsellerData} /> */}
-  </div>
+  </React.Fragment>
 );
 
 export default ProductsPage;

@@ -12,7 +12,7 @@ class DocumentScroll extends React.PureComponent {
   containerRef = React.createRef();
 
   handleDocumentScroll = ev => {
-    const { top, bottom } = this.containerRef.current.getBoundingClientRect();
+    const { top, bottom, height } = this.containerRef.current.getBoundingClientRect();
     const docHeight = document.documentElement.clientHeight;
 
     this.setState({
@@ -21,10 +21,12 @@ class DocumentScroll extends React.PureComponent {
   };
 
   render() {
+    const { isEnter } = this.state;
+
     return (
       <div ref={this.containerRef}>
         <EventListener target="document" onScroll={this.handleDocumentScroll} />
-        {this.props.children(this.state)}
+        {this.props.children(isEnter)}
       </div>
     );
   }
