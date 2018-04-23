@@ -20,7 +20,7 @@ const ProductsPage = props => (
             <ProductFilters />
           </Layout.Slidebar>
           <Layout.Flex>
-            <ProductList data={productsData} />
+            <ProductList data={productsData} total={364} />
           </Layout.Flex>
         </Layout>
       )}

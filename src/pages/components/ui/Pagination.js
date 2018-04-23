@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
-class Paginator extends React.PureComponent {
+class Pagination extends React.Component {
   static propTypes = {
     totalItems: PropTypes.number.isRequired,
     pageSize: PropTypes.number,
@@ -18,25 +18,29 @@ class Paginator extends React.PureComponent {
     onChange: () => {}
   };
 
-  constructor(props) {
-    super(props);
-
-    this.state = this.getState({ currentPage: props.initialPage, ...props });
-
-    this.handlePageChange = this.handlePageChange.bind(this);
-  }
-
-  getState = ({ currentPage, totalItems, pageSize }) => ({
+  static getState = ({ currentPage, totalItems, pageSize }) => ({
     currentPage,
     totalPages: Math.ceil(totalItems / pageSize),
     start: currentPage * pageSize,
     offset: pageSize
   });
 
+  constructor(props) {
+    super(props);
+
+    this.state = Pagination.getState({ currentPage: props.initialPage, ...props });
+
+    this.handlePageChange = this.handlePageChange.bind(this);
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return nextState.currentPage !== this.state.currentPage;
+  }
+
   handlePageChange = page => ev => {
     const { onChange } = this.props;
 
-    this.setState(this.getState({ currentPage: page, ...this.props }));
+    this.setState(Pagination.getState({ currentPage: page, ...this.props }));
     onChange(this.state);
   };
 
@@ -98,12 +102,17 @@ class Paginator extends React.PureComponent {
   render() {
     const { currentPage, totalPages } = this.state;
 
+    if (!totalPages) {
+      return null;
+    }
+
     return (
       <div className="paginator">
         <button
           className={classNames("paginator__control icon icon-navigate_before", {
             "paginator__control--disabled": currentPage === 1
           })}
+          disabled={currentPage === 1}
           onClick={this.handlePageChange(currentPage - 1)}
         />
         <ul className="paginator__list">{this.renderPages()}</ul>
@@ -111,6 +120,7 @@ class Paginator extends React.PureComponent {
           className={classNames("paginator__control icon icon-navigate_next", {
             "paginator__control--disabled": currentPage === totalPages
           })}
+          disabled={currentPage === totalPages}
           onClick={this.handlePageChange(currentPage + 1)}
         />
       </div>
@@ -118,4 +128,4 @@ class Paginator extends React.PureComponent {
   }
 }
 
-export default Paginator;
+export default Pagination;
