@@ -12,12 +12,10 @@ class ProductList extends React.Component {
     total: PropTypes.number.isRequired
   };
 
-  static getDerivedStateFromProps(nextProps, prevState) {
-    return { ...nextProps };
-  }
-
   state = {
-    isFetching: false
+    isFetching: false,
+    data: this.props.data,
+    total: this.props.total
   };
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -58,7 +56,7 @@ class ProductList extends React.Component {
           {isFetching && (
             <React.Fragment>
               <div className="layout-position-fixed">
-                <LinearProgress />
+                <LinearProgress animType={2} />
               </div>
               <div className="loading-mask" />
             </React.Fragment>
