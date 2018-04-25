@@ -6,10 +6,10 @@ import Layout from "../components/ui/Layout";
 
 import ProductFilters from "./Filters";
 import ProductList from "./List";
+import productsData from "../../../data/products";
 
 import TopsellerCarousel from "../MainPage/TopsellerCarousel";
 import topsellerData from "../../../data/topseller-products";
-import productsData from "../../../data/products";
 
 const ProductsPage = props => (
   <React.Fragment>
@@ -25,7 +25,7 @@ const ProductsPage = props => (
         </Layout>
       )}
     </DocumentScroll>
-    <TopsellerCarousel data={topsellerData} />
+    <TopsellerCarousel data={topsellerData} total={45} pageSize={15} />
   </React.Fragment>
 );
 

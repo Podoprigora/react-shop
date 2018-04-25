@@ -2,9 +2,26 @@ import React from "react";
 import PropTypes from "prop-types";
 import { format as moneyFormat } from "money-formatter";
 
-import FeedCarousel from "../components/ui/FeedCarousel";
+import FeedCarousel, { withDataLoader } from "../components/ui/FeedCarousel";
 
-class BrandnewCarousel extends React.Component {
+import api from "../../modules/api";
+
+class BrandnewCarousel extends React.PureComponent {
+  static propTypes = {
+    data: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        picture: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        brand: PropTypes.string.isRequired,
+        price: PropTypes.number.isRequired,
+        currency: PropTypes.string.isRequired
+      })
+    ).isRequired,
+    showLoadingIndication: PropTypes.bool,
+    onScrollEnd: PropTypes.func
+  };
+
   renderItem = data => {
     const { name, brand, picture, price, currency } = data;
     return (
@@ -25,29 +42,24 @@ class BrandnewCarousel extends React.Component {
   };
 
   render() {
+    const { data, showLoadingIndication, onScrollEnd } = this.props;
+
     return (
       <div className="products-carousel carousel-container">
         <header className="carousel-container__header">
           <h3 className="carousel-container__title">Brandnew</h3>
           <a className="carousel-container__viewall">View all</a>
         </header>
-        <FeedCarousel enableScrollSlider data={this.props.data} renderItem={this.renderItem} />
+        <FeedCarousel
+          enableScrollSlider
+          data={data}
+          renderItem={this.renderItem}
+          showLoadingIndication={showLoadingIndication}
+          onScrollEnd={onScrollEnd}
+        />
       </div>
     );
   }
 }
 
-BrandnewCarousel.propTypes = {
-  data: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      picture: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      brand: PropTypes.string.isRequired,
-      price: PropTypes.number.isRequired,
-      currency: PropTypes.string.isRequired
-    })
-  ).isRequired
-};
-
-export default BrandnewCarousel;
+export default withDataLoader(BrandnewCarousel, api.brandnew);

@@ -12,8 +12,8 @@ import topsellerData from "../../../data/topseller-products";
 const MainPage = () => (
   <div>
     <BrandsCarousel data={brandsData} />
-    <BrandnewCarousel data={brandnewData} />
-    <TopsellerCarousel data={topsellerData} />
+    <BrandnewCarousel data={brandnewData} total={45} />
+    <TopsellerCarousel data={topsellerData} total={45} />
   </div>
 );
 

@@ -5,10 +5,17 @@ import brandnewData from "../../data/brandnew-products";
 import topsellerData from "../../data/topseller-products";
 import productsData from "../../data/products";
 
-const fakeRequest = data => new Promise(resolve => setTimeout(() => resolve(data), 1000));
+const fakeRequest = (data, ms = 1000) => new Promise(resolve => setTimeout(() => resolve(data), ms));
+const getResultWithTotal = (result, total) => ({ records: result, total });
+const shuffleResult = data =>
+  data
+    .map(a => [Math.random(), a])
+    .sort((a, b) => a[0] - b[0])
+    .map(a => a[1]);
 
 const api = {
-  products: params => fakeRequest(productsData).then(res => ({ records: res, total: res.length * 16 })),
+  products: params =>
+    fakeRequest(productsData, 2500).then(res => getResultWithTotal(shuffleResult(res), res.length * 16)),
   mainSearch: query =>
     fakeRequest(mainSearchResults).then(res =>
       res.filter(
@@ -22,8 +29,8 @@ const api = {
     ),
   catalog: () => fakeRequest(categoriesData),
   brands: () => fakeRequest(brandsData),
-  brandnew: () => fakeRequest(brandnewData),
-  topseller: () => fakeRequest(topsellerData)
+  brandnew: () => fakeRequest(brandnewData).then(res => getResultWithTotal(shuffleResult(res), res.length * 3)),
+  topseller: () => fakeRequest(topsellerData, 1500).then(res => getResultWithTotal(shuffleResult(res), res.length * 3))
 };
 
 export default api;
