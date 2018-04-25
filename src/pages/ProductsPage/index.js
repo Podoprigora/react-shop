@@ -25,7 +25,7 @@ const ProductsPage = props => (
         </Layout>
       )}
     </DocumentScroll>
-    <TopsellerCarousel data={topsellerData} />
+    <TopsellerCarousel data={topsellerData} total={45} pageSize={15} />
   </React.Fragment>
 );
 

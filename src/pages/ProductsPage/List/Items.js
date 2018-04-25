@@ -24,13 +24,6 @@ class ProductListItems extends React.PureComponent {
     ).isRequired
   };
 
-  // shouldComponentUpdate(nextProps) {
-  //   console.log(nextProps);
-  //   console.log(this.props);
-  //   console.log(nextProps.data !== this.props.data);
-  //   return true;
-  // }
-
   renderSizes = sizes => {
     if (sizes && sizes.length) {
       return (

@@ -12,11 +12,11 @@
     background: theme-color("primary");
 
     &.anim-type-1 {
-      animation: linear-progress-bar-animation 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+      animation: linear-progress-bar-animation 1.8s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
     }
 
     &.anim-type-2 {
-      animation: linear-progress-bar-animation2 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+      animation: linear-progress-bar-animation2 2s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
     }
 
     &.anim-type-3 {

@@ -15,7 +15,7 @@ const shuffleResult = data =>
 
 const api = {
   products: params =>
-    fakeRequest(productsData, 1500).then(res => getResultWithTotal(shuffleResult(res), res.length * 16)),
+    fakeRequest(productsData, 2500).then(res => getResultWithTotal(shuffleResult(res), res.length * 16)),
   mainSearch: query =>
     fakeRequest(mainSearchResults).then(res =>
       res.filter(
@@ -29,8 +29,8 @@ const api = {
     ),
   catalog: () => fakeRequest(categoriesData),
   brands: () => fakeRequest(brandsData),
-  brandnew: () => fakeRequest(brandnewData),
-  topseller: () => fakeRequest(topsellerData)
+  brandnew: () => fakeRequest(brandnewData).then(res => getResultWithTotal(shuffleResult(res), res.length * 3)),
+  topseller: () => fakeRequest(topsellerData, 1500).then(res => getResultWithTotal(shuffleResult(res), res.length * 3))
 };
 
 export default api;

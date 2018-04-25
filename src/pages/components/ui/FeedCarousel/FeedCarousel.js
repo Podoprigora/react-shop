@@ -33,10 +33,12 @@ class FeedCarousel extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     this.updateScrollControlState();
     this.updateScrollSliderState();
+    this.updateScrollPositionWhenLoading(prevProps);
   }
 
   viewportEl = null;
   scrollSliderEl = null;
+  loadingIndicationEl = null;
   disableScrollSliderChangeHandler = false;
 
   moveScroll = delta => {
@@ -50,7 +52,6 @@ class FeedCarousel extends React.Component {
       } else if (delta < 0 && nextScrollLeft < 24) {
         nextScrollLeft = 0;
       }
-
       scroll.left(this.viewportEl, nextScrollLeft);
     }
   };
@@ -92,12 +93,21 @@ class FeedCarousel extends React.Component {
     }
   };
 
+  updateScrollPositionWhenLoading = prevProps => {
+    if (prevProps.showLoadingIndication !== this.props.showLoadingIndication) {
+      const itemWidth = this.viewportEl.children[0].children[0].clientWidth;
+      scroll.left(this.viewportEl, this.viewportEl.scrollLeft + itemWidth);
+    }
+  };
+
   handleScroll = () => {
     if (!this.disableScrollSliderChangeHandler) {
       this.moveScrollSlider();
     }
     this.updateScrollControlState();
     this.disableScrollSliderChangeHandler = false;
+
+    this.checkingScrollEnd();
   };
 
   handleResise = debounce(() => {
@@ -128,11 +138,39 @@ class FeedCarousel extends React.Component {
     }
   };
 
-  renderLoading = () => (
-    <div className="feed-carousel__loading">
-      <div className="infinite-spinner size-36" />
-    </div>
-  );
+  checkingScrollEnd = () => {
+    const { onScrollEnd, showLoadingIndication } = this.props;
+
+    if (this.viewportEl && onScrollEnd && !showLoadingIndication) {
+      const { scrollWidth, clientWidth } = this.viewportEl;
+      const scrollLeft = getNormalizedScrollLeft(this.viewportEl);
+
+      if (scrollLeft + clientWidth >= scrollWidth) {
+        this.props.onScrollEnd(this.viewportEl);
+      }
+    }
+  };
+
+  renderLoadingIndication = () => {
+    const { showLoadingIndication } = this.props;
+
+    if (!showLoadingIndication) {
+      return null;
+    }
+
+    return (
+      <div className="feed-carousel__item">
+        <div
+          className="feed-carousel__loading"
+          ref={el => {
+            this.loadingIndicationEl = el;
+          }}
+        >
+          <div className="infinite-spinner size-36" />
+        </div>
+      </div>
+    );
+  };
 
   renderScrollSlider = () => {
     const { enableScrollSlider } = this.props;
@@ -162,7 +200,7 @@ class FeedCarousel extends React.Component {
 
   render() {
     const { disabledNavNext, disabledNavPrev, scrollerStyle } = this.state;
-    const { data, renderItem, onItemClick } = this.props;
+    const { data, renderItem, onItemClick, onScrollEnd } = this.props;
 
     if (!data || !data.length) {
       return null;
@@ -188,6 +226,7 @@ class FeedCarousel extends React.Component {
                   {renderItem(item)}
                 </FeedItem>
               ))}
+              {this.renderLoadingIndication()}
             </div>
           </div>
           <ScrollControl direction="next" disabled={disabledNavNext} onClick={this.handleNextScrollClick} />
@@ -202,11 +241,14 @@ FeedCarousel.propTypes = {
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
   renderItem: PropTypes.func.isRequired,
   onItemClick: PropTypes.func,
+  onScrollEnd: PropTypes.func,
+  showLoadingIndication: PropTypes.bool,
   enableScrollSlider: PropTypes.bool
 };
 
 FeedCarousel.defaultProps = {
   enableScrollSlider: false,
+  showLoadingIndication: false,
   onItemClick: () => {}
 };
 

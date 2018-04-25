@@ -63,7 +63,7 @@ class ProductList extends React.Component {
           )}
           <ProductListItems data={data} />
           <div className="product-list__paginator">
-            <Pagination pageSize={24} totalItems={total} onChange={this.handleChangePage} />
+            <Pagination totalItems={total} pageSize={24} onChange={this.handleChangePage} />
           </div>
         </section>
       </React.Fragment>
