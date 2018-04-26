@@ -8,6 +8,7 @@ import { DOMHasParent } from "../../../helpers/dom";
 import InputField from "./InputField";
 import OptionsContainer from "./OptionsContainer";
 import OptionsList from "./OptionsList";
+import CircularProgress from "../../../Progress/Circular";
 
 class AutocompleteField extends React.Component {
   static propTypes = {
@@ -264,7 +265,7 @@ class AutocompleteField extends React.Component {
         {!isCollapsed && (
           <OptionsContainer height={listHeight}>
             {isFetching ? (
-              <div className="infinite-spinner size-26" />
+              <CircularProgress preset="small" />
             ) : (
               <OptionsList
                 data={options}

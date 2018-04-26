@@ -9,6 +9,7 @@ import scroll from "scroll";
 import ScrollControl from "./ScrollControl";
 import ScrollSlider from "./ScrollSlider";
 import FeedItem from "./FeedItem";
+import CircleProgress from "../Progress/Circular";
 
 class FeedCarousel extends React.Component {
   state = {
@@ -160,13 +161,8 @@ class FeedCarousel extends React.Component {
 
     return (
       <div className="feed-carousel__item">
-        <div
-          className="feed-carousel__loading"
-          ref={el => {
-            this.loadingIndicationEl = el;
-          }}
-        >
-          <div className="infinite-spinner size-36" />
+        <div className="feed-carousel__loading">
+          <CircleProgress />
         </div>
       </div>
     );

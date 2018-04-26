@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import ProductListItems from "./Items";
 import Pagination from "../../components/ui/Pagination";
-import LinearProgress from "../../components/ui/LinearProgress";
+import LinearProgress from "../../components/ui/Progress/Linear";
 import api from "../../../modules/api";
 
 class ProductList extends React.Component {
