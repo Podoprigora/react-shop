@@ -30,7 +30,7 @@ const api = {
   catalog: () => fakeRequest(categoriesData),
   brands: () => fakeRequest(brandsData),
   brandnew: () => fakeRequest(brandnewData).then(res => getResultWithTotal(shuffleResult(res), res.length * 3)),
-  topseller: () => fakeRequest(topsellerData, 20000).then(res => getResultWithTotal(shuffleResult(res), res.length * 3))
+  topseller: () => fakeRequest(topsellerData).then(res => getResultWithTotal(shuffleResult(res), res.length * 3))
 };
 
 export default api;
