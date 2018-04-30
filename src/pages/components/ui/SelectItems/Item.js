@@ -2,24 +2,25 @@ import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
-const MenuItem = ({ children, index, value, selected, onClick }) => (
+const SelectItem = ({ children, index, value, selected, className, onClick }) => (
   <li>
     <a
-      className={classNames("menu-link", { "menu-link--selected": selected })}
+      className={classNames("menu-link", className, { "menu-link--selected": selected })}
       role="presentation"
-      onClick={ev => onClick && onClick(index, value, selected)}
+      onClick={ev => onClick && onClick(index, value, children, selected)}
     >
       {children}
     </a>
   </li>
 );
 
-MenuItem.propTypes = {
+SelectItem.propTypes = {
   children: PropTypes.string.isRequired,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   index: PropTypes.number,
   selected: PropTypes.bool,
+  className: PropTypes.string,
   onClick: PropTypes.func
 };
 
-export default MenuItem;
+export default SelectItem;

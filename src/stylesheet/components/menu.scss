@@ -1,0 +1,62 @@
+ul.menu {
+  min-width: 200px;
+
+  li {
+    border-bottom: 1px dotted theme-color("border");
+
+    &:last-of-type {
+      border: 0;
+    }
+
+    .menu-link {
+      display: block;
+      padding: 13px 14px 12px;
+      cursor: pointer;
+
+      &::after {
+        position: absolute;
+        font-family: "materialicon";
+        font-size: 20px;
+        font-weight: 400;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      &:hover {
+        background: color("gray-lighten-4");
+      }
+
+      &.checkbox-menu-item {
+        position: relative;
+        padding: 13px 14px 12px 38px;
+
+        &::after {
+          content: "\e835";
+          color: color("gray-darken-1");
+          left: 10px;
+        }
+
+        &.menu-link--selected {
+          position: relative;
+          font-weight: 500;
+
+          &::after {
+            content: "\e834";
+            color: theme-color("primary");
+          }
+        }
+      }
+
+      &.menu-link--selected {
+        position: relative;
+        font-weight: 500;
+
+        &::after {
+          content: "\e837";
+          color: theme-color("primary");
+          right: 10px;
+        }
+      }
+    }
+  }
+}

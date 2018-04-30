@@ -5,7 +5,7 @@ import brandnewData from "../../data/brandnew-products";
 import topsellerData from "../../data/topseller-products";
 import productsData from "../../data/products";
 
-const fakeRequest = (data, ms = 1000) => new Promise(resolve => setTimeout(() => resolve(data), ms));
+const fakeRequest = (data, ms = 1500) => new Promise(resolve => setTimeout(() => resolve(data), ms));
 const getResultWithTotal = (result, total) => ({ records: result, total });
 const shuffleResult = data =>
   data

@@ -4,21 +4,17 @@
   &.dropdown--active .dropdown__trigger button,
   .dropdown__trigger button:hover {
     border: 1px solid theme-color("primary");
-    color: theme-color("primary");
+    color: theme-color("primary-darken-1");
   }
 
   &.dropdown--active .dropdown__trigger button::after {
     content: "\e5ce";
   }
 
-  &.dropdown--active .dropdown__items {
-    display: block;
-  }
-
   .dropdown__trigger {
     button {
       position: relative;
-      padding: 10px 36px;
+      padding: 10px 30px 10px 10px;
       margin: 0;
       background: transparent;
       border: 1px solid theme-color("border");
@@ -27,7 +23,14 @@
       cursor: pointer;
 
       span {
-        text-transform: uppercase;
+        padding: 0 6px;
+      }
+
+      &.icon {
+        padding-left: 30px;
+        &::before {
+          left: 10px;
+        }
       }
 
       &::after,
@@ -44,59 +47,38 @@
         content: "\e5cf";
         right: 10px;
       }
-      &::before {
-        content: "\e8d5";
-        left: 10px;
-      }
     }
-  }
-
-  .dropdown__items {
-    position: absolute;
-    display: none;
-    right: 0;
-    background: color("white");
-    border: 1px solid color("gray-lighten-2");
-    border-radius: 3px;
-    box-shadow: 0 2px 10px -2px rgba(0, 0, 0, 0.2);
-    z-index: 100;
   }
 }
 
-ul.menu {
-  min-width: 200px;
+.dropdown-bound-content {
+  position: absolute;
+  background: color("white");
+  border: 1px solid color("gray-lighten-2");
+  border-radius: 3px;
+  box-shadow: 0 2px 10px -2px rgba(0, 0, 0, 0.2);
+  transform-origin: top left;
+  z-index: 100;
 
-  li {
-    border-bottom: 1px dotted theme-color("border");
+  &.anim-scale-fade-enter {
+    opacity: 0;
+    transform: scale(0.8, 0.8);
 
-    &:last-of-type {
-      border: 0;
+    &.anim-scale-fade-enter-active {
+      opacity: 1;
+      transform: scale(1, 1);
+      transition: all 0.15s ease-in-out;
     }
+  }
 
-    .menu-link {
-      display: block;
-      padding: 12px 14px;
-      cursor: pointer;
+  &.anim-scale-fade-exit {
+    opacity: 1;
+    transform: scale(1, 1);
 
-      &:hover {
-        background: color("gray-lighten-4");
-      }
-
-      &.menu-link--selected {
-        position: relative;
-        font-weight: 500;
-        &::after {
-          content: "\e837";
-          position: absolute;
-          font-family: "materialicon";
-          font-size: 20px;
-          color: theme-color("primary");
-          font-weight: 500;
-          right: 10px;
-          top: 50%;
-          transform: translateY(-50%);
-        }
-      }
+    &.anim-scale-fade-exit-active {
+      opacity: 0;
+      transform: scale(0.8, 0.8);
+      transition: all 0.15s ease-out;
     }
   }
 }
