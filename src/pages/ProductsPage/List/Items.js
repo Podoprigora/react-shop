@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { format as moneyFormat } from "money-formatter";
 
 import StarRating from "../../components/ui/StarRating";
+import CircularProgress from "../../components/ui/Progress/Circular";
 
 class ProductListItems extends React.PureComponent {
   static propTypes = {

@@ -12,11 +12,11 @@
     background: theme-color("primary");
 
     &.anim-type-1 {
-      animation: linear-progress-bar-animation 1.8s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+      animation: linear-progress-bar-animation 1.4s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
     }
 
     &.anim-type-2 {
-      animation: linear-progress-bar-animation2 2s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+      animation: linear-progress-bar-animation2 1.6s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
     }
 
     &.anim-type-3 {
@@ -99,8 +99,9 @@
   .circular-progress__circle {
     stroke: theme-color("primary");
     stroke-linecap: round;
-    stroke-dasharray: 31px, 200px;
+    stroke-dasharray: 31px, 124px;
     stroke-dashoffset: 0px;
+    fill: none;
     animation: cirgular-progress-circular-dash 1.4s ease-in-out infinite;
   }
 }
@@ -113,15 +114,15 @@
 
 @keyframes cirgular-progress-circular-dash {
   0% {
-    stroke-dasharray: 1px, 200px;
+    stroke-dasharray: 1px, 124px;
     stroke-dashoffset: 0px;
   }
   50% {
-    stroke-dasharray: 100px, 200px;
+    stroke-dasharray: 100px, 124px;
     stroke-dashoffset: -15px;
   }
   100% {
-    stroke-dasharray: 100px, 200px;
+    stroke-dasharray: 100px, 124px;
     stroke-dashoffset: -120px;
   }
 }
