@@ -1,7 +1,15 @@
 .product-filters {
   display: block;
   height: 100%;
-  padding: 10px;
-  background: color("gray-lighten-5");
+  margin-right: 10px;
   border-radius: 3px;
+  overflow: auto;
+
+  header {
+    h3 {
+      padding: 10px;
+      margin: 0;
+      color: color("gray-darken-1");
+    }
+  }
 }

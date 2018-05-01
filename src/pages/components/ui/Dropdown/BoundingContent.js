@@ -4,7 +4,12 @@ import PropTypes from "prop-types";
 class BoundingContent extends React.Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
-    ancestorEl: PropTypes.object
+    ancestorEl: PropTypes.object,
+    width: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+  };
+
+  static defaultProps = {
+    width: 200
   };
 
   state = {
@@ -58,11 +63,11 @@ class BoundingContent extends React.Component {
   elRef = React.createRef();
 
   render() {
-    const { children, ancestorEl } = this.props;
+    const { children, ancestorEl, width } = this.props;
     const { styles } = this.state;
 
     return (
-      <div className="dropdown-bound-content" style={styles} ref={this.elRef}>
+      <div className="dropdown-bound-content" style={{ width: `${width}px`, ...styles }} ref={this.elRef}>
         {children}
       </div>
     );

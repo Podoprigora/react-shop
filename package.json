@@ -23,6 +23,7 @@
     "normalizr": "^3.2.4",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
+    "react-animate-height": "^1.0.2",
     "react-dom": "^16.0.0",
     "react-event-listener": "^0.5.3",
     "react-hot-loader": "^3.1.3",

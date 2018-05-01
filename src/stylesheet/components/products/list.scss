@@ -1,6 +1,5 @@
 .product-list {
   position: relative;
-  padding: 0 0 0 10px;
   min-height: 1000px;
 }
 
@@ -9,13 +8,15 @@
 }
 
 .product-list__tbar {
-  border-bottom: 1px solid theme-color("border");
 }
 
 .product-list__content {
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
+  border-style: solid;
+  border-width: 1px 0 0 1px;
+  border-color: theme-color("border");
 
   .product-list-item {
     position: relative;

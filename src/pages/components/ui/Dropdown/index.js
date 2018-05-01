@@ -6,7 +6,7 @@ import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 import Trigger from "./Trigger";
 import BoundingContent from "./BoundingContent";
-import SelectItems from "../SelectItems";
+import OptionsList from "../OptionsList";
 import { DOMHasParent } from "../helpers/dom";
 
 class Dropdown extends React.Component {
@@ -16,6 +16,7 @@ class Dropdown extends React.Component {
     displayText: PropTypes.string,
     className: PropTypes.string,
     iconCls: PropTypes.string,
+    listWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     onChange: PropTypes.func
   };
 
@@ -28,7 +29,7 @@ class Dropdown extends React.Component {
   triggerRef = React.createRef();
   elRef = React.createRef();
 
-  handleMenuSelect = selection => {
+  handleOptionSelect = selection => {
     const value = selection[0].value;
     const displayText = selection[0].text;
 
@@ -48,7 +49,7 @@ class Dropdown extends React.Component {
   };
 
   render() {
-    const { children, className, iconCls, onChange } = this.props;
+    const { children, className, iconCls, listWidth, onChange } = this.props;
     const { value, displayText, isOpened } = this.state;
 
     return (
@@ -58,10 +59,10 @@ class Dropdown extends React.Component {
         <TransitionGroup>
           {isOpened && (
             <CSSTransition classNames="anim-scale-fade" timeout={150}>
-              <BoundingContent ancestorEl={this.triggerRef.current}>
-                <SelectItems selMode="single" selected={value} onSelect={this.handleMenuSelect}>
+              <BoundingContent ancestorEl={this.triggerRef.current} width={listWidth}>
+                <OptionsList selMode="single" selected={value} onSelect={this.handleOptionSelect}>
                   {children}
-                </SelectItems>
+                </OptionsList>
               </BoundingContent>
             </CSSTransition>
           )}

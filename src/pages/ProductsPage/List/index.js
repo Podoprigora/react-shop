@@ -6,7 +6,7 @@ import Pagination from "../../components/ui/Pagination";
 import LinearProgress from "../../components/ui/Progress/Linear";
 import api from "../../../modules/api";
 
-import { SelectItem } from "../../components/ui/SelectItems";
+import { RadioOption } from "../../components/ui/OptionsList";
 import Dropdown from "../../components/ui/Dropdown";
 
 class ProductList extends React.Component {
@@ -50,7 +50,6 @@ class ProductList extends React.Component {
     this.loadData(params);
   };
 
-  /* eslint-disable */
   render() {
     const { isFetching, data, total } = this.state;
 
@@ -75,12 +74,12 @@ class ProductList extends React.Component {
               console.log(value);
             }}
           >
-            <SelectItem value="relevance">Relevance</SelectItem>
-            <SelectItem value="prive-up">Price up</SelectItem>
-            <SelectItem value="price-down">Price down</SelectItem>
-            <SelectItem value="brandnew">Brandnew</SelectItem>
-            <SelectItem value="top-seller">Top Seller</SelectItem>
-            <SelectItem value="name">Name</SelectItem>
+            <RadioOption value="relevance">Relevance</RadioOption>
+            <RadioOption value="prive-up">Price up</RadioOption>
+            <RadioOption value="price-down">Price down</RadioOption>
+            <RadioOption value="brandnew">Brandnew</RadioOption>
+            <RadioOption value="top-seller">Top Seller</RadioOption>
+            <RadioOption value="name">Name</RadioOption>
           </Dropdown>
         </div>
         <ProductListItems data={data} />

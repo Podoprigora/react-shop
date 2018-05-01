@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const SINGLE_MODE = "single";
 const MULTI_MODE = "multi";
 
-class SelectItems extends React.Component {
+class OptionsList extends React.Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
     selected: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.array]),
@@ -13,7 +13,8 @@ class SelectItems extends React.Component {
   };
 
   static defaultProps = {
-    selModel: "single"
+    selModel: "single",
+    onSelect: () => {}
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -92,7 +93,7 @@ class SelectItems extends React.Component {
     const { selection } = this.state;
 
     return (
-      <ul className="menu">
+      <ul className="options-list">
         {React.Children.map(children, (child, index) =>
           React.cloneElement(child, {
             index,
@@ -105,6 +106,6 @@ class SelectItems extends React.Component {
   }
 }
 
-export default SelectItems;
-export SelectItem from "./Item";
-export CheckboxSelectItem from "./CheckboxItem";
+export default OptionsList;
+export RadioOption from "./RadioOption";
+export CheckboxOption from "./CheckboxOption";

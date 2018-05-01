@@ -1,0 +1,58 @@
+ul.options-list {
+  width: 100%;
+
+  li {
+    &:last-of-type {
+      border: 0;
+    }
+
+    .option-item {
+      display: block;
+      padding: 12px 14px 10px;
+      cursor: pointer;
+
+      &::after {
+        position: absolute;
+        font-family: "materialicon";
+        font-size: 20px;
+        font-weight: 400;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      &:hover {
+        background: color("gray-lighten-4");
+      }
+
+      &.option-item--selected {
+        position: relative;
+        font-weight: 500;
+      }
+
+      &.radio-option {
+        &.option-item--selected::after {
+          content: "\e837";
+          color: theme-color("primary");
+          right: 7px;
+        }
+      }
+
+      &.checkbox-option {
+        position: relative;
+        padding: 12px 14px 10px 38px;
+
+        &::after {
+          content: "\e835";
+          font-size: 24px;
+          color: rgba(color("gray-darken-1"), 0.8);
+          left: 8px;
+        }
+
+        &.option-item--selected::after {
+          content: "\e834";
+          color: theme-color("primary");
+        }
+      }
+    }
+  }
+}
