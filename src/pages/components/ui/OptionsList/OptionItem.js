@@ -2,10 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
-const SelectItem = ({ children, index, value, selected, className, onClick }) => (
+const OptionItem = ({ children, index, value, selected, className, onClick }) => (
   <li>
     <a
-      className={classNames("menu-link", className, { "menu-link--selected": selected })}
+      className={classNames("option-item", className, { "option-item--selected": selected })}
       role="presentation"
       onClick={ev => onClick && onClick(index, value, children, selected)}
     >
@@ -14,7 +14,7 @@ const SelectItem = ({ children, index, value, selected, className, onClick }) =>
   </li>
 );
 
-SelectItem.propTypes = {
+OptionItem.propTypes = {
   children: PropTypes.string.isRequired,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   index: PropTypes.number,
@@ -23,4 +23,4 @@ SelectItem.propTypes = {
   onClick: PropTypes.func
 };
 
-export default SelectItem;
+export default OptionItem;
