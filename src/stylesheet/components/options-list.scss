@@ -11,10 +11,11 @@ ul.options-list {
       padding: 12px 14px 10px;
       cursor: pointer;
 
-      &::after {
+      &::after,
+      &.icon::before {
         position: absolute;
         font-family: "materialicon";
-        font-size: 20px;
+        font-size: 24px;
         font-weight: 400;
         top: 50%;
         transform: translateY(-50%);
@@ -27,13 +28,40 @@ ul.options-list {
       &.option-item--selected {
         position: relative;
         font-weight: 500;
+        background: color("gray-lighten-4");
+        color: theme-color("primary");
+        border-radius: 3px;
+
+        &.icon::before {
+          color: inherit;
+        }
+      }
+
+      &.option-item--hidden {
+        display: none;
+      }
+
+      &.icon {
+        position: relative;
+        padding: 12px 14px 10px 38px;
+
+        &::before {
+          color: rgba(color("gray-darken-1"), 0.8);
+          left: 8px;
+        }
       }
 
       &.radio-option {
-        &.option-item--selected::after {
-          content: "\e837";
-          color: theme-color("primary");
-          right: 7px;
+        &.option-item--selected {
+          background: transparent;
+          color: inherit;
+
+          &::after {
+            content: "\e837";
+            font-size: 20px;
+            color: theme-color("primary");
+            right: 7px;
+          }
         }
       }
 
@@ -48,9 +76,14 @@ ul.options-list {
           left: 8px;
         }
 
-        &.option-item--selected::after {
-          content: "\e834";
-          color: theme-color("primary");
+        &.option-item--selected {
+          background: transparent;
+          color: inherit;
+
+          &::after {
+            content: "\e834";
+            color: theme-color("primary");
+          }
         }
       }
     }

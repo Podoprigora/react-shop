@@ -12,4 +12,12 @@
       color: color("gray-darken-1");
     }
   }
+
+  .panel-collapsible {
+    padding-bottom: 12px;
+    border-bottom: 1px solid #eeeeee;
+    &:last-of-type {
+      border-bottom: 0;
+    }
+  }
 }
