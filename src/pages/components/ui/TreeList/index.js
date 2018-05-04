@@ -27,19 +27,21 @@ class TreeList extends React.Component {
     this.props.onSelect(node, parent);
   };
 
-  renderSubtree = node => {
+  renderSubtree = (node, depth = 0) => {
     const { items } = node;
+    const newDepth = depth + 1;
 
     if (!items || !items.length) {
       return null;
     }
 
-    return <ul className="tree-list__subtree">{items.map((n, index) => this.renderNode(n, index, node))}</ul>;
+    return <ul className="tree-list__subtree">{items.map((n, index) => this.renderNode(n, index, node, newDepth))}</ul>;
   };
 
-  renderNode = (node, index, parentNode = null) => {
+  renderNode = (node, index, parentNode = null, depth = 0) => {
     const { selected } = this.state;
     const { id, title, items } = node;
+    const isFolder = items && items.length > 0;
 
     if (!id) {
       return null;
@@ -47,16 +49,22 @@ class TreeList extends React.Component {
 
     return (
       <li key={id}>
-        <a
-          className={classNames("tree-list__node icon icon-keyboard_arrow_right", {
-            "node--selected": selected && id === selected.id
-          })}
-          role="presentation"
-          onClick={this.handleNodeClick(node, parentNode)}
-        >
-          {title}
-        </a>
-        {this.renderSubtree(node)}
+        <div className="tree-list__node-wrap" style={{ paddingLeft: `${24 * depth + 8 + (!isFolder ? 24 : 0)}px` }}>
+          {isFolder && <button className="node-folding icon icon-keyboard_arrow_up" />}
+          <a
+            className={classNames("tree-list__node", {
+              "node-folder": isFolder,
+              "node-leaf": !isFolder,
+              // "icon icon-keyboard_arrow_right": !isFolder,
+              "node--selected": selected && id === selected.id
+            })}
+            role="presentation"
+            onClick={this.handleNodeClick(node, parentNode)}
+          >
+            {title}
+          </a>
+        </div>
+        {this.renderSubtree(node, depth)}
       </li>
     );
   };

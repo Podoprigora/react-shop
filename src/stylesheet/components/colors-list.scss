@@ -1,0 +1,117 @@
+.colors-list {
+  display: block;
+  padding: 0 10px;
+  width: 100%;
+
+  &.options-list > li {
+    display: inline-block;
+    padding: 4px;
+
+    .option-item {
+      padding: 0;
+
+      &.option-item--selected {
+        border-radius: 50%;
+      }
+    }
+  }
+
+  .color-option {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    border: 0;
+    outline: 0;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+
+    &.option-item--selected,
+    &:hover {
+      border: 3px solid color("white");
+      opacity: 0.8;
+      transition: border-width 0.15s ease-out;
+    }
+
+    &.option-item--selected {
+      box-shadow: 0 0 0px 2px theme-color("primary");
+      transition: box-shadow 0.15s ease-out;
+
+      .color-value-item::before {
+        position: absolute;
+        font-family: "materialicon";
+        content: "\e5ca";
+        font-size: 18px;
+        font-weight: 500;
+        color: theme-color("primary");
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    .color-value-item {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: 30px 30px;
+      background-position: center;
+      border-width: 0;
+    }
+  }
+}
+
+.color-beige {
+  background: #c4b18f;
+}
+.color-black {
+  background: #000;
+}
+.color-blue {
+  background: #005fa9;
+}
+.color-brown {
+  background: #7c5731;
+}
+.color-camo {
+  background-image: url("images/color-filters/camouflage.jpg");
+}
+.color-gold {
+  background: #fedd08;
+}
+.color-green {
+  background: #0faa16;
+}
+.color-gray {
+  background: #c3c3c3;
+}
+.color-multicolor {
+  background-image: url("images/color-filters/varicoloured.png");
+}
+.color-orange {
+  background: #ffad39;
+}
+.color-pink {
+  background: #eb69c9;
+}
+.color-plaid {
+  background-image: url("images/color-filters/plaid.png");
+}
+.color-purple {
+  background: #8043a4;
+}
+.color-red {
+  background: #ea002a;
+}
+.color-stripes {
+  background-image: url("images/color-filters/stripes.png");
+}
+.color-white {
+  background: #000;
+}
+.color-yellow {
+  background: #ffe921;
+}

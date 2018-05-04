@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import classNames from "classnames";
 
 import OptionItem from "./OptionItem";
 
@@ -12,6 +13,7 @@ class OptionsList extends React.Component {
     selected: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.array]),
     selMode: PropTypes.oneOf([SINGLE_MODE, MULTI_MODE]),
     size: PropTypes.number,
+    className: PropTypes.string,
     onSelect: PropTypes.func
   };
 
@@ -99,11 +101,11 @@ class OptionsList extends React.Component {
   };
 
   render() {
-    const { children, size, onSelect } = this.props;
+    const { children, size, className, onSelect } = this.props;
     const { selection, collapsed } = this.state;
 
     return (
-      <ul className="options-list">
+      <ul className={classNames("options-list", className)}>
         {React.Children.map(
           children,
           (child, index) =>
@@ -128,3 +130,4 @@ export default OptionsList;
 export OptionItem from "./OptionItem";
 export RadioOption from "./RadioOption";
 export CheckboxOption from "./CheckboxOption";
+export ColorOption from "./ColorOption";
