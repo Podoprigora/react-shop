@@ -29,11 +29,10 @@ ul.options-list {
         position: relative;
         font-weight: 500;
         background: color("gray-lighten-4");
-        color: theme-color("primary");
         border-radius: 3px;
 
         &.icon::before {
-          color: inherit;
+          color: theme-color("primary");
         }
       }
 

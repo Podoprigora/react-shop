@@ -1,0 +1,45 @@
+.tree-list {
+  .tree-list__subtree {
+    padding-left: 24px;
+  }
+
+  .tree-list__node {
+    display: block;
+    padding: 12px 14px 10px;
+    cursor: pointer;
+
+    &::after,
+    &.icon::before {
+      position: absolute;
+      font-family: "materialicon";
+      font-size: 24px;
+      font-weight: 400;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &:hover {
+      background: color("gray-lighten-4");
+    }
+
+    &.node--selected {
+      font-weight: 500;
+      background: color("gray-lighten-4");
+
+      &.icon::before {
+        font-weight: inherit;
+        color: theme-color("primary");
+      }
+    }
+
+    &.icon {
+      position: relative;
+      padding: 12px 14px 10px 38px;
+
+      &::before {
+        color: rgba(color("gray-darken-1"), 0.8);
+        left: 8px;
+      }
+    }
+  }
+}

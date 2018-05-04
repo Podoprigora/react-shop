@@ -1,24 +1,26 @@
-export default [
+const categories = [
   {
+    id: 1,
     title: "Streetwear",
     items: [
       {
+        id: 2,
         title: "Jackets",
         picture: "data/images/categories/streetwear-jackets.jpg",
         items: [
-          { title: "Winter Coats" },
-          { title: "Down Jackets" },
-          { title: "Parka Coats" },
-          { title: "Lightweight Jackets" },
-          { title: "Functional Jackets" },
-          { title: "Waterproof Jackets" },
-          { title: "Fleece Jackets" },
-          { title: "Soft Shell Jackets" },
-          { title: "Windbreaker" },
-          { title: "Denim Jackets" },
-          { title: "Tracksuit Tops" },
-          { title: "Vests" },
-          { title: "Leather Jackets" }
+          { id: 3, title: "Winter Coats" },
+          { id: 4, title: "Down Jackets" },
+          { id: 5, title: "Parka Coats" },
+          { id: 6, title: "Lightweight Jackets" },
+          { id: 7, title: "Functional Jackets" },
+          { id: 8, title: "Waterproof Jackets" },
+          { id: 9, title: "Fleece Jackets" },
+          { id: 10, title: "Soft Shell Jackets" },
+          { id: 11, title: "Windbreaker" },
+          { id: 12, title: "Denim Jackets" },
+          { id: 13, title: "Tracksuit Tops" },
+          { id: 14, title: "Vests" },
+          { id: 15, title: "Leather Jackets" }
         ]
       },
       {
@@ -602,3 +604,5 @@ export default [
     ]
   }
 ];
+
+export default categories;

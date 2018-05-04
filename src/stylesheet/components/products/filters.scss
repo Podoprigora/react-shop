@@ -1,7 +1,8 @@
 .product-filters {
   display: block;
   height: 100%;
-  margin-right: 10px;
+  margin-right: 5px;
+  padding-right: 10px;
   border-radius: 3px;
   overflow: auto;
 
@@ -14,8 +15,8 @@
   }
 
   .panel-collapsible {
-    padding-bottom: 12px;
     border-bottom: 1px solid #eeeeee;
+
     &:last-of-type {
       border-bottom: 0;
     }

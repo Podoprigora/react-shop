@@ -5,10 +5,12 @@ import classNames from "classnames";
 import withPreventScrollingOfParentElement from "../../components/ui/helpers/withPreventScrollingOfParentElement";
 import CollapsiblePanel from "../../components/ui/CollapsiblePanel";
 import OptionsList, { CheckboxOption, OptionItem } from "../../components/ui/OptionsList";
+import TreeList from "../../components/ui/TreeList";
 import brandsData from "../../../../data/brands";
-import categoriesData from "../../../../data/categories";
+import categoriesData, { getPath as getCategoriesPath } from "../../../../data/categories";
 
-const categoriesItems = categoriesData[0].items[1].items;
+const categoriesNodes = [categoriesData[0]];
+const categoriesItems = categoriesData[0].items[0].items;
 
 class ProductFilters extends React.PureComponent {
   static propTypes = {
@@ -22,17 +24,16 @@ class ProductFilters extends React.PureComponent {
 
     return (
       <aside className="product-filters" ref={elRef} onWheel={onMouseWheel}>
-        <CollapsiblePanel header="Categories">
-          <OptionsList size={10}>
-            {categoriesItems.map((item, index) => (
-              <OptionItem key={index} value={index} iconCls="icon-keyboard_arrow_right">
-                {item.title}
-              </OptionItem>
-            ))}
-          </OptionsList>
+        <CollapsiblePanel header="categories">
+          <TreeList
+            data={categoriesNodes}
+            onSelect={node => {
+              console.log(node);
+            }}
+          />
         </CollapsiblePanel>
         <CollapsiblePanel header="Brands">
-          <OptionsList selMode="multi" size={10}>
+          <OptionsList selMode="multi" size={8}>
             {brandsData.map((brand, index) => (
               <CheckboxOption key={index} value={brand.name}>
                 {brand.title}
