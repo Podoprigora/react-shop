@@ -6,11 +6,19 @@ import AnimateHeight from "react-animate-height";
 class CollapsiblePanel extends React.Component {
   static propTypes = {
     children: PropTypes.node,
-    header: PropTypes.string
+    header: PropTypes.string,
+    collapsed: PropTypes.bool
   };
   static defaultProps = {
-    header: ""
+    header: "",
+    collapsed: false
   };
+  static getDerivedStateFromProps(nextProps, nextState) {
+    const { collapsed } = nextProps;
+    return {
+      height: collapsed ? 0 : "auto"
+    };
+  }
 
   state = {
     height: "auto"

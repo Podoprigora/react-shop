@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
-const OptionItem = ({ children, index, value, selected, hidden, className, iconCls, onClick }) => (
+const OptionItem = ({ children, index, value, selected, hidden, className, iconCls, onClick, renderChildren }) => (
   <li>
     <a
       className={classNames(
@@ -14,7 +14,7 @@ const OptionItem = ({ children, index, value, selected, hidden, className, iconC
       role="presentation"
       onClick={ev => onClick && onClick(index, value, children, selected)}
     >
-      {children}
+      {renderChildren ? renderChildren(children, value, selected) : children}
     </a>
   </li>
 );
@@ -27,7 +27,8 @@ OptionItem.propTypes = {
   hidden: PropTypes.bool,
   className: PropTypes.string,
   iconCls: PropTypes.string,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
+  renderChildren: PropTypes.func
 };
 
 OptionItem.defaultProps = {
