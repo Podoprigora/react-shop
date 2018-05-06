@@ -7,6 +7,7 @@ ul.options-list {
     }
 
     .option-item {
+      position: relative;
       display: block;
       padding: 12px 14px 10px;
       cursor: pointer;
@@ -78,6 +79,10 @@ ul.options-list {
         &.option-item--selected {
           background: transparent;
           color: inherit;
+
+          &:hover {
+            background: color("gray-lighten-4");
+          }
 
           &::after {
             content: "\e834";

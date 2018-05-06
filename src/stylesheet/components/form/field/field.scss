@@ -1,0 +1,80 @@
+.field {
+  display: flex;
+  flex-flow: row nowrap;
+
+  &.field-label-align-top {
+    flex-flow: column nowrap;
+
+    .field__label {
+      padding: 5px 2px;
+    }
+  }
+
+  .field__label {
+    padding: 10px 8px;
+    font-weight: 500;
+    color: color("gray");
+  }
+
+  .field__wrap {
+    flex: 1;
+
+    .field__wrap-input {
+      position: relative;
+      border-radius: 2px;
+
+      .field__input {
+        padding: 8px 10px;
+        width: 100%;
+        background: transparent;
+        border: 1px solid color("gray-lighten-2");
+        border-radius: 3px;
+        outline: 0;
+        transition: border-color 0.2s ease-out;
+      }
+
+      .input-underline {
+        position: absolute;
+        bottom: 0;
+        height: 2px;
+        width: 100%;
+        background: theme-color("primary");
+        transform: scaleX(0);
+        transition: transform 0.2s ease-out;
+      }
+
+      input[type="text"]:focus ~ .input-underline {
+        transform: scaleX(1);
+      }
+
+      .field__input-trigger {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        width: 36px;
+        border: 0;
+        outline: 0;
+        color: color("gray");
+        background: transparent;
+        transform: translateY(-50%);
+        cursor: pointer;
+
+        &:before {
+          font-size: 24px;
+        }
+      }
+
+      .field__input:focus ~ .field__input-trigger {
+        color: theme-color("primary");
+      }
+    }
+  }
+}
+
+.field-container {
+  &.layout-hbox {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-end;
+  }
+}

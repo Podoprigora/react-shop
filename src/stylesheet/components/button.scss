@@ -1,0 +1,24 @@
+.button {
+  padding: 8px 10px;
+  background: transparent;
+  border: 2px solid transparent;
+  outline: none;
+  border-radius: 3px;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+
+  &:focus {
+    outline: 0;
+  }
+
+  &.button-primary {
+    font-weight: 500;
+    background: theme-color("primary");
+    color: color("white");
+    transition: opacity 0.3s ease-out;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}

@@ -5,6 +5,7 @@ import classNames from "classnames";
 import withPreventScrollingOfParentElement from "../../components/ui/helpers/withPreventScrollingOfParentElement";
 import CollapsiblePanel from "../../components/ui/CollapsiblePanel";
 import OptionsList, { CheckboxOption, ColorOption, OptionItem } from "../../components/ui/OptionsList";
+import NumberRange from "../../components/ui/NumberRange";
 
 import categoriesData from "../../../../data/categories";
 import brandsData from "../../../../data/brands";
@@ -38,7 +39,7 @@ class ProductFilters extends React.PureComponent {
           </OptionsList>
         </CollapsiblePanel>
         <CollapsiblePanel header="Brands" collapsed>
-          <OptionsList selMode="multi" size={8}>
+          <OptionsList selMode="multi" size={5}>
             {brandsData.map((brand, index) => (
               <CheckboxOption key={index} value={brand.name}>
                 {brand.title}
@@ -47,7 +48,7 @@ class ProductFilters extends React.PureComponent {
           </OptionsList>
         </CollapsiblePanel>
         <CollapsiblePanel header="Sizes" collapsed>
-          <OptionsList selMode="multi" size={8}>
+          <OptionsList selMode="multi" size={5}>
             {sizesData.map((size, index) => (
               <CheckboxOption key={index} value={size.id}>
                 {size.name}
@@ -56,22 +57,16 @@ class ProductFilters extends React.PureComponent {
           </OptionsList>
         </CollapsiblePanel>
         <CollapsiblePanel header="Colors">
-          <OptionsList
-            selMode="multi"
-            className="colors-list"
-            onSelect={selection => {
-              console.log(selection);
-            }}
-          >
+          <OptionsList selMode="multi" className="colors-list">
             {colorsData.map((color, index) => (
-              <ColorOption key={color.id} value={color.id}>
+              <ColorOption key={color.id} value={color.id} tooltip={color.name}>
                 {color.name}
               </ColorOption>
             ))}
           </OptionsList>
         </CollapsiblePanel>
-        <CollapsiblePanel header="Price" collapsed>
-          <div>Price range</div>
+        <CollapsiblePanel header="Price">
+          <NumberRange />
         </CollapsiblePanel>
       </aside>
     );

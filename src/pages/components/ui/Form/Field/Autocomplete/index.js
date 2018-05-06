@@ -182,7 +182,9 @@ class AutocompleteField extends React.Component {
           this._doInputChange(optionRow[displayName]);
         } else {
           this.setState({ isCollapsed: true });
-          this.props.onSelect(optionRow[displayName]);
+          if (optionRow[displayName]) {
+            this.props.onSelect(optionRow[displayName]);
+          }
         }
         break;
       }
