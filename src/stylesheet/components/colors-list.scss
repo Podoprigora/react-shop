@@ -1,6 +1,6 @@
 .colors-list {
   display: block;
-  padding: 0 10px;
+  padding: 5px;
   width: 100%;
 
   &.options-list > li {
@@ -10,26 +10,26 @@
     .option-item {
       padding: 0;
 
-      &.option-item--selected {
+      &.option-item--selected,
+      &:hover {
+        background: color("white");
         border-radius: 50%;
       }
     }
   }
 
   .color-option {
-    position: relative;
     width: 30px;
     height: 30px;
     border: 0;
     outline: 0;
-    border-radius: 50%;
-    overflow: hidden;
+    background: color("white");
     cursor: pointer;
 
     &.option-item--selected,
     &:hover {
       border: 3px solid color("white");
-      opacity: 0.8;
+      opacity: 0.6;
       transition: border-width 0.15s ease-out;
     }
 
@@ -43,7 +43,7 @@
         content: "\e5ca";
         font-size: 18px;
         font-weight: 500;
-        color: theme-color("primary");
+        color: theme-color("primary-darken-1");
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -59,7 +59,7 @@
       height: 100%;
       background-size: 30px 30px;
       background-position: center;
-      border-width: 0;
+      border-radius: 50%;
     }
   }
 }
@@ -110,7 +110,9 @@
   background-image: url("images/color-filters/stripes.png");
 }
 .color-white {
-  background: #000;
+  background: #fff;
+  border: 1px solid color("gray-lighten-2");
+  border-radius: 50%;
 }
 .color-yellow {
   background: #ffe921;

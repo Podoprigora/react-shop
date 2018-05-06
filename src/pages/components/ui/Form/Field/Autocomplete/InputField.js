@@ -36,11 +36,31 @@ class InputField extends React.Component {
     const { value } = this.state;
 
     return (
-      <div className="input-wrap">
-        <input type="text" {...inputProps} value={value} onChange={this.handleChange} ref={inputRef} />
-        <button className="icon icon-search" onClick={ev => onTriggerClick(ev, value)} />
+      <div className="field">
+        <div className="field__wrap">
+          <div className="field__wrap-input">
+            <input
+              className="field__input"
+              style={{ paddingRight: "32px" }}
+              type="text"
+              {...inputProps}
+              value={value}
+              onChange={this.handleChange}
+              ref={inputRef}
+            />
+            <button className="field__input-trigger icon icon-search" onClick={ev => onTriggerClick(ev, value)} />
+            <div className="input-underline" />
+          </div>
+        </div>
       </div>
     );
+
+    // return (
+    //   <div className="input-wrap">
+    //     <input type="text" {...inputProps} value={value} onChange={this.handleChange} ref={inputRef} />
+    //     <button className="icon icon-search" onClick={ev => onTriggerClick(ev, value)} />
+    //   </div>
+    // );
   }
 }
 
