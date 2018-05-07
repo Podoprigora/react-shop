@@ -1,6 +1,23 @@
 .field {
+  position: relative;
   display: flex;
   flex-flow: row nowrap;
+
+  &::after {
+    position: absolute;
+    content: "";
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background: theme-color("primary");
+    transform: scaleX(0);
+    transition: transform 0.2s ease-out;
+  }
+
+  &.field--focused::after {
+    transform: scaleX(1);
+  }
 
   &.field-label-align-top {
     flex-flow: column nowrap;
@@ -13,7 +30,7 @@
   .field__label {
     padding: 10px 8px;
     font-weight: 500;
-    color: color("gray");
+    color: color("gray-darken-1");
   }
 
   .field__wrap {
@@ -32,43 +49,29 @@
         outline: 0;
         transition: border-color 0.2s ease-out;
       }
-
-      .input-underline {
-        position: absolute;
-        bottom: 0;
-        height: 2px;
-        width: 100%;
-        background: theme-color("primary");
-        transform: scaleX(0);
-        transition: transform 0.2s ease-out;
-      }
-
-      input[type="text"]:focus ~ .input-underline {
-        transform: scaleX(1);
-      }
-
-      .field__input-trigger {
-        position: absolute;
-        top: 50%;
-        right: 0;
-        width: 36px;
-        border: 0;
-        outline: 0;
-        color: color("gray");
-        background: transparent;
-        transform: translateY(-50%);
-        cursor: pointer;
-
-        &:before {
-          font-size: 24px;
-        }
-      }
-
-      .field__input:focus ~ .field__input-trigger {
-        color: theme-color("primary");
-      }
     }
   }
+}
+
+.field-trigger {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 36px;
+  border: 0;
+  outline: 0;
+  color: color("gray");
+  background: transparent;
+  transform: translateY(-50%);
+  cursor: pointer;
+
+  &:before {
+    font-size: 24px;
+  }
+}
+
+.field.field--focused ~ .field-trigger {
+  color: theme-color("primary");
 }
 
 .field-container {
