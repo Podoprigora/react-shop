@@ -60,6 +60,7 @@ class AutocompleteField extends React.Component {
     this.listRef = React.createRef();
     this.selectedOptionRef = null;
     this.enableScrollIntoView = true;
+    this.preventFocusHandler = false;
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
@@ -150,12 +151,13 @@ class AutocompleteField extends React.Component {
     const { query, options } = this.state;
     const { minQueryLength } = this.props;
 
-    if (query.length >= minQueryLength || options.length > 0) {
+    if (!this.preventFocusHandler && (query.length >= minQueryLength || options.length > 0)) {
       this.setState({ isCollapsed: false });
     }
+    this.preventFocusHandler = false;
   };
 
-  handleBlur = ev => {
+  handleDocumentBlur = ev => {
     const { isFetching, isCollapsed } = this.state;
     const clickedOnComponent = DOMHasParent(ev.target, this.componentRef.current);
 
@@ -233,11 +235,19 @@ class AutocompleteField extends React.Component {
       this.inputRef.current.focus();
     } else {
       this.enableScrollIntoView = false;
-      this.setState(prevState => ({
-        selectedOptionIndex: index,
-        inputValue: row[displayName],
-        isCollapsed: true
-      }));
+
+      this.setState(
+        {
+          selectedOptionIndex: index,
+          inputValue: row[displayName],
+          isCollapsed: true
+        },
+        () => {
+          this.preventFocusHandler = true;
+          this.inputRef.current.focus();
+        }
+      );
+
       this.props.onSelect(row[displayName]);
     }
   };
@@ -253,12 +263,13 @@ class AutocompleteField extends React.Component {
         })}
         ref={this.componentRef}
       >
-        <EventListener target="document" onClick={this.handleBlur} />
+        <EventListener target="document" onClick={this.handleDocumentBlur} />
         <Field
           {...inputProps}
           inputRef={this.inputRef}
           value={inputValue}
           onFocus={this.handleInputFocus}
+          onBlur={this.handleInputBlur}
           onKeyDown={this.handleInputKeyDown}
           onChange={this.handleInputChange}
           onTriggerClick={this.handleInputTriggerClick}

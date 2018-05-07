@@ -13,7 +13,7 @@ const Header = params => (
       </Link>
       <AutocompleteField
         asyncRequest={q => api.mainSearch(q)}
-        onSelect={value => {
+        onSelect={(value, el) => {
           console.log(value);
         }}
         inputProps={{ placeholder: "What are you looking for? (jeans or shirt)" }}
