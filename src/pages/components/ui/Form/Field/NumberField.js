@@ -51,10 +51,40 @@ class NumberField extends React.Component {
     }
   };
 
+  handleKeyDown = ev => {
+    const { keyCode } = ev;
+    const { min, max } = this.props;
+
+    switch (keyCode) {
+      // Arrow Up
+      case 38:
+        this.setState(prevState => ({
+          value: Math.min(prevState.value + 1, max)
+        }));
+        break;
+      // Arrow Down
+      case 40:
+        this.setState(prevState => ({
+          value: Math.max(prevState.value - 1, min)
+        }));
+        break;
+      default:
+        break;
+    }
+  };
+
   render() {
     const { value } = this.state;
     const { ...props } = this.props;
-    return <InputField {...props} value={value} onChange={this.handleChange} onBlur={this.handleBlur} />;
+    return (
+      <InputField
+        {...props}
+        value={value}
+        onChange={this.handleChange}
+        onBlur={this.handleBlur}
+        onKeyDown={this.handleKeyDown}
+      />
+    );
   }
 }
 

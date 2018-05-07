@@ -20,22 +20,25 @@ const createFieldUI = InputComponent =>
     };
 
     static getDerivedStateFromProps(nextProps, prevState) {
+      let newState = null;
+
+      // Update value
       if (!nextProps.value && !prevState.value && nextProps.defaultValue) {
-        return { value: nextProps.defaultValue };
+        newState = { ...newState, value: nextProps.defaultValue };
       } else if (nextProps.value !== prevState.value) {
-        return { value: nextProps.value };
+        newState = { ...newState, value: nextProps.value };
       }
 
-      return null;
+      return newState;
     }
 
     state = {
-      focused: false,
+      isFocused: false,
       value: ""
     };
 
     handleInputFocus = ev => {
-      this.setState({ focused: true });
+      this.setState({ isFocused: true });
       this.props.onFocus(ev);
     };
 
@@ -44,18 +47,21 @@ const createFieldUI = InputComponent =>
       const { value } = this.state;
       const newValue = !value && defaultValue ? defaultValue : value;
 
-      this.setState({ focused: false, value: newValue });
+      this.setState({ isFocused: false, value: newValue });
       onBlur(ev, newValue);
     };
 
     render() {
       const { label, labelAlign, style, defaultValue, ...inputProps } = this.props;
       const { name } = inputProps;
-      const { focused, value } = this.state;
+      const { isFocused, value } = this.state;
 
       return (
         <div
-          className={classNames("field", { "field-label-align-top": labelAlign === "top", "field--focused": focused })}
+          className={classNames("field", {
+            "field-label-align-top": labelAlign === "top",
+            "field--focused": isFocused
+          })}
           style={style}
         >
           {label && (

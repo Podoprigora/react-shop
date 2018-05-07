@@ -6,6 +6,7 @@ class Field extends React.Component {
   static propTypes = {
     placeholder: PropTypes.string,
     value: PropTypes.string,
+    focused: PropTypes.bool,
     onChange: PropTypes.func,
     onFocus: PropTypes.func,
     onBlur: PropTypes.func,

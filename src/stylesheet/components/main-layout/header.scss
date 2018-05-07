@@ -23,11 +23,11 @@
       height: 40px;
       background-color: color("gray-lighten-4");
       border-color: transparent;
+    }
 
-      &:focus {
-        background: transparent;
-        border-color: color("gray-lighten-2");
-      }
+    .field.field--focused .field__wrap .field__wrap-input .field__input {
+      background: transparent;
+      border-color: color("gray-lighten-2");
     }
   }
 
