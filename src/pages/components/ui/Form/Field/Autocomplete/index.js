@@ -5,7 +5,7 @@ import classNames from "classnames";
 import debounce from "lodash/debounce";
 
 import { DOMHasParent } from "../../../helpers/dom";
-import InputField from "./InputField";
+import Field from "./Field";
 import OptionsContainer from "./OptionsContainer";
 import OptionsList from "./OptionsList";
 import CircularProgress from "../../../Progress/Circular";
@@ -254,7 +254,7 @@ class AutocompleteField extends React.Component {
         ref={this.componentRef}
       >
         <EventListener target="document" onClick={this.handleBlur} />
-        <InputField
+        <Field
           {...inputProps}
           inputRef={this.inputRef}
           value={inputValue}

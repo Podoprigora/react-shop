@@ -56,7 +56,7 @@ class ProductFilters extends React.PureComponent {
             ))}
           </OptionsList>
         </CollapsiblePanel>
-        <CollapsiblePanel header="Colors">
+        <CollapsiblePanel header="Colors" collapsed>
           <OptionsList selMode="multi" className="colors-list">
             {colorsData.map((color, index) => (
               <ColorOption key={color.id} value={color.id} tooltip={color.name}>
@@ -66,7 +66,13 @@ class ProductFilters extends React.PureComponent {
           </OptionsList>
         </CollapsiblePanel>
         <CollapsiblePanel header="Price">
-          <NumberRange />
+          <NumberRange
+            from={17}
+            to={195}
+            onChange={values => {
+              console.log(values);
+            }}
+          />
         </CollapsiblePanel>
       </aside>
     );
