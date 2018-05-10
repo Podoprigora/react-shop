@@ -24,7 +24,7 @@ module.exports = merge(common, {
         ]
       },
       {
-        test: /\.scss$/,
+        test: /\.(scss|css)$/,
         use: [
           {
             loader: "style-loader"

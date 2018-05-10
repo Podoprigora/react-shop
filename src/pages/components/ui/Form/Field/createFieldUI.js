@@ -9,8 +9,6 @@ const createFieldUI = InputComponent =>
       label: PropTypes.string,
       labelAlign: PropTypes.oneOf(["top", "left"]),
       style: PropTypes.object,
-      value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-      defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
       onBlur: PropTypes.func,
       onFocus: PropTypes.func
     };
@@ -19,22 +17,8 @@ const createFieldUI = InputComponent =>
       onFocus: () => {}
     };
 
-    static getDerivedStateFromProps(nextProps, prevState) {
-      let newState = null;
-
-      // Update value
-      if (!nextProps.value && !prevState.value && nextProps.defaultValue) {
-        newState = { ...newState, value: nextProps.defaultValue };
-      } else if (nextProps.value !== prevState.value) {
-        newState = { ...newState, value: nextProps.value };
-      }
-
-      return newState;
-    }
-
     state = {
-      isFocused: false,
-      value: ""
+      isFocused: false
     };
 
     handleInputFocus = ev => {
@@ -43,18 +27,14 @@ const createFieldUI = InputComponent =>
     };
 
     handleInputBlur = ev => {
-      const { defaultValue, onBlur } = this.props;
-      const { value } = this.state;
-      const newValue = !value && defaultValue ? defaultValue : value;
-
-      this.setState({ isFocused: false, value: newValue });
-      onBlur(ev, newValue);
+      this.setState({ isFocused: false });
+      this.props.onBlur(ev);
     };
 
     render() {
-      const { label, labelAlign, style, defaultValue, ...inputProps } = this.props;
+      const { label, labelAlign, style, ...inputProps } = this.props;
       const { name } = inputProps;
-      const { isFocused, value } = this.state;
+      const { isFocused } = this.state;
 
       return (
         <div
@@ -73,7 +53,6 @@ const createFieldUI = InputComponent =>
             <div className="field__wrap-input">
               <InputComponent
                 {...inputProps}
-                value={value}
                 className="field__input"
                 onFocus={this.handleInputFocus}
                 onBlur={this.handleInputBlur}

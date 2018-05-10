@@ -26,7 +26,7 @@ class ProductFilters extends React.PureComponent {
 
     return (
       <aside className="product-filters" ref={elRef} onWheel={onMouseWheel}>
-        <CollapsiblePanel header="Categories" collapsed>
+        <CollapsiblePanel header="Categories">
           <OptionsList selected="all" size={8}>
             <OptionItem value="all" iconCls="icon-folder_open">
               All Jumpers
@@ -38,7 +38,7 @@ class ProductFilters extends React.PureComponent {
             ))}
           </OptionsList>
         </CollapsiblePanel>
-        <CollapsiblePanel header="Brands" collapsed>
+        <CollapsiblePanel header="Brands">
           <OptionsList selMode="multi" size={5}>
             {brandsData.map((brand, index) => (
               <CheckboxOption key={index} value={brand.name}>
@@ -47,7 +47,7 @@ class ProductFilters extends React.PureComponent {
             ))}
           </OptionsList>
         </CollapsiblePanel>
-        <CollapsiblePanel header="Sizes" collapsed>
+        <CollapsiblePanel header="Sizes">
           <OptionsList selMode="multi" size={5}>
             {sizesData.map((size, index) => (
               <CheckboxOption key={index} value={size.id}>
@@ -56,7 +56,7 @@ class ProductFilters extends React.PureComponent {
             ))}
           </OptionsList>
         </CollapsiblePanel>
-        <CollapsiblePanel header="Colors" collapsed>
+        <CollapsiblePanel header="Colors">
           <OptionsList selMode="multi" className="colors-list">
             {colorsData.map((color, index) => (
               <ColorOption key={color.id} value={color.id} tooltip={color.name}>
@@ -67,8 +67,8 @@ class ProductFilters extends React.PureComponent {
         </CollapsiblePanel>
         <CollapsiblePanel header="Price">
           <NumberRange
-            from={17}
-            to={195}
+            min={17}
+            max={195}
             onChange={values => {
               console.log(values);
             }}

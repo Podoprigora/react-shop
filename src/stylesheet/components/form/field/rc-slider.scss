@@ -1,0 +1,49 @@
+.rc-slider {
+  position: relative;
+  height: 20px;
+  padding: 5px 0;
+  width: 100%;
+  border-radius: 6px;
+  touch-action: none;
+
+  .rc-slider-rail {
+    position: absolute;
+    width: 100%;
+    background-color: color("gray-lighten-3");
+    height: 4px;
+    border-radius: 6px;
+  }
+
+  .rc-slider-track {
+    position: absolute;
+    left: 0;
+    height: 4px;
+    border-radius: 6px;
+    background-color: theme-color("primary");
+  }
+
+  .rc-slider-handle {
+    position: absolute;
+    margin-left: -8px;
+    margin-top: -6px;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    cursor: grab;
+    border-radius: 50%;
+    border: 0;
+    background-color: theme-color("primary");
+    touch-action: pan-x;
+    transform: scale3d(1, 1, 1);
+    transition: background-color 0.15s ease-out, transform 0.15s ease-out;
+
+    &:focus,
+    &:active,
+    &:hover {
+      box-shadow: none;
+      background-color: theme-color("primary-lighten-1");
+      transform: scale3d(1.4, 1.4, 1);
+      outline: none;
+    }
+  }
+}

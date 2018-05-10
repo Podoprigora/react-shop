@@ -7,6 +7,7 @@ import InputField from "./InputField";
 class NumberField extends React.Component {
   static propTypes = {
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     min: PropTypes.number,
     max: PropTypes.number,
     onChange: PropTypes.func,
@@ -38,35 +39,50 @@ class NumberField extends React.Component {
 
   handleBlur = ev => {
     const { value } = this.state;
-    const { min, max, onBlur } = this.props;
+    const { min, max, defaultValue, onChange, onBlur } = this.props;
 
     if (min && value && value < min) {
       this.setState({ value: min });
-      onBlur(ev, min);
+      onChange(ev, min);
     } else if (max && value && value > max) {
       this.setState({ value: max });
-      onBlur(ev, max);
+      onChange(ev, max);
     } else {
-      onBlur(ev, value);
+      onChange(ev, value || defaultValue);
     }
+
+    onBlur(ev);
   };
 
   handleKeyDown = ev => {
     const { keyCode } = ev;
-    const { min, max } = this.props;
+    const { min, max, onChange } = this.props;
 
     switch (keyCode) {
       // Arrow Up
       case 38:
-        this.setState(prevState => ({
-          value: Math.min(prevState.value + 1, max)
-        }));
+        this.setState(prevState => {
+          const newValue = Math.min(prevState.value + 1, max);
+
+          onChange(ev, newValue);
+
+          return {
+            value: newValue
+          };
+        });
+
         break;
       // Arrow Down
       case 40:
-        this.setState(prevState => ({
-          value: Math.max(prevState.value - 1, min)
-        }));
+        this.setState(prevState => {
+          const newValue = Math.max(prevState.value - 1, min);
+
+          onChange(ev, newValue);
+
+          return {
+            value: newValue
+          };
+        });
         break;
       default:
         break;
