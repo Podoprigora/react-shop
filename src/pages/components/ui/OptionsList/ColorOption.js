@@ -6,13 +6,12 @@ const ColorOption = props => (
   <OptionItem
     {...props}
     className="color-option"
-    renderChildren={children => <div className={`color-value-item color-${children.toLowerCase()}`} />}
+    renderChildren={children => <div className={`color-value-item color-${children.toLowerCase()}`} title={children} />}
   />
 );
 
 ColorOption.propTypes = {
-  children: PropTypes.node.isRequired,
-  tooltip: PropTypes.string
+  children: PropTypes.node.isRequired
 };
 
 export default ColorOption;

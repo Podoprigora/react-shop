@@ -3,47 +3,49 @@
   display: flex;
   flex-flow: row nowrap;
 
-  &::after {
-    position: absolute;
-    content: "";
-    bottom: 0;
-    left: 0;
-    height: 2px;
-    width: 100%;
-    background: theme-color("primary");
-    transform: scaleX(0);
-    transition: transform 0.1s ease-out;
-  }
-
-  &.field--focused::after {
+  &.field--focused .field__wrap .field__wrap-input::after {
     transform: scaleX(1);
   }
 
   &.field-label-align-top {
-    flex-flow: column nowrap;
+    flex-wrap: wrap;
 
     .field__label {
+      width: 100%;
       padding: 5px 2px;
     }
   }
 
   .field__label {
+    display: block;
     padding: 10px 8px;
     font-weight: 500;
     color: color("gray-darken-1");
   }
 
   .field__wrap {
-    flex: 1;
+    width: 100%;
 
     .field__wrap-input {
       position: relative;
       border-radius: 2px;
 
+      &::after {
+        position: absolute;
+        content: "";
+        bottom: 0;
+        left: 0;
+        height: 2px;
+        width: 100%;
+        background: theme-color("primary");
+        transform: scaleX(0);
+        transition: transform 0.15s ease-out;
+      }
+
       .field__input {
         padding: 8px 10px;
         width: 100%;
-        background: transparent;
+        background: color("white");
         border: 1px solid color("gray-lighten-2");
         border-radius: 3px;
         outline: 0;
