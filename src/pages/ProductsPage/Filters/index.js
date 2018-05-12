@@ -59,7 +59,7 @@ class ProductFilters extends React.PureComponent {
         <CollapsiblePanel header="Colors">
           <OptionsList selMode="multi" className="colors-list">
             {colorsData.map((color, index) => (
-              <ColorOption key={color.id} value={color.id} tooltip={color.name}>
+              <ColorOption key={color.id} value={color.id}>
                 {color.name}
               </ColorOption>
             ))}

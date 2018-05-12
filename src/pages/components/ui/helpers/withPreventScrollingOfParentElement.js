@@ -6,10 +6,11 @@ const withPreventScrollingOfParentElement = ComposedComponent =>
 
     handleMouseWheel = ev => {
       const { scrollHeight, clientHeight, scrollTop } = this.elRef.current;
+      const { deltaY } = ev;
 
       if (
         scrollHeight !== clientHeight &&
-        ((ev.deltaY > 0 && scrollTop === scrollHeight - clientHeight) || (ev.deltaY < 0 && scrollTop === 0))
+        ((deltaY > 0 && scrollTop === scrollHeight - clientHeight) || (deltaY < 0 && scrollTop === 0))
       ) {
         ev.preventDefault();
       }

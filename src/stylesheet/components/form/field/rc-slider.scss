@@ -36,6 +36,7 @@
     touch-action: pan-x;
     transform: scale3d(1, 1, 1);
     transition: background-color 0.15s ease-out, transform 0.15s ease-out;
+    z-index: 1000;
 
     &:focus,
     &:active,
@@ -44,6 +45,7 @@
       background-color: theme-color("primary-lighten-1");
       transform: scale3d(1.4, 1.4, 1);
       outline: none;
+      z-index: 10001;
     }
   }
 }
