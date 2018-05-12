@@ -1,39 +1,82 @@
 import React from "react";
+import PropTypes from "prop-types";
 import classNames from "classnames";
-import EventListener from "react-event-listener";
 
-class ProductFilters extends React.Component {
-  constructor(props) {
-    super(props);
+import withPreventScrollingOfParentElement from "../../components/ui/helpers/withPreventScrollingOfParentElement";
+import CollapsiblePanel from "../../components/ui/CollapsiblePanel";
+import OptionsList, { CheckboxOption, ColorOption, OptionItem } from "../../components/ui/OptionsList";
+import NumberRange from "../../components/ui/NumberRange";
 
-    this.state = { isFixedPos: false };
-    this.containerRef = React.createRef();
-  }
+import categoriesData from "../../../../data/categories";
+import brandsData from "../../../../data/brands";
+import sizesData from "../../../../data/sizes";
+import colorsData from "../../../../data/colors";
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return nextState.isFixedPos !== this.state.isFixedPos;
-  }
+const categoriesItems = categoriesData[0].items[1].items;
 
-  handleDocumentScroll = ev => {
-    const sy = window.pageYOffset || document.documentElement.sctollTop;
-    this.setState({ isFixedPos: sy >= 123 && sy <= 363 });
+class ProductFilters extends React.PureComponent {
+  static propTypes = {
+    elRef: PropTypes.object.isRequired,
+    onMouseWheel: PropTypes.func.isRequired,
+    className: PropTypes.string
   };
 
   render() {
-    const { isFixedPos } = this.state;
+    const { elRef, onMouseWheel } = this.props;
 
     return (
-      <div
-        className={classNames("products-filters-container", {
-          "container--fixed": isFixedPos
-        })}
-        ref={this.containerRef}
-      >
-        <EventListener target="document" onScroll={this.handleDocumentScroll} />
-        Filters
-      </div>
+      <aside className="product-filters" ref={elRef} onWheel={onMouseWheel}>
+        <CollapsiblePanel header="Categories">
+          <OptionsList selected="all" size={8}>
+            <OptionItem value="all" iconCls="icon-folder_open">
+              All Jumpers
+            </OptionItem>
+            {categoriesItems.map((item, index) => (
+              <OptionItem key={index} value={index} iconCls="icon-subject">
+                {item.title}
+              </OptionItem>
+            ))}
+          </OptionsList>
+        </CollapsiblePanel>
+        <CollapsiblePanel header="Brands">
+          <OptionsList selMode="multi" size={5}>
+            {brandsData.map((brand, index) => (
+              <CheckboxOption key={index} value={brand.name}>
+                {brand.title}
+              </CheckboxOption>
+            ))}
+          </OptionsList>
+        </CollapsiblePanel>
+        <CollapsiblePanel header="Sizes">
+          <OptionsList selMode="multi" size={5}>
+            {sizesData.map((size, index) => (
+              <CheckboxOption key={index} value={size.id}>
+                {size.name}
+              </CheckboxOption>
+            ))}
+          </OptionsList>
+        </CollapsiblePanel>
+        <CollapsiblePanel header="Colors">
+          <OptionsList selMode="multi" className="colors-list">
+            {colorsData.map((color, index) => (
+              <ColorOption key={color.id} value={color.id}>
+                {color.name}
+              </ColorOption>
+            ))}
+          </OptionsList>
+        </CollapsiblePanel>
+        <CollapsiblePanel header="Price">
+          <NumberRange
+            min={17}
+            max={195}
+            onChange={values => {
+              console.log(values);
+            }}
+          />
+        </CollapsiblePanel>
+      </aside>
     );
   }
 }
 
-export default ProductFilters;
+export default withPreventScrollingOfParentElement(ProductFilters);

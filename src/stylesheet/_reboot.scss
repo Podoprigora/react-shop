@@ -30,7 +30,6 @@
 
 html {
   font-family: sans-serif; // 2
-  line-height: 1.15; // 3
   -webkit-text-size-adjust: 100%; // 4
   -ms-text-size-adjust: 100%; // 4
   -ms-overflow-style: scrollbar; // 5
@@ -297,7 +296,6 @@ th {
 label {
   // Allow labels to use `margin` for spacing.
   display: inline-block;
-  margin-bottom: 0.5rem;
 }
 
 // Remove the default `border-radius` that macOS Chrome adds.

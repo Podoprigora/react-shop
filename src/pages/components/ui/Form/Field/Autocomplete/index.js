@@ -5,9 +5,10 @@ import classNames from "classnames";
 import debounce from "lodash/debounce";
 
 import { DOMHasParent } from "../../../helpers/dom";
-import InputField from "./InputField";
+import Field from "./Field";
 import OptionsContainer from "./OptionsContainer";
 import OptionsList from "./OptionsList";
+import CircularProgress from "../../../Progress/Circular";
 
 class AutocompleteField extends React.Component {
   static propTypes = {
@@ -59,6 +60,7 @@ class AutocompleteField extends React.Component {
     this.listRef = React.createRef();
     this.selectedOptionRef = null;
     this.enableScrollIntoView = true;
+    this.preventFocusHandler = false;
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
@@ -149,12 +151,13 @@ class AutocompleteField extends React.Component {
     const { query, options } = this.state;
     const { minQueryLength } = this.props;
 
-    if (query.length >= minQueryLength || options.length > 0) {
+    if (!this.preventFocusHandler && (query.length >= minQueryLength || options.length > 0)) {
       this.setState({ isCollapsed: false });
     }
+    this.preventFocusHandler = false;
   };
 
-  handleBlur = ev => {
+  handleDocumentBlur = ev => {
     const { isFetching, isCollapsed } = this.state;
     const clickedOnComponent = DOMHasParent(ev.target, this.componentRef.current);
 
@@ -181,7 +184,9 @@ class AutocompleteField extends React.Component {
           this._doInputChange(optionRow[displayName]);
         } else {
           this.setState({ isCollapsed: true });
-          this.props.onSelect(optionRow[displayName]);
+          if (optionRow[displayName]) {
+            this.props.onSelect(optionRow[displayName]);
+          }
         }
         break;
       }
@@ -230,11 +235,19 @@ class AutocompleteField extends React.Component {
       this.inputRef.current.focus();
     } else {
       this.enableScrollIntoView = false;
-      this.setState(prevState => ({
-        selectedOptionIndex: index,
-        inputValue: row[displayName],
-        isCollapsed: true
-      }));
+
+      this.setState(
+        {
+          selectedOptionIndex: index,
+          inputValue: row[displayName],
+          isCollapsed: true
+        },
+        () => {
+          this.preventFocusHandler = true;
+          this.inputRef.current.focus();
+        }
+      );
+
       this.props.onSelect(row[displayName]);
     }
   };
@@ -250,12 +263,13 @@ class AutocompleteField extends React.Component {
         })}
         ref={this.componentRef}
       >
-        <EventListener target="document" onClick={this.handleBlur} />
-        <InputField
+        <EventListener target="document" onClick={this.handleDocumentBlur} />
+        <Field
           {...inputProps}
           inputRef={this.inputRef}
           value={inputValue}
           onFocus={this.handleInputFocus}
+          onBlur={this.handleInputBlur}
           onKeyDown={this.handleInputKeyDown}
           onChange={this.handleInputChange}
           onTriggerClick={this.handleInputTriggerClick}
@@ -264,7 +278,7 @@ class AutocompleteField extends React.Component {
         {!isCollapsed && (
           <OptionsContainer height={listHeight}>
             {isFetching ? (
-              <div className="infinite-spinner size-26" />
+              <CircularProgress preset="small" />
             ) : (
               <OptionsList
                 data={options}

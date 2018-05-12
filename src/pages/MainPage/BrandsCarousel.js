@@ -4,6 +4,15 @@ import PropTypes from "prop-types";
 import FeedCarousel from "../components/ui/FeedCarousel";
 
 class BrandsCarousel extends React.Component {
+  static propTypes = {
+    data: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string,
+        picture: PropTypes.sting
+      })
+    ).isRequired
+  };
+
   onItemClick = (ev, data) => {
     console.log(data);
   };
@@ -25,14 +34,5 @@ class BrandsCarousel extends React.Component {
     );
   }
 }
-
-BrandsCarousel.propTypes = {
-  data: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string,
-      picture: PropTypes.sting
-    })
-  ).isRequired
-};
 
 export default BrandsCarousel;

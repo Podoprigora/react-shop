@@ -19,22 +19,15 @@
     margin: 0 40px;
     max-width: 320px;
 
-    .input-wrap {
-      input {
-        height: 40px;
-        padding: 1px 36px 0px 10px;
-        background-color: color("gray-lighten-4");
-        border-color: transparent;
+    .field .field__wrap .field__wrap-input .field__input {
+      height: 40px;
+      background-color: color("gray-lighten-4");
+      border-color: transparent;
+    }
 
-        &:focus {
-          background: transparent;
-          border-color: theme-color("primary-lighten-1");
-
-          & ~ .icon {
-            color: theme-color("primary");
-          }
-        }
-      }
+    .field.field--focused .field__wrap .field__wrap-input .field__input {
+      background: transparent;
+      border-color: color("gray-lighten-2");
     }
   }
 

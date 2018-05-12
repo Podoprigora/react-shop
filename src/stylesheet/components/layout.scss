@@ -1,0 +1,54 @@
+.layout-hbox,
+.layout-with-slidebar {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.layout-item--freezed {
+  flex: none;
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+}
+
+.layout-item--flex {
+  flex: 1;
+}
+
+.layout-with-slidebar {
+  .layout-item-slidebar {
+    width: 240px;
+  }
+
+  .layout-item--freezed ~ .layout-item--flex {
+    margin-left: 240px;
+  }
+}
+
+.layout-position-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+}
+
+.tbar {
+  display: flex;
+  flex-flow: row nowrap;
+
+  .tbar__space {
+    flex: 1;
+  }
+
+  .tbar__item {
+    margin: 10px 5px;
+
+    &:first-of-type {
+      margin-left: 0;
+    }
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+}

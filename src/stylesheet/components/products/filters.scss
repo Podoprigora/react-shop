@@ -1,14 +1,25 @@
-.products-filters-container {
-  position: static;
-  width: 280px;
-  min-height: 600px;
-  padding: 10px;
-  background: color("gray-lighten-4");
-  border: 1px solid theme-color("border");
+.product-filters {
+  display: block;
+  height: 100%;
+  margin-right: 5px;
+  padding-right: 10px;
+  padding-bottom: 25px;
+  border-radius: 3px;
+  overflow: auto;
 
-  &.container--fixed {
-    position: fixed;
-    top: 0px;
-    bottom: 0px;
+  header {
+    h3 {
+      padding: 10px;
+      margin: 0;
+      color: color("gray-darken-1");
+    }
+  }
+
+  .panel-collapsible {
+    border-bottom: 1px solid #eeeeee;
+
+    &:last-of-type {
+      border-bottom: 0;
+    }
   }
 }

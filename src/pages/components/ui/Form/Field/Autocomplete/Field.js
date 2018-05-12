@@ -1,10 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
+import InputField from "../InputField";
 
-class InputField extends React.Component {
+class Field extends React.Component {
   static propTypes = {
     placeholder: PropTypes.string,
     value: PropTypes.string,
+    focused: PropTypes.bool,
     onChange: PropTypes.func,
     onFocus: PropTypes.func,
     onBlur: PropTypes.func,
@@ -36,12 +38,12 @@ class InputField extends React.Component {
     const { value } = this.state;
 
     return (
-      <div className="input-wrap">
-        <input type="text" {...inputProps} value={value} onChange={this.handleChange} ref={inputRef} />
-        <button className="icon icon-search" onClick={ev => onTriggerClick(ev, value)} />
-      </div>
+      <React.Fragment>
+        <InputField {...inputProps} value={value} onChange={this.handleChange} inputRef={inputRef} />
+        <button className="field-trigger icon icon-search" onClick={ev => onTriggerClick(ev, value)} />
+      </React.Fragment>
     );
   }
 }
 
-export default InputField;
+export default Field;
