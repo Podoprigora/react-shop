@@ -4,7 +4,7 @@ import EventListener from "react-event-listener";
 import classNames from "classnames";
 import debounce from "lodash/debounce";
 
-import { DOMHasParent } from "../../../helpers/dom";
+import { DOMHasParent } from "../../../utils/dom";
 import Field from "./Field";
 import OptionsContainer from "./OptionsContainer";
 import OptionsList from "./OptionsList";

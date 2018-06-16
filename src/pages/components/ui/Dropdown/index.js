@@ -7,7 +7,7 @@ import { TransitionGroup, CSSTransition } from "react-transition-group";
 import Trigger from "./Trigger";
 import BoundingContent from "./BoundingContent";
 import OptionsList from "../OptionsList";
-import { DOMHasParent } from "../helpers/dom";
+import { DOMHasParent } from "../utils/dom";
 
 class Dropdown extends React.Component {
   static propTypes = {

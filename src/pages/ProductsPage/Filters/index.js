@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
-import withPreventScrollingOfParentElement from "../../components/ui/helpers/withPreventScrollingOfParentElement";
+import withPreventScrollingOfParentElement from "../../components/ui/utils/withPreventScrollingOfParentElement";
 import CollapsiblePanel from "../../components/ui/CollapsiblePanel";
 import OptionsList, { CheckboxOption, ColorOption, OptionItem } from "../../components/ui/OptionsList";
 import NumberRange from "../../components/ui/NumberRange";
