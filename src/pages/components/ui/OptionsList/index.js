@@ -22,28 +22,7 @@ class OptionsList extends React.Component {
     onSelect: () => {}
   };
 
-  state = {
-    selection: {}
-  };
-
-  static getDerivedStateFromProps(nextProps, prevState) {
-    const { children, selMode, selected, size } = nextProps;
-    let selection = {};
-    let selectedValue = selected;
-
-    React.Children.forEach(children, (child, index) => {
-      if (selMode === SINGLE_MODE && Object.keys(selection).length > 0) {
-        return;
-      }
-      if (Array.isArray(selected) && selected.length) {
-        selectedValue = selected.find(s => child.props.value && s === child.props.value);
-      }
-      if (child.props.value && child.props.value === selectedValue) {
-        selection = { ...selection, [index]: { index, value: child.props.value, text: child.props.children } };
-      }
-    });
-    return { selection, collapsed: size > 0 && React.Children.count(children) > size };
-  }
+  state = this.getStateFromProps();
 
   shouldComponentUpdate(nextProps, nextState) {
     const { children: nextChildren } = nextProps;
@@ -58,6 +37,26 @@ class OptionsList extends React.Component {
       (selMode === MULTI_MODE && Object.keys(nextSelection).length !== Object.keys(selection).length) ||
       nextState.collapsed !== this.state.collapsed
     );
+  }
+
+  getStateFromProps() {
+    const { children, selMode, selected, size } = this.props;
+    let selection = {};
+    let selectedValue = selected;
+
+    React.Children.forEach(children, (child, index) => {
+      if (selMode === SINGLE_MODE && Object.keys(selection).length > 0) {
+        return;
+      }
+      if (Array.isArray(selected) && selected.length) {
+        selectedValue = selected.find(s => child.props.value && s === child.props.value);
+      }
+      if (child.props.value && child.props.value === selectedValue) {
+        selection = { ...selection, [index]: { index, value: child.props.value, text: child.props.children } };
+      }
+    });
+
+    return { selection, collapsed: size > 0 && React.Children.count(children) > size };
   }
 
   handleItemSelect = (index, value, text, selected) => {

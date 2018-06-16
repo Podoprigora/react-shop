@@ -31,7 +31,7 @@ class Dropdown extends React.Component {
 
   handleOptionSelect = ([firstSelection]) => {
     const { value } = firstSelection;
-    const { displayText } = firstSelection;
+    const { text: displayText } = firstSelection;
 
     this.setState({ value, displayText, isOpened: false });
   };

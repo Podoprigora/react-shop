@@ -47,7 +47,7 @@ class ProductFilters extends React.PureComponent {
             ))}
           </OptionsList>
         </CollapsiblePanel>
-        <CollapsiblePanel header="Sizes" collapsed>
+        <CollapsiblePanel header="Sizes">
           <OptionsList selMode="multi" size={5}>
             {sizesData.map((size, index) => (
               <CheckboxOption key={index} value={size.id}>

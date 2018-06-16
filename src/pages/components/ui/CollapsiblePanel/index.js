@@ -9,25 +9,15 @@ class CollapsiblePanel extends React.Component {
     header: PropTypes.string,
     collapsed: PropTypes.bool
   };
+
   static defaultProps = {
     header: "",
     collapsed: false
   };
 
   state = {
-    height: "auto"
+    height: this.props.collapsed ? 0 : "auto"
   };
-
-  static getDerivedStateFromProps(nextProps, nextState) {
-    const { collapsed } = nextProps;
-    return {
-      height: collapsed ? 0 : "auto"
-    };
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    return nextState.height !== this.state.height;
-  }
 
   handleHeaderClick = ev => {
     ev.preventDefault();

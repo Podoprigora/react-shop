@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import EventListener from "react-event-listener";
 import classNames from "classnames";
 import debounce from "lodash/debounce";
+import throttle from "lodash/throttle";
 
 import { DOMHasParent } from "../../../utils/dom";
 import Field from "./Field";
@@ -105,8 +106,7 @@ class AutocompleteField extends React.Component {
       isFetching: true,
       options: [],
       selectedOptionIndex: -1,
-      query,
-      inputValue: query
+      query
     });
 
     asyncRequest(query).then(res => {
@@ -140,7 +140,6 @@ class AutocompleteField extends React.Component {
       this.setState({
         isCollapsed: true,
         query: "",
-        inputValue: "",
         selectedOptionIndex: -1,
         options: isPersistQueryToLocalStorage ? this._getPersistQueryOptions() : []
       });
@@ -166,9 +165,23 @@ class AutocompleteField extends React.Component {
     }
   };
 
-  handleInputChange = debounce(value => {
-    this._doInputChange(value);
-  }, 1200);
+  inputChangeIntervalId = null;
+
+  handleInputChange = value => {
+    this.setState(
+      {
+        inputValue: value
+      },
+      () => {
+        if (!this.inputChangeIntervalId) {
+          this.inputChangeIntervalId = setTimeout(() => {
+            this._doInputChange(this.state.inputValue);
+            this.inputChangeIntervalId = null;
+          }, 1200);
+        }
+      }
+    );
+  };
 
   handleInputKeyDown = (ev, data) => {
     const { keyCode } = ev;

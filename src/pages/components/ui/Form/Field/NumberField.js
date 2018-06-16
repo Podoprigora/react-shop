@@ -8,8 +8,8 @@ class NumberField extends React.Component {
   static propTypes = {
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    min: PropTypes.number,
-    max: PropTypes.number,
+    min: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    max: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     onChange: PropTypes.func,
     onBlur: PropTypes.func
   };
@@ -18,34 +18,21 @@ class NumberField extends React.Component {
     onBlur: () => {}
   };
 
-  state = {
-    value: null
-  };
-
-  static getDerivedStateFromProps(nextProps) {
-    const { value } = nextProps;
-    return { value };
-  }
-
   handleChange = ev => {
     const { onChange } = this.props;
     const { value } = ev.target;
 
     if (/^[-/./0-9]*$/g.test(value)) {
-      this.setState({ value });
       onChange(ev, value);
     }
   };
 
   handleBlur = ev => {
-    const { value } = this.state;
-    const { min, max, defaultValue, onChange, onBlur } = this.props;
+    const { min, max, value, defaultValue, onChange, onBlur } = this.props;
 
     if (min && value && value < min) {
-      this.setState({ value: min });
       onChange(ev, min);
     } else if (max && value && value > max) {
-      this.setState({ value: max });
       onChange(ev, max);
     } else {
       onChange(ev, value || defaultValue);
@@ -56,33 +43,19 @@ class NumberField extends React.Component {
 
   handleKeyDown = ev => {
     const { keyCode } = ev;
-    const { min, max, onChange } = this.props;
+    const { value, min, max, onChange } = this.props;
+    let newValue = value || 0;
 
     switch (keyCode) {
       // Arrow Up
       case 38:
-        this.setState(prevState => {
-          const newValue = Math.min(prevState.value + 1, max);
-
-          onChange(ev, newValue);
-
-          return {
-            value: newValue
-          };
-        });
-
+        newValue = newValue ? Math.min(newValue + 1, max) : min;
+        onChange(ev, newValue);
         break;
       // Arrow Down
       case 40:
-        this.setState(prevState => {
-          const newValue = Math.max(prevState.value - 1, min);
-
-          onChange(ev, newValue);
-
-          return {
-            value: newValue
-          };
-        });
+        newValue = newValue ? Math.max(newValue - 1, min) : max;
+        onChange(ev, newValue);
         break;
       default:
         break;
@@ -90,8 +63,7 @@ class NumberField extends React.Component {
   };
 
   render() {
-    const { value } = this.state;
-    const { ...props } = this.props;
+    const { value, ...props } = this.props;
     return (
       <InputField
         {...props}

@@ -32,17 +32,13 @@ class NumberRange extends React.PureComponent {
   handleMinFieldChange = (ev, value) => {
     const { max } = this.state;
 
-    if (value > 0 && value < max) {
-      this.setState({ min: parseInt(value, 10) });
-    }
+    this.setState({ min: value ? parseInt(value, 10) : "" });
   };
 
   handleMaxFieldChange = (ev, value) => {
     const { min } = this.state;
 
-    if (value > 0 && value > min) {
-      this.setState({ max: parseInt(value, 10) });
-    }
+    this.setState({ max: value ? parseInt(value, 10) : "" });
   };
 
   handleSliderChange = ([min, max]) => {
@@ -88,7 +84,7 @@ class NumberRange extends React.PureComponent {
             allowCross={false}
             min={defaultMin}
             max={defaultMax}
-            value={[min, max]}
+            value={[min || defaultMin, max || defaultMax]}
             onChange={this.handleSliderChange}
           />
         </div>
