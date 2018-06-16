@@ -3,37 +3,32 @@ const webpack = require("webpack");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-const vendorsLibs = [
-  "react",
-  "react-dom",
-  "prop-types",
-  "redux",
-  "axios",
-  "redux-form",
-  "react-router-dom",
-  "normalizr",
-  "redux-thunk",
-  "react-transition-group",
-  "react-scrollbar-size",
-  "react-event-listener",
-  "classnames",
-  "dragdealer",
-  "money-formatter",
-  "normalize-scroll-left",
-  "scroll",
-  "uuid"
-];
-
 module.exports = {
   entry: {
-    bundle: ["babel-polyfill", "./src/index.js"],
-    vendor: vendorsLibs
+    bundle: ["babel-polyfill", "./src/index.js"]
   },
   output: {
     path: path.resolve(__dirname, "dist"),
     publicPath: "",
     filename: "[name].[hash:16].js",
     sourceMapFilename: "[file].map"
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        default: false,
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: "vendor",
+          chunks: "all"
+        },
+        data: {
+          test: /[\\/]data[\\/]/,
+          name: "data",
+          chunks: "all"
+        }
+      }
+    }
   },
   module: {
     rules: [
@@ -76,9 +71,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      names: ["vendor", "manifest"]
-    }),
     new HtmlWebpackPlugin({
       template: "public/index.html"
     })

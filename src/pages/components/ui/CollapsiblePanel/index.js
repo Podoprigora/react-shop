@@ -13,16 +13,17 @@ class CollapsiblePanel extends React.Component {
     header: "",
     collapsed: false
   };
+
+  state = {
+    height: "auto"
+  };
+
   static getDerivedStateFromProps(nextProps, nextState) {
     const { collapsed } = nextProps;
     return {
       height: collapsed ? 0 : "auto"
     };
   }
-
-  state = {
-    height: "auto"
-  };
 
   shouldComponentUpdate(nextProps, nextState) {
     return nextState.height !== this.state.height;

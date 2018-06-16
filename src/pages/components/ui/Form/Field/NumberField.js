@@ -18,14 +18,14 @@ class NumberField extends React.Component {
     onBlur: () => {}
   };
 
+  state = {
+    value: null
+  };
+
   static getDerivedStateFromProps(nextProps) {
     const { value } = nextProps;
     return { value };
   }
-
-  state = {
-    value: null
-  };
 
   handleChange = ev => {
     const { onChange } = this.props;

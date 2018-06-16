@@ -7,7 +7,7 @@ import { TransitionGroup, CSSTransition } from "react-transition-group";
 import Trigger from "./Trigger";
 import BoundingContent from "./BoundingContent";
 import OptionsList from "../OptionsList";
-import { DOMHasParent } from "../helpers/dom";
+import { DOMHasParent } from "../utils/dom";
 
 class Dropdown extends React.Component {
   static propTypes = {
@@ -29,9 +29,9 @@ class Dropdown extends React.Component {
   triggerRef = React.createRef();
   elRef = React.createRef();
 
-  handleOptionSelect = selection => {
-    const value = selection[0].value;
-    const displayText = selection[0].text;
+  handleOptionSelect = ([firstSelection]) => {
+    const { value } = firstSelection;
+    const { displayText } = firstSelection;
 
     this.setState({ value, displayText, isOpened: false });
   };
