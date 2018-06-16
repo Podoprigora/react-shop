@@ -22,6 +22,10 @@ class OptionsList extends React.Component {
     onSelect: () => {}
   };
 
+  state = {
+    selection: {}
+  };
+
   static getDerivedStateFromProps(nextProps, prevState) {
     const { children, selMode, selected, size } = nextProps;
     let selection = {};
@@ -40,10 +44,6 @@ class OptionsList extends React.Component {
     });
     return { selection, collapsed: size > 0 && React.Children.count(children) > size };
   }
-
-  state = {
-    selection: {}
-  };
 
   shouldComponentUpdate(nextProps, nextState) {
     const { children: nextChildren } = nextProps;

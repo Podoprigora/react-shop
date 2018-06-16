@@ -5,6 +5,7 @@ const webpack = require("webpack");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = merge(common, {
+  mode: "development",
   module: {
     rules: [
       {
@@ -63,10 +64,5 @@ module.exports = merge(common, {
     port: 9000,
     compress: false
   },
-  plugins: [
-    new webpack.NamedModulesPlugin(),
-    new webpack.DefinePlugin({
-      "process.env.NODE_ENV": JSON.stringify("development")
-    })
-  ]
+  plugins: []
 });

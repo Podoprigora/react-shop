@@ -47,10 +47,7 @@ class NumberRange extends React.PureComponent {
 
   handleSliderChange = ([min, max]) => {
     if (min < max) {
-      this.setState({
-        min,
-        max
-      });
+      this.setState({ min, max });
     }
   };
 
