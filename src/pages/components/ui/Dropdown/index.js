@@ -29,9 +29,9 @@ class Dropdown extends React.Component {
   triggerRef = React.createRef();
   elRef = React.createRef();
 
-  handleOptionSelect = selection => {
-    const value = selection[0].value;
-    const displayText = selection[0].text;
+  handleOptionSelect = ([firstSelection]) => {
+    const { value } = firstSelection;
+    const { displayText } = firstSelection;
 
     this.setState({ value, displayText, isOpened: false });
   };

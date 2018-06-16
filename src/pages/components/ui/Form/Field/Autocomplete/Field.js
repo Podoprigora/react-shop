@@ -15,16 +15,16 @@ class Field extends React.Component {
     inputRef: PropTypes.object
   };
 
+  state = {
+    value: this.props.value || ""
+  };
+
   static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.value !== prevState.value) {
       return { value: nextProps.value };
     }
     return null;
   }
-
-  state = {
-    value: this.props.value || ""
-  };
 
   handleChange = ev => {
     const value = ev.target.value;

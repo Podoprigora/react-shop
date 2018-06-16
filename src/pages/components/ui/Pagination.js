@@ -18,13 +18,6 @@ class Pagination extends React.Component {
     onChange: () => {}
   };
 
-  static getState = ({ currentPage, totalItems, pageSize }) => ({
-    currentPage,
-    totalPages: Math.ceil(totalItems / pageSize),
-    start: currentPage * pageSize,
-    offset: pageSize
-  });
-
   constructor(props) {
     super(props);
 
@@ -36,6 +29,13 @@ class Pagination extends React.Component {
   shouldComponentUpdate(nextProps, nextState) {
     return nextState.currentPage !== this.state.currentPage;
   }
+
+  static getState = ({ currentPage, totalItems, pageSize }) => ({
+    currentPage,
+    totalPages: Math.ceil(totalItems / pageSize),
+    start: currentPage * pageSize,
+    offset: pageSize
+  });
 
   handlePageChange = page => ev => {
     const { onChange } = this.props;

@@ -22,6 +22,9 @@
     "no-unused-vars": 0,
     "no-underscore-dangle": 0,
     "linebreak-style": ["error", "windows"],
+    "jsx-a11y/anchor-is-valid": 0,
+    "jsx-a11y/label-has-for": 0,
+    "prefer-destructuring": 0,
 
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/prefer-stateless-function": 0,

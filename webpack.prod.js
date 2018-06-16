@@ -7,6 +7,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
 
 module.exports = merge(common, {
+  mode: "production",
   output: {
     publicPath: ""
   },
@@ -59,12 +60,8 @@ module.exports = merge(common, {
   plugins: [
     new CleanWebpackPlugin(["dist"]),
     new ExtractTextPlugin({
-      filename: "resources/styles.[contenthash:16].css",
+      filename: "resources/styles.[hash:16].css",
       allChunks: true
-    }),
-    new UglifyJSPlugin(),
-    new webpack.DefinePlugin({
-      "process.env.NODE_ENV": JSON.stringify("production")
     })
   ]
 });

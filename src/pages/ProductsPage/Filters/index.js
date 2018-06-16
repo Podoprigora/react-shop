@@ -26,7 +26,7 @@ class ProductFilters extends React.PureComponent {
 
     return (
       <aside className="product-filters" ref={elRef} onWheel={onMouseWheel}>
-        <CollapsiblePanel header="Categories">
+        <CollapsiblePanel header="Categories" collapsed>
           <OptionsList selected="all" size={8}>
             <OptionItem value="all" iconCls="icon-folder_open">
               All Jumpers
@@ -38,7 +38,7 @@ class ProductFilters extends React.PureComponent {
             ))}
           </OptionsList>
         </CollapsiblePanel>
-        <CollapsiblePanel header="Brands">
+        <CollapsiblePanel header="Brands" collapsed>
           <OptionsList selMode="multi" size={5}>
             {brandsData.map((brand, index) => (
               <CheckboxOption key={index} value={brand.name}>
@@ -47,7 +47,7 @@ class ProductFilters extends React.PureComponent {
             ))}
           </OptionsList>
         </CollapsiblePanel>
-        <CollapsiblePanel header="Sizes">
+        <CollapsiblePanel header="Sizes" collapsed>
           <OptionsList selMode="multi" size={5}>
             {sizesData.map((size, index) => (
               <CheckboxOption key={index} value={size.id}>
