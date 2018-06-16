@@ -5,11 +5,24 @@ const common = require("./webpack.common.js");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = merge(common, {
   mode: "production",
   output: {
     publicPath: ""
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        styles: {
+          name: "styles",
+          test: /\.css$/,
+          chunks: "all",
+          enforce: true
+        }
+      }
+    }
   },
   module: {
     rules: [
@@ -31,37 +44,35 @@ module.exports = merge(common, {
       },
       {
         test: /\.(scss|css)$/,
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: [
-            {
-              loader: "css-loader",
-              options: {
-                minimize: true
-              }
-            },
-            {
-              loader: "resolve-url-loader"
-            },
-            {
-              loader: "postcss-loader",
-              options: {
-                plugins: () => [require("autoprefixer")]
-              }
-            },
-            {
-              loader: "sass-loader"
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: "css-loader",
+            options: {
+              minimize: true
             }
-          ]
-        })
+          },
+          {
+            loader: "resolve-url-loader"
+          },
+          {
+            loader: "postcss-loader",
+            options: {
+              plugins: () => [require("autoprefixer")]
+            }
+          },
+          {
+            loader: "sass-loader"
+          }
+        ]
       }
     ]
   },
   plugins: [
     new CleanWebpackPlugin(["dist"]),
-    new ExtractTextPlugin({
+    new MiniCssExtractPlugin({
       filename: "resources/styles.[hash:16].css",
-      allChunks: true
+      chunkFilename: "resources/[name].[hash:16].css"
     })
   ]
 });
