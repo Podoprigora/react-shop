@@ -1,12 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
 import OptionItem from "./OptionItem";
+import Tooltip from "../Popover/Tooltip";
 
 const ColorOption = props => (
   <OptionItem
     {...props}
     className="color-option"
-    renderChildren={children => <div className={`color-value-item color-${children.toLowerCase()}`} title={children} />}
+    renderChildren={children => (
+      <Tooltip title={children} position="top">
+        <div className={`color-value-item color-${children.toLowerCase()}`} />
+      </Tooltip>
+    )}
   />
 );
 

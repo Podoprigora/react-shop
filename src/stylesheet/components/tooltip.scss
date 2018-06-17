@@ -1,0 +1,46 @@
+.tooltip {
+  margin: 5px;
+
+  .tooltip__content {
+    background: color("gray-darken-1");
+    color: #fff;
+    text-align: center;
+    padding: 8px 12px;
+    border-radius: 3px;
+    transform-origin: top center;
+
+    &.tooltip-position-top {
+      transform-origin: bottom center;
+    }
+
+    &.tooltip-position-left {
+      transform-origin: right;
+    }
+
+    &.tooltip-position-right {
+      transform-origin: left;
+    }
+  }
+
+  &.anim-tooltip-enter .tooltip__content {
+    opacity: 0;
+    transform: scale3d(0, 0, 0);
+  }
+
+  &.anim-tooltip-enter-active .tooltip__content {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+    transition: opacity 0.3s, transform 0.3s;
+  }
+
+  &.anim-tooltip-exit .tooltip__content {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+  }
+
+  &.anim-tooltip-exit-active .tooltip__content {
+    opacity: 0;
+    transform: scale3d(0, 0, 0);
+    transition: opacity 0.3s, transform 0.3s;
+  }
+}
