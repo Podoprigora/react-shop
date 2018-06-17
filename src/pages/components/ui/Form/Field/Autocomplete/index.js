@@ -244,8 +244,15 @@ class AutocompleteField extends React.Component {
     const { displayName } = this.props;
 
     if (row._local) {
-      this._doInputChange(row[displayName]);
-      this.inputRef.current.focus();
+      this.setState(
+        {
+          inputValue: row[displayName]
+        },
+        () => {
+          this._doInputChange(row[displayName]);
+          this.inputRef.current.focus();
+        }
+      );
     } else {
       this.enableScrollIntoView = false;
 

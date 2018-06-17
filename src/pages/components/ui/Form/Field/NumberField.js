@@ -23,7 +23,7 @@ class NumberField extends React.Component {
     const { value } = ev.target;
 
     if (/^[-/./0-9]*$/g.test(value)) {
-      onChange(ev, value);
+      onChange(value);
     }
   };
 
@@ -31,11 +31,11 @@ class NumberField extends React.Component {
     const { min, max, value, defaultValue, onChange, onBlur } = this.props;
 
     if (min && value && value < min) {
-      onChange(ev, min);
+      onChange(min);
     } else if (max && value && value > max) {
-      onChange(ev, max);
+      onChange(max);
     } else {
-      onChange(ev, value || defaultValue);
+      onChange(value || defaultValue);
     }
 
     onBlur(ev);
@@ -50,12 +50,12 @@ class NumberField extends React.Component {
       // Arrow Up
       case 38:
         newValue = newValue ? Math.min(newValue + 1, max) : min;
-        onChange(ev, newValue);
+        onChange(newValue);
         break;
       // Arrow Down
       case 40:
         newValue = newValue ? Math.max(newValue - 1, min) : max;
-        onChange(ev, newValue);
+        onChange(newValue);
         break;
       default:
         break;

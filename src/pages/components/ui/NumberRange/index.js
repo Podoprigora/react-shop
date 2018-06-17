@@ -29,13 +29,13 @@ class NumberRange extends React.PureComponent {
     onChange({ min, max });
   };
 
-  handleMinFieldChange = (ev, value) => {
+  handleMinFieldChange = value => {
     const { max } = this.state;
 
     this.setState({ min: value ? parseInt(value, 10) : "" });
   };
 
-  handleMaxFieldChange = (ev, value) => {
+  handleMaxFieldChange = value => {
     const { min } = this.state;
 
     this.setState({ max: value ? parseInt(value, 10) : "" });
