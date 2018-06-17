@@ -12,12 +12,14 @@ class Tooltip extends React.Component {
     children: PropTypes.node.isRequired,
     title: PropTypes.string.isRequired,
     position: PropTypes.string,
-    delay: PropTypes.number
+    delay: PropTypes.number,
+    disableTouchListener: PropTypes.bool
   };
 
   static defaultProps = {
     position: "bottom",
-    delay: 160
+    delay: 160,
+    disableTouchListener: false
   };
 
   state = {
@@ -45,16 +47,23 @@ class Tooltip extends React.Component {
   handleMouseLeave = ev => {
     clearInterval(this.enterTimer);
     this.toggleOpen(false);
-    this.ignoreTouchEvent = false;
   };
 
   handleTouchStart = ev => {
+    const { delay, disableTouchListener } = this.props;
+    const { isOpened } = this.state;
+
     this.ignoreTouchEvent = true;
+
+    if (!disableTouchListener) {
+      clearInterval(this.enterTimer);
+      this.enterTimer = setTimeout(() => this.toggleOpen(!isOpened), delay);
+    }
   };
 
   render() {
     const { isOpened } = this.state;
-    const { children, title, position } = this.props;
+    const { children, title, position, disableTouchListener } = this.props;
 
     return (
       <Manager>
