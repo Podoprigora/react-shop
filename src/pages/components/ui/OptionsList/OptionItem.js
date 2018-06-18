@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
-class OptionItem extends React.PureComponent {
+class OptionItem extends React.Component {
   static propTypes = {
     children: PropTypes.string.isRequired,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -11,13 +11,16 @@ class OptionItem extends React.PureComponent {
     hidden: PropTypes.bool,
     className: PropTypes.string,
     iconCls: PropTypes.string,
-    tooltip: PropTypes.string,
     onClick: PropTypes.func,
     renderChildren: PropTypes.func
   };
 
+  shouldComponentUpdate(nextProps) {
+    return this.props.selected !== nextProps.selected;
+  }
+
   render() {
-    const { children, index, value, selected, className, iconCls, tooltip, onClick, renderChildren } = this.props;
+    const { children, index, value, selected, className, iconCls, onClick, renderChildren } = this.props;
 
     return (
       <li>

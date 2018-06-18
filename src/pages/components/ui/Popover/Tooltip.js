@@ -5,6 +5,7 @@ import { Manager, Reference, Popper } from "react-popper";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import classNames from "classnames";
 import debounce from "lodash/debounce";
+import isMobile from "ismobilejs";
 import Portal from "../utils/Portal";
 
 class Tooltip extends React.Component {
@@ -18,13 +19,17 @@ class Tooltip extends React.Component {
 
   static defaultProps = {
     position: "bottom",
-    delay: 160,
-    disableTouchListener: false
+    delay: 1000,
+    disableTouchListener: true
   };
 
   state = {
     isOpened: false
   };
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.state.isOpened !== nextState.isOpened;
+  }
 
   enterTimer = null;
   ignoreTouchEvent = false;
@@ -36,12 +41,10 @@ class Tooltip extends React.Component {
   handleMouseEnter = ev => {
     const { delay } = this.props;
 
-    if (this.ignoreTouchEvent) {
-      return;
+    if (!isMobile.any) {
+      clearInterval(this.enterTimer);
+      this.enterTimer = setTimeout(() => this.toggleOpen(true), delay);
     }
-
-    clearInterval(this.enterTimer);
-    this.enterTimer = setTimeout(() => this.toggleOpen(true), delay);
   };
 
   handleMouseLeave = ev => {
@@ -52,8 +55,6 @@ class Tooltip extends React.Component {
   handleTouchStart = ev => {
     const { delay, disableTouchListener } = this.props;
     const { isOpened } = this.state;
-
-    this.ignoreTouchEvent = true;
 
     if (!disableTouchListener) {
       clearInterval(this.enterTimer);
