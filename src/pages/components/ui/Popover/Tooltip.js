@@ -19,13 +19,17 @@ class Tooltip extends React.Component {
 
   static defaultProps = {
     position: "bottom",
-    delay: 160,
-    disableTouchListener: false
+    delay: 1000,
+    disableTouchListener: true
   };
 
   state = {
     isOpened: false
   };
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.state.isOpened !== nextState.isOpened;
+  }
 
   enterTimer = null;
   ignoreTouchEvent = false;

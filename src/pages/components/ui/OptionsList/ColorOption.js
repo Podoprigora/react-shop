@@ -8,7 +8,7 @@ const ColorOption = props => (
     {...props}
     className="color-option"
     renderChildren={children => (
-      <Tooltip title={children} position="top">
+      <Tooltip title={children} position="top" delay={166}>
         <div className={`color-value-item color-${children.toLowerCase()}`} />
       </Tooltip>
     )}
