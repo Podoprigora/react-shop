@@ -4,19 +4,29 @@ import PropTypes from "prop-types";
 
 class Portal extends React.Component {
   static propTypes = {
-    children: PropTypes.node.isRequired
+    children: PropTypes.node.isRequired,
+    onRendered: PropTypes.func
   };
 
-  constructor(props) {
-    super(props);
+  static defaultProps = {
+    onRendered: () => {}
+  };
 
-    this.portalContainerEl = document.body;
+  componentDidMount() {
+    this.mountNode = document.body;
+    this.forceUpdate(this.props.onRendered);
   }
+
+  componentWillUnmount() {
+    this.mountNode = null;
+  }
+
+  mountNode = null;
 
   render() {
     const { children } = this.props;
 
-    return ReactDOM.createPortal(children, this.portalContainerEl);
+    return this.mountNode ? ReactDOM.createPortal(children, this.mountNode) : null;
   }
 }
 
