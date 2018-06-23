@@ -25,7 +25,6 @@ class Portal extends React.Component {
 
   render() {
     const { children } = this.props;
-
     return this.mountNode ? ReactDOM.createPortal(children, this.mountNode) : null;
   }
 }

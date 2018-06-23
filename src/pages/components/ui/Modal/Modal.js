@@ -1,16 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
+import getScrollbarSize from "dom-helpers/util/scrollbarSize";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import classNames from "classnames";
 import Portal from "../utils/Portal";
 import ModalManager from "./ModalManager";
 
-const setBodyClass = () => {
-  document.body.classList.add("body--show-modal");
+const setBodyStyle = () => {
+  const { style } = document.body;
+
+  style.overflow = "hidden";
+  style.paddingRight = `${getScrollbarSize()}px`;
 };
 
-const removeBodyClass = () => {
-  document.body.classList.remove("body--show-modal");
+const removeBodyStyle = () => {
+  const { style } = document.body;
+
+  style.overflow = "auto";
+  style.paddingRight = "0";
 };
 
 class Modal extends React.Component {
@@ -59,10 +66,6 @@ class Modal extends React.Component {
     return nextProps.open !== this.props.open || nextState.rendered !== this.state.rendered;
   }
 
-  componentWillUnmount() {
-    removeBodyClass();
-  }
-
   isRunningAnimation = false;
   modalRef = React.createRef();
 
@@ -76,6 +79,7 @@ class Modal extends React.Component {
 
         this.props.manager.add(this);
         doc.addEventListener("keydown", this.handleDocumentKeyDown);
+        setBodyStyle();
       }
     );
   }
@@ -108,6 +112,8 @@ class Modal extends React.Component {
 
   handleExitedAnimation = () => {
     this.isRunningAnimation = false;
+
+    removeBodyStyle();
     this.forceUpdate(this.props.onClose());
   };
 
@@ -124,7 +130,6 @@ class Modal extends React.Component {
   };
 
   handlePortalRendered = () => {
-    setBodyClass();
     this.handleOpen();
   };
 

@@ -263,8 +263,8 @@ class AutocompleteField extends React.Component {
           isCollapsed: true
         },
         () => {
-          this.preventFocusHandler = true;
-          this.inputRef.current.focus();
+          // this.preventFocusHandler = true;
+          // this.inputRef.current.focus();
         }
       );
 

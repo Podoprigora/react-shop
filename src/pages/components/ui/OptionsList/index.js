@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 
 import OptionItem from "./OptionItem";
+import CollapsibleItem from "./CollapsibleItem";
 
 const SINGLE_MODE = "single";
 const MULTI_MODE = "multi";
@@ -116,9 +117,7 @@ class OptionsList extends React.Component {
             })
         )}
         {size < React.Children.count(children) && (
-          <OptionItem iconCls={collapsed ? "icon-expand_more" : "icon-expand_less"} onClick={this.toggleCollapsed}>
-            {collapsed ? "Show more" : "Show less"}
-          </OptionItem>
+          <CollapsibleItem collapsed={collapsed} onClick={this.toggleCollapsed} />
         )}
       </ul>
     );

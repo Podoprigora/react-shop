@@ -9,7 +9,9 @@ import api from "../../../modules/api";
 import { RadioOption } from "../../components/ui/OptionsList";
 import Dropdown from "../../components/ui/Dropdown";
 
-class ProductList extends React.Component {
+import Modal from "../../components/ui/Modal";
+
+class ProductList extends React.PureComponent {
   static propTypes = {
     data: PropTypes.array.isRequired,
     total: PropTypes.number.isRequired
@@ -17,16 +19,13 @@ class ProductList extends React.Component {
 
   state = {
     isFetching: false,
+    showAddedItemConfirmModal: false,
     data: this.props.data,
     total: this.props.total
   };
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return nextState.isFetching !== this.state.isFetching;
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (!this.state.isFetching) {
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (!this.state.isFetching && prevState.isFetching) {
       window.scroll({
         top: 0,
         behavior: "smooth"
@@ -50,8 +49,16 @@ class ProductList extends React.Component {
     this.loadData(params);
   };
 
+  handleShowCartModal = id => {
+    this.setState({ showAddedItemConfirmModal: true });
+  };
+
+  handleHideCartModal = () => {
+    this.setState({ showAddedItemConfirmModal: false });
+  };
+
   render() {
-    const { isFetching, data, total } = this.state;
+    const { isFetching, data, total, showAddedItemConfirmModal } = this.state;
 
     return (
       <section className="product-list">
@@ -82,10 +89,13 @@ class ProductList extends React.Component {
             <RadioOption value="name">Name</RadioOption>
           </Dropdown>
         </div>
-        <ProductListItems data={data} />
+        <ProductListItems data={data} onAddToCart={this.handleShowCartModal} />
         <div className="product-list__paginator">
           <Pagination totalItems={total} pageSize={24} onChange={this.handleChangePage} />
         </div>
+        <Modal open={showAddedItemConfirmModal} onClose={this.handleHideCartModal}>
+          <div>Cart</div>
+        </Modal>
       </section>
     );
   }
