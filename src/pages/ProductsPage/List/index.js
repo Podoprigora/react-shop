@@ -9,7 +9,8 @@ import api from "../../../modules/api";
 import { RadioOption } from "../../components/ui/OptionsList";
 import Dropdown from "../../components/ui/Dropdown";
 
-import Modal from "../../components/ui/Modal";
+import ModalWindow, { WindowHeader, WindowContent, WindowButtons } from "../../components/ui/Window";
+import Button from "../../components/ui/Button";
 
 class ProductList extends React.PureComponent {
   static propTypes = {
@@ -25,7 +26,7 @@ class ProductList extends React.PureComponent {
   };
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    if (!this.state.isFetching && prevState.isFetching) {
+    if (prevState.isFetching) {
       window.scroll({
         top: 0,
         behavior: "smooth"
@@ -93,9 +94,18 @@ class ProductList extends React.PureComponent {
         <div className="product-list__paginator">
           <Pagination totalItems={total} pageSize={24} onChange={this.handleChangePage} />
         </div>
-        <Modal open={showAddedItemConfirmModal} onClose={this.handleHideCartModal}>
-          <div>Cart</div>
-        </Modal>
+        <ModalWindow open={showAddedItemConfirmModal} onClose={this.handleHideCartModal} width="600" height="300">
+          <WindowHeader align="center">Product was added to cart.</WindowHeader>
+          <WindowContent>Product</WindowContent>
+          <WindowButtons justifyContent="center">
+            <Button plain onClick={this.handleHideCartModal}>
+              Return to shoping
+            </Button>
+            <Button primary plain>
+              To Cart
+            </Button>
+          </WindowButtons>
+        </ModalWindow>
       </section>
     );
   }

@@ -22,7 +22,7 @@ const removeBodyStyle = () => {
 
 class Modal extends React.Component {
   static propTypes = {
-    children: PropTypes.element.isRequired,
+    children: PropTypes.node.isRequired,
     open: PropTypes.bool,
     manager: PropTypes.object,
     hideBackdrop: PropTypes.bool,
