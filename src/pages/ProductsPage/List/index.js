@@ -9,8 +9,7 @@ import api from "../../../modules/api";
 import { RadioOption } from "../../components/ui/OptionsList";
 import Dropdown from "../../components/ui/Dropdown";
 
-import ModalWindow, { WindowHeader, WindowContent, WindowButtons } from "../../components/ui/Window";
-import Button from "../../components/ui/Button";
+import AddToCartPreviewWindow from "../AddToCartPreviewWindow";
 
 class ProductList extends React.PureComponent {
   static propTypes = {
@@ -20,7 +19,7 @@ class ProductList extends React.PureComponent {
 
   state = {
     isFetching: false,
-    showAddedItemConfirmModal: false,
+    showAddToCartPreviewWindow: false,
     data: this.props.data,
     total: this.props.total
   };
@@ -51,18 +50,20 @@ class ProductList extends React.PureComponent {
   };
 
   handleShowCartModal = id => {
-    this.setState({ showAddedItemConfirmModal: true });
+    this.setState({ showAddToCartPreviewWindow: true });
   };
 
   handleHideCartModal = () => {
-    this.setState({ showAddedItemConfirmModal: false });
+    this.setState({ showAddToCartPreviewWindow: false });
   };
 
   render() {
-    const { isFetching, data, total, showAddedItemConfirmModal } = this.state;
+    const { isFetching, data, total, showAddToCartPreviewWindow } = this.state;
 
     return (
       <section className="product-list">
+        <AddToCartPreviewWindow open={showAddToCartPreviewWindow} onClose={this.handleHideCartModal} />
+
         {isFetching && (
           <React.Fragment>
             <div className="layout-position-fixed">
@@ -94,18 +95,6 @@ class ProductList extends React.PureComponent {
         <div className="product-list__paginator">
           <Pagination totalItems={total} pageSize={24} onChange={this.handleChangePage} />
         </div>
-        <ModalWindow open={showAddedItemConfirmModal} onClose={this.handleHideCartModal} width="600" height="300">
-          <WindowHeader align="center">Product was added to cart.</WindowHeader>
-          <WindowContent>Product</WindowContent>
-          <WindowButtons justifyContent="center">
-            <Button plain onClick={this.handleHideCartModal}>
-              Return to shoping
-            </Button>
-            <Button primary plain>
-              To Cart
-            </Button>
-          </WindowButtons>
-        </ModalWindow>
       </section>
     );
   }

@@ -37,7 +37,7 @@
     }
     .modal__content {
       transform: translateY(0);
-      transition: transform 0.3s ease-out;
+      transition: transform 0.3s;
     }
   }
 
@@ -58,7 +58,7 @@
     .modal__content {
       opacity: 0;
       transform: translateY(-20px);
-      transition: opacity 0.3s, transform 0.3s ease-out;
+      transition: opacity 0.3s, transform 0.3s;
     }
   }
 }

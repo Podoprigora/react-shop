@@ -1,10 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const WindowContent = ({ children }) => <section className="modal-window__content">{children}</section>;
+class WindowContent extends React.PureComponent {
+  static propTypes = {
+    children: PropTypes.node.isRequired
+  };
 
-WindowContent.propTypes = {
-  children: PropTypes.node.isRequired
-};
+  render() {
+    const { children } = this.props;
+
+    return <section className="modal-window__content">{children}</section>;
+  }
+}
 
 export default WindowContent;

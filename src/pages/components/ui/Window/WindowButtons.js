@@ -1,15 +1,21 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const WindowButtons = ({ children, justifyContent }) => (
-  <nav className="modal-window__buttons" style={{ justifyContent }}>
-    {children}
-  </nav>
-);
+class WindowButtons extends React.PureComponent {
+  static propTypes = {
+    children: PropTypes.node.isRequired,
+    justifyContent: PropTypes.string
+  };
 
-WindowButtons.propTypes = {
-  children: PropTypes.node.isRequired,
-  justifyContent: PropTypes.string
-};
+  render() {
+    const { children, justifyContent } = this.props;
+
+    return (
+      <nav className="modal-window__buttons" style={{ justifyContent }}>
+        {children}
+      </nav>
+    );
+  }
+}
 
 export default WindowButtons;
