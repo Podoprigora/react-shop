@@ -1,24 +1,43 @@
 .button {
-  padding: 8px 10px;
-  background: transparent;
+  padding: 8px 16px;
+  background: color("gray-lighten-3");
   border: 2px solid transparent;
   outline: none;
   border-radius: 3px;
   box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.4);
   cursor: pointer;
+  transition: opacity 0.3s ease-out;
 
   &:focus {
     outline: 0;
+  }
+
+  &.button-plain {
+    box-shadow: none;
+    border-color: color("gray-lighten-3");
+    transition: background 0.3s ease-out;
+
+    &:hover {
+      opacity: 1;
+      background: transparent;
+    }
   }
 
   &.button-primary {
     font-weight: 500;
     background: theme-color("primary");
     color: color("white");
-    transition: opacity 0.3s ease-out;
 
-    &:hover {
-      opacity: 0.8;
+    &.button-plain {
+      border-color: theme-color("primary");
+
+      &:hover {
+        color: theme-color("primary");
+      }
     }
+  }
+
+  &:hover {
+    opacity: 0.8;
   }
 }

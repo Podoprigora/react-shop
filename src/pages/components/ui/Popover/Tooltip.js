@@ -79,7 +79,7 @@ class Tooltip extends React.Component {
           }
         </Reference>
         <Portal>
-          <TransitionGroup>
+          <TransitionGroup component={null}>
             {isOpened && (
               <CSSTransition classNames="anim-tooltip" timeout={300}>
                 <Popper placement={position}>

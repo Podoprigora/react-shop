@@ -1,4 +1,2 @@
-import FeedCarousel from "./FeedCarousel";
-
-export default FeedCarousel;
+export { default } from "./FeedCarousel";
 export withDataLoader from "./withDataLoader";

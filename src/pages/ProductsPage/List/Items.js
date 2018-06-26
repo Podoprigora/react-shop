@@ -22,7 +22,16 @@ class ProductListItems extends React.PureComponent {
         rating: PropTypes.number,
         comments: PropTypes.number
       })
-    ).isRequired
+    ).isRequired,
+    onAddToCart: PropTypes.func
+  };
+
+  static defaultProps = {
+    onAddToCart: () => {}
+  };
+
+  handleAddToCart = id => ev => {
+    this.props.onAddToCart(id);
   };
 
   renderSizes = sizes => {
@@ -45,7 +54,7 @@ class ProductListItems extends React.PureComponent {
     let discount = null;
 
     if (oldPrice && oldPrice > 0 && specialPrice && specialPrice > 0) {
-      discount = Math.round((oldPrice - specialPrice) / oldPrice * 100);
+      discount = Math.round(((oldPrice - specialPrice) / oldPrice) * 100);
     }
 
     return (
@@ -89,7 +98,9 @@ class ProductListItems extends React.PureComponent {
               {rating && <StarRating selected={rating} />}
               {comments && <div className="product-item__comments icon icon-chat_bubble_outline">{comments}</div>}
             </div>
-            <button className="product-item__button">Add to Cart</button>
+            <button className="product-item__button" onClick={this.handleAddToCart(id)}>
+              Add to Cart
+            </button>
           </div>
         </div>
       </li>

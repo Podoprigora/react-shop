@@ -9,7 +9,9 @@ import api from "../../../modules/api";
 import { RadioOption } from "../../components/ui/OptionsList";
 import Dropdown from "../../components/ui/Dropdown";
 
-class ProductList extends React.Component {
+import AddToCartPreviewWindow from "../AddToCartPreviewWindow";
+
+class ProductList extends React.PureComponent {
   static propTypes = {
     data: PropTypes.array.isRequired,
     total: PropTypes.number.isRequired
@@ -17,16 +19,13 @@ class ProductList extends React.Component {
 
   state = {
     isFetching: false,
+    showAddToCartPreviewWindow: false,
     data: this.props.data,
     total: this.props.total
   };
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return nextState.isFetching !== this.state.isFetching;
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (!this.state.isFetching) {
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (prevState.isFetching) {
       window.scroll({
         top: 0,
         behavior: "smooth"
@@ -50,11 +49,21 @@ class ProductList extends React.Component {
     this.loadData(params);
   };
 
+  handleShowCartModal = id => {
+    this.setState({ showAddToCartPreviewWindow: true });
+  };
+
+  handleHideCartModal = () => {
+    this.setState({ showAddToCartPreviewWindow: false });
+  };
+
   render() {
-    const { isFetching, data, total } = this.state;
+    const { isFetching, data, total, showAddToCartPreviewWindow } = this.state;
 
     return (
       <section className="product-list">
+        <AddToCartPreviewWindow open={showAddToCartPreviewWindow} onClose={this.handleHideCartModal} />
+
         {isFetching && (
           <React.Fragment>
             <div className="layout-position-fixed">
@@ -82,7 +91,7 @@ class ProductList extends React.Component {
             <RadioOption value="name">Name</RadioOption>
           </Dropdown>
         </div>
-        <ProductListItems data={data} />
+        <ProductListItems data={data} onAddToCart={this.handleShowCartModal} />
         <div className="product-list__paginator">
           <Pagination totalItems={total} pageSize={24} onChange={this.handleChangePage} />
         </div>

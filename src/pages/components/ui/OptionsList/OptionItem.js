@@ -8,7 +8,6 @@ class OptionItem extends React.Component {
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     index: PropTypes.number,
     selected: PropTypes.bool,
-    hidden: PropTypes.bool,
     className: PropTypes.string,
     iconCls: PropTypes.string,
     onClick: PropTypes.func,
