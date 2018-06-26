@@ -14,7 +14,7 @@ class AddToCartPreviewWindow extends React.PureComponent {
     const { open, onClose } = this.props;
 
     return (
-      <ModalWindow open={open} onClose={onClose} width="600" height="300">
+      <ModalWindow open={open} onClose={onClose} width="600">
         <WindowHeader align="center">Product was added to cart.</WindowHeader>
         <WindowContent>Product</WindowContent>
         <WindowButtons justifyContent="center">
