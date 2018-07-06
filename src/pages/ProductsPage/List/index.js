@@ -80,7 +80,7 @@ class ProductList extends React.PureComponent {
             <RadioOption value="name">Name</RadioOption>
           </Dropdown>
         </div>
-        <ProductListItems data={data} onAddToCart={this.handleShowCartModal} />
+        <ProductListItems data={data} />
         <div className="product-list__paginator">
           <Pagination totalItems={total} pageSize={24} onChange={this.handleChangePage} />
         </div>

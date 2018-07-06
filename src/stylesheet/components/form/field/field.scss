@@ -55,6 +55,20 @@
   }
 }
 
+.field-error-message {
+  color: color("red");
+  padding: 5px;
+
+  &::before {
+    content: "\e001";
+    font-family: "materialicon";
+    margin-right: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    vertical-align: bottom;
+  }
+}
+
 .field-trigger {
   position: absolute;
   top: 50%;
