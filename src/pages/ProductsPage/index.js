@@ -11,10 +11,7 @@ import productsData from "../../../data/products";
 import TopsellerCarousel from "../MainPage/TopsellerCarousel";
 import topsellerData from "../../../data/topseller-products";
 
-const ProductsPage = props => {
-  console.log(props);
-
-  return (
+const ProductsPage = props => (
     <React.Fragment>
       <DocumentScroll>
         {isEnter => (
@@ -31,6 +28,5 @@ const ProductsPage = props => {
       <TopsellerCarousel data={topsellerData} total={45} pageSize={15} />
     </React.Fragment>
   );
-};
 
 export default ProductsPage;

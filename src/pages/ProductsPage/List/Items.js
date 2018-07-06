@@ -22,16 +22,7 @@ class ProductListItems extends React.PureComponent {
         rating: PropTypes.number,
         comments: PropTypes.number
       })
-    ).isRequired,
-    onAddToCart: PropTypes.func
-  };
-
-  static defaultProps = {
-    onAddToCart: () => {}
-  };
-
-  handleAddToCart = id => ev => {
-    this.props.onAddToCart(id);
+    ).isRequired
   };
 
   renderSizes = sizes => {
@@ -98,9 +89,6 @@ class ProductListItems extends React.PureComponent {
               {rating && <StarRating selected={rating} />}
               {comments && <div className="product-item__comments icon icon-chat_bubble_outline">{comments}</div>}
             </div>
-            <button className="product-item__button" onClick={this.handleAddToCart(id)}>
-              Add to Cart
-            </button>
           </div>
         </div>
       </li>

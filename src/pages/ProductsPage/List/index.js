@@ -19,7 +19,6 @@ class ProductList extends React.PureComponent {
 
   state = {
     isFetching: false,
-    showAddToCartPreviewWindow: false,
     data: this.props.data,
     total: this.props.total
   };
@@ -49,21 +48,11 @@ class ProductList extends React.PureComponent {
     this.loadData(params);
   };
 
-  handleShowCartModal = id => {
-    this.setState({ showAddToCartPreviewWindow: true });
-  };
-
-  handleHideCartModal = () => {
-    this.setState({ showAddToCartPreviewWindow: false });
-  };
-
   render() {
     const { isFetching, data, total, showAddToCartPreviewWindow } = this.state;
 
     return (
       <section className="product-list">
-        <AddToCartPreviewWindow open={showAddToCartPreviewWindow} onClose={this.handleHideCartModal} />
-
         {isFetching && (
           <React.Fragment>
             <div className="layout-position-fixed">
