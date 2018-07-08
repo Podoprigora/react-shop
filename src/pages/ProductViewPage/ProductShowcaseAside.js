@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { format as moneyFormat } from "money-formatter";
+import classNames from "classnames";
 
 import Button from "../components/ui/Button";
 import OptionsList, { OptionItem } from "../components/ui/OptionsList";

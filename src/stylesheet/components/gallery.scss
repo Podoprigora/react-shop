@@ -1,0 +1,137 @@
+.gallery {
+  .gallery__viewport {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .gallery__nav {
+    display: block;
+
+    .gallery__nav-item {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      margin: 0 20px;
+      background: #fff;
+      color: theme-color("text");
+      width: 50px;
+      height: 50px;
+      outline: 0;
+      border: 0;
+      border-radius: 50%;
+      box-shadow: 0 2px 6px -1px rgba(0, 0, 0, 0.14);
+      cursor: pointer;
+      z-index: 1001;
+
+      &.nav-item--disabled {
+        color: rgba(theme-color("text"), 0.2);
+        cursor: auto;
+      }
+
+      &:hover:not(.nav-item--disabled) {
+        background: theme-color("primary");
+        color: #fff;
+        transition: background 0.3s ease-out;
+      }
+
+      &::before {
+        content: "";
+        font-family: "materialicon";
+        line-height: 24px;
+        font-size: 24px;
+        font-weight: 400;
+      }
+
+      &.nav-item-prev {
+        left: 0;
+
+        &::before {
+          content: "\e5c4";
+        }
+      }
+
+      &.nav-item-next {
+        right: 0;
+
+        &::before {
+          content: "\e5c8";
+        }
+      }
+    }
+  }
+
+  .gallery__item {
+    margin: 0 auto;
+    max-width: 424px;
+    min-height: 200px;
+
+    img {
+      display: inline-block;
+      max-width: 100%;
+      border: 0;
+    }
+  }
+
+  .gallery__fullsize {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1000;
+    overflow: hidden;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease-out, visibility 0s 0.3s;
+
+    &.gallery__fullsize--active {
+      visibility: visible;
+      opacity: 1;
+      transition: opacity 0.3s ease-out;
+    }
+
+    img {
+      position: absolute;
+      display: inline;
+      top: 0;
+      left: 0;
+    }
+  }
+}
+
+.gallery__thumbnails {
+  display: inline-block;
+  white-space: nowrap;
+  width: 100%;
+  border-top: 1px solid theme-color("border");
+  border-bottom: 1px solid theme-color("border");
+  text-align: center;
+  overflow: auto;
+
+  .thumbnail-list {
+    & > li {
+      display: inline-block;
+    }
+  }
+
+  .thumbnail-item {
+    display: block;
+    width: 80px;
+    min-height: 60px;
+    cursor: pointer;
+    padding: 2px;
+    margin: 10px 10px 10px 0;
+
+    &.thumbnail-item--selected {
+      border: 2px solid theme-color("primary");
+      border-radius: 3px;
+    }
+
+    > img {
+      display: inline-block;
+      max-height: 100%;
+      max-width: 100%;
+      border: 0;
+    }
+  }
+}

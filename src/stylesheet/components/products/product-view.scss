@@ -3,15 +3,15 @@
 
 .product-view-showcase {
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: row nowrap;
 
   .product-showcase__gallery {
-    flex: 1;
-    min-width: 400px;
+    flex: 1 1 auto;
+    min-width: 580px;
   }
 
   .product-showcase__aside {
-    width: 320px;
+    width: 340px;
     padding: 25px;
   }
 
@@ -75,7 +75,7 @@
   }
 
   .product-showcase__sizes {
-    padding-bottom: 15px;
+    padding: 5px 0 15px 0;
 
     .product-showcase__size-options {
       > li {

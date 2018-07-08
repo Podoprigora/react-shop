@@ -6,9 +6,10 @@ export default {
   specialPrice: 67.47,
   currency: "EUR",
   images: [
-    "naketano-family-biz-hooded-jacket-women-grey.jpg",
-    "naketano-family-biz-hooded-jacket-women-grey2.jpg",
-    "naketano-family-biz-hooded-jacket-women-grey3.jpg"
+    "data/images/product/naketano-family-biz-hooded-jacket-women-grey.jpg",
+    "data/images/product/naketano-family-biz-hooded-jacket-women-grey2.jpg",
+    "data/images/product/naketano-family-biz-hooded-jacket-women-grey3.jpg"
+    // "data/images/product/BY004EWBUAG2_6855317_1_v2.jpg"
   ],
   sizes: ["XS", "S", "M", "L"],
   features: [
