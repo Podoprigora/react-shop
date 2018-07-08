@@ -2,8 +2,10 @@ import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 
 import MainLayout from "./components/MainLayout";
+import NoMatchPage from "./NoMatchPage";
 import MainPage from "./MainPage";
 import ProductsPage from "./ProductsPage";
+import ProductViewPage from "./ProductViewPage";
 import TestPage from "./TestPage";
 
 import "../stylesheet/styles.scss";
@@ -23,12 +25,16 @@ async function loadData() {
 
 const App = () => (
   <MainLayout>
-    <Route exact path="/" component={MainPage} />
-    <Route exact path="/products" component={ProductsPage} />
-    <Route exact path="/test" component={TestPage} />
+    <Switch>
+      <Route exact path="/" component={MainPage} />
+      <Route path="/products" component={ProductsPage} />
+      <Route path="/test" component={TestPage} />
 
-    <Route exact path="/:category/:subcategory" component={ProductsPage} />
-    <Route exact path="/:category/:subcategory/:node" component={ProductsPage} />
+      <Route path="/product/:id" component={ProductViewPage} />
+      <Route path="/:category/:subcategory" component={ProductsPage} />
+      <Route path="/:category/:subcategory/:node" component={ProductsPage} />
+      <Route component={NoMatchPage} />
+    </Switch>
   </MainLayout>
 );
 

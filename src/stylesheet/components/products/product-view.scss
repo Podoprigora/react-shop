@@ -1,0 +1,124 @@
+.product-view {
+}
+
+.product-view-showcase {
+  display: flex;
+  flex-flow: row nowrap;
+
+  .product-showcase__gallery {
+    flex: 1 1 auto;
+    min-width: 580px;
+  }
+
+  .product-showcase__aside {
+    width: 340px;
+    padding: 25px;
+  }
+
+  .product-showcase__header {
+    text-align: center;
+  }
+
+  .product-showcase__brand,
+  .product-showcase__name {
+    font-size: 18px;
+    font-weight: 500;
+    color: theme-color("text");
+  }
+
+  .product-showcase__brand {
+    text-transform: uppercase;
+  }
+
+  .product-showcase__prices {
+    position: relative;
+    text-align: center;
+    padding: 15px 0 15px 0;
+  }
+
+  .product-showcase__price--old {
+    font-size: 24px;
+    font-weight: 500;
+  }
+
+  .product-showcase__price--special {
+    font-size: 36px;
+    font-weight: 700;
+  }
+
+  .product-showcase__flag {
+    position: absolute;
+    top: 12px;
+    right: 30px;
+    padding: 5px;
+  }
+
+  .product-showcase__tax-details {
+    padding-top: 10px;
+    font-style: italic;
+    color: color("gray");
+  }
+
+  .product-showcase__delivery-details {
+    color: theme-color("link-hover");
+    padding: 10px;
+    font-weight: 500;
+    text-align: center;
+
+    &::before {
+      content: "\e616";
+      font-family: "materialicon";
+      vertical-align: bottom;
+      margin-right: 2px;
+      font-size: 16px;
+    }
+  }
+
+  .product-showcase__sizes {
+    padding: 5px 0 15px 0;
+
+    .product-showcase__size-options {
+      > li {
+        display: inline-block;
+
+        .product-size__option {
+          padding: 8px 16px;
+          margin: 0 6px 6px 0;
+          background: color("gray-lighten-3");
+          border: 2px solid transparent;
+          outline: none;
+          border-radius: 3px;
+          cursor: pointer;
+          transition: background 0.3s ease-out;
+
+          &:hover {
+            background: transparent;
+            border-color: color("gray-lighten-3");
+          }
+
+          &.option-item--selected {
+            background: #fff;
+            border-color: theme-color("primary");
+            color: theme-color("primary");
+            font-weight: 700;
+          }
+        }
+      }
+    }
+  }
+
+  .product-showcase__label {
+    padding: 5px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .product-showcase__button {
+    width: 100%;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+}
+
+.product-view-other {
+}

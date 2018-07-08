@@ -1,16 +1,16 @@
 @font-face {
-  font-family: 'materialicon';
-  src:  url('fonts/materialicons/materialicon.eot?inlpt0');
-  src:  url('fonts/materialicons/materialicon.eot?inlpt0#iefix') format('embedded-opentype'),
-    url('fonts/materialicons/materialicon.ttf?inlpt0') format('truetype'),
-    url('fonts/materialicons/materialicon.woff?inlpt0') format('woff'),
-    url('fonts/materialicons/materialicon.svg?inlpt0#materialicon') format('svg');
+  font-family: "materialicon";
+  src: url("fonts/materialicons/materialicon.eot?inlpt0");
+  src: url("fonts/materialicons/materialicon.eot?inlpt0#iefix") format("embedded-opentype"),
+    url("fonts/materialicons/materialicon.ttf?inlpt0") format("truetype"),
+    url("fonts/materialicons/materialicon.woff?inlpt0") format("woff"),
+    url("fonts/materialicons/materialicon.svg?inlpt0#materialicon") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 
 .icon::before {
-  font-family: 'materialicon';
+  font-family: "materialicon";
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -21,6 +21,18 @@
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-size-16::before {
+  font-size: 16px;
+}
+
+.icon-size-18::before {
+  font-size: 18px;
+}
+
+.icon-size-24::before {
+  font-size: 24px;
 }
 
 .icon-3d_rotation:before {

@@ -1,5 +1,6 @@
 @import "./filters.scss";
 @import "./list.scss";
+@import "./product-view.scss";
 
 .product-flag {
   padding: 2px 6px;
@@ -26,6 +27,15 @@
   font-size: 16px;
   font-weight: 500;
   line-height: 24px;
+}
+
+.product-price--old {
+  color: color("gray");
+  text-decoration: line-through;
+}
+
+.product-price--special {
+  color: color("red");
 }
 
 .product-prices {
