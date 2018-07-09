@@ -17,11 +17,15 @@ class GalleryFloatingFullsizeImage extends React.PureComponent {
   };
 
   componentDidMount() {
-    this.wrapRef.current.addEventListener("touchmove", this.handleImageMove, false);
+    if (this.wrapRef.current) {
+      this.wrapRef.current.addEventListener("touchmove", this.handleImageMove, false);
+    }
   }
 
   componentWillUnmount() {
-    this.wrapRef.current.removeEventListener("touchmove", this.handleImageMove, false);
+    if (this.wrapRef.current) {
+      this.wrapRef.current.removeEventListener("touchmove", this.handleImageMove, false);
+    }
   }
 
   wrapRef = React.createRef();
