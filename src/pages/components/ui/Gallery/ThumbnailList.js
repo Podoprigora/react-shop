@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
+import GalleryThumbnailItem from "./ThumbnailItem";
+
 class GalleryThumbnailList extends React.PureComponent {
   static propTypes = {
     images: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -12,27 +14,15 @@ class GalleryThumbnailList extends React.PureComponent {
     selectedIdx: 0
   };
 
-  handleSelect = index => ev => {
-    this.props.onSelect(index);
-  };
-
   render() {
-    const { images, selectedIdx } = this.props;
+    const { images, selectedIdx, onSelect } = this.props;
 
     return (
       <div className="gallery__thumbnails">
         <ul className="thumbnail-list">
           {images.map((image, i) => (
             <li key={i}>
-              <a
-                role="presentation"
-                className={classNames("thumbnail-item", {
-                  "thumbnail-item--selected": i === selectedIdx
-                })}
-                onClick={this.handleSelect(i)}
-              >
-                <img src={image} alt="" />
-              </a>
+              <GalleryThumbnailItem src={image} selected={i === selectedIdx} onClick={ev => onSelect(i)} />
             </li>
           ))}
         </ul>

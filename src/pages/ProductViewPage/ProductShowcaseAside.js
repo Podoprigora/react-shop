@@ -51,7 +51,7 @@ class ProductShowcaseAside extends React.PureComponent {
     const { id, name, brand, sizes, specialPrice, oldPrice, price, currency } = this.props;
 
     return (
-      <div className="product-showcase__aside">
+      <aside className="product-showcase__aside">
         <header className="product-showcase__header">
           <h3 className="product-showcase__brand">{brand}</h3>
           <h4 className="product-showcase__name">{name}</h4>
@@ -60,8 +60,8 @@ class ProductShowcaseAside extends React.PureComponent {
           <div className="product-price--old product-showcase__price--old">{moneyFormat(currency, oldPrice)}</div>
           <div className="product-price--special product-showcase__price--special">
             {moneyFormat(currency, specialPrice)}
+            <div className="product-flag product-flag--hot product-showcase__flag">-{10}%</div>
           </div>
-          <div className="product-flag product-flag--hot product-showcase__flag">-{10}%</div>
           <div className="product-showcase__tax-details">incl. VAT plus shipping costs</div>
         </div>
         {sizes && (
@@ -94,7 +94,7 @@ class ProductShowcaseAside extends React.PureComponent {
           Add to Wishlist
         </Button>
         <div className="product-showcase__delivery-details">Delivery Time Is 4-6 Working Day(s)</div>
-      </div>
+      </aside>
     );
   }
 }

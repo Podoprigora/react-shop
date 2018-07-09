@@ -9,7 +9,6 @@ export default {
     "data/images/product/naketano-family-biz-hooded-jacket-women-grey.jpg",
     "data/images/product/naketano-family-biz-hooded-jacket-women-grey2.jpg",
     "data/images/product/naketano-family-biz-hooded-jacket-women-grey3.jpg"
-    // "data/images/product/BY004EWBUAG2_6855317_1_v2.jpg"
   ],
   sizes: ["XS", "S", "M", "L"],
   features: [
@@ -28,11 +27,7 @@ export default {
     "Manufacturer colour: grey melange"
   ],
   material: "Fabric: 65% Cotton, 35% Polyester",
-  modelSize: {
-    Size: "S",
-    "Breast x waist x hips": "82 x 60 x 88 cm",
-    Height: "172 cm"
-  },
+  modelSize: "Size: S, Breast x waist x hips: 82 x 60 x 88 cm, Height: 172 cm",
   rating: 5,
   comments: 2
 };

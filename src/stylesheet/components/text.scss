@@ -3,3 +3,10 @@
   text-overflow: ellipsis;
   overflow: hidden;
 }
+
+.feature-text {
+  strong {
+    font-weight: 500;
+    padding-right: 2px;
+  }
+}
