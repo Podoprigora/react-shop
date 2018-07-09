@@ -16,7 +16,9 @@ class DocumentScroll extends React.PureComponent {
     const docHeight = document.documentElement.clientHeight;
 
     this.setState({
-      isEnter: top <= 0 && bottom > docHeight
+      isEnter: top <= 0 && bottom > docHeight,
+      top,
+      bottom
     });
   };
 
@@ -26,7 +28,7 @@ class DocumentScroll extends React.PureComponent {
     return (
       <div ref={this.containerRef}>
         <EventListener target="document" onScroll={this.handleDocumentScroll} />
-        {this.props.children(isEnter)}
+        {this.props.children(this.state)}
       </div>
     );
   }

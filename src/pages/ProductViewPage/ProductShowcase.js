@@ -6,7 +6,7 @@ import classNames from "classnames";
 import Button from "../components/ui/Button";
 import OptionsList, { OptionItem } from "../components/ui/OptionsList";
 
-class ProductShowcaseAside extends React.PureComponent {
+class ProductShowcase extends React.PureComponent {
   static propTypes = {
     id: PropTypes.number.isRequired,
     name: PropTypes.string,
@@ -51,7 +51,7 @@ class ProductShowcaseAside extends React.PureComponent {
     const { id, name, brand, sizes, specialPrice, oldPrice, price, currency } = this.props;
 
     return (
-      <aside className="product-showcase__aside">
+      <div className="product-showcase">
         <header className="product-showcase__header">
           <h3 className="product-showcase__brand">{brand}</h3>
           <h4 className="product-showcase__name">{name}</h4>
@@ -94,9 +94,9 @@ class ProductShowcaseAside extends React.PureComponent {
           Add to Wishlist
         </Button>
         <div className="product-showcase__delivery-details">Delivery Time Is 4-6 Working Day(s)</div>
-      </aside>
+      </div>
     );
   }
 }
 
-export default ProductShowcaseAside;
+export default ProductShowcase;
