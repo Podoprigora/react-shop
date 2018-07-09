@@ -1,0 +1,16 @@
+.section {
+  .section__header {
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+  }
+  .section__title {
+    font-weight: 500;
+    color: theme-color("text");
+    padding: 10px 0;
+    margin: 0;
+  }
+  .section__body {
+    padding: 15px;
+  }
+}

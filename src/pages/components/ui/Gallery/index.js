@@ -9,7 +9,7 @@ import GalleryFloatingFullsizeImage from "./FloatingFullsizeImage";
 import GalleryPrevButton from "./PrevButton";
 import GalleryNextButton from "./NextButton";
 
-class Gallery extends React.Component {
+class Gallery extends React.PureComponent {
   static propTypes = {
     images: PropTypes.arrayOf(PropTypes.string).isRequired,
     className: PropTypes.string
