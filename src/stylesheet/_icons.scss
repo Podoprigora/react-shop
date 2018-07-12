@@ -23,12 +23,20 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-size-14::before {
+  font-size: 14px;
+}
+
 .icon-size-16::before {
   font-size: 16px;
 }
 
 .icon-size-18::before {
   font-size: 18px;
+}
+
+.icon-size-20::before {
+  font-size: 20px;
 }
 
 .icon-size-24::before {

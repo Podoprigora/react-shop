@@ -44,10 +44,10 @@
   .tbar__item {
     margin: 10px 5px;
 
-    &:first-of-type {
+    &:first-child {
       margin-left: 0;
     }
-    &:last-of-type {
+    &:last-child {
       margin-right: 0;
     }
   }

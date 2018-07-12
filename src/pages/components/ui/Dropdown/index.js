@@ -56,7 +56,7 @@ class Dropdown extends React.Component {
       <div className={classNames("dropdown", className, { "dropdown--active": isOpened })} ref={this.elRef}>
         <EventListener target="document" onClick={this.handleDocumentClick} />
         <Trigger text={displayText} iconCls={iconCls} onClick={this.handleTriggerClick} elRef={this.triggerRef} />
-        <TransitionGroup>
+        <TransitionGroup component={null}>
           {isOpened && (
             <CSSTransition classNames="anim-scale-fade" timeout={150}>
               <BoundingContent ancestorEl={this.triggerRef.current} width={listWidth}>

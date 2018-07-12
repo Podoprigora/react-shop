@@ -48,7 +48,14 @@ const withDataLoader = (WrappedComponent, asyncRequest) => {
     render() {
       const { isFetching, data } = this.state;
 
-      return <WrappedComponent data={data} onScrollEnd={this.handleScrollEnd} showLoadingIndication={isFetching} />;
+      return (
+        <WrappedComponent
+          {...this.props}
+          data={data}
+          onScrollEnd={this.handleScrollEnd}
+          showLoadingIndication={isFetching}
+        />
+      );
     }
   }
   return DataLoader;
