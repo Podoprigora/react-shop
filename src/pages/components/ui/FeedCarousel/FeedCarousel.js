@@ -170,7 +170,9 @@ class FeedCarousel extends React.Component {
 
   renderScrollSlider = () => {
     const { enableScrollSlider } = this.props;
-    const { scrollSlider: { xPrecision, sliderWidth } } = this.state;
+    const {
+      scrollSlider: { xPrecision, sliderWidth }
+    } = this.state;
 
     if (!this.viewportEl || !enableScrollSlider) {
       return null;
@@ -218,7 +220,7 @@ class FeedCarousel extends React.Component {
           >
             <div className="scroller__body">
               {data.map((item, index) => (
-                <FeedItem key={index} onItemClick={ev => onItemClick(ev, item)}>
+                <FeedItem key={index} onItemClick={ev => onItemClick(item)}>
                   {renderItem(item)}
                 </FeedItem>
               ))}

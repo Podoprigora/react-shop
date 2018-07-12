@@ -14,7 +14,12 @@ import AddToCartPreviewWindow from "../AddToCartPreviewWindow";
 class ProductList extends React.PureComponent {
   static propTypes = {
     data: PropTypes.array.isRequired,
-    total: PropTypes.number.isRequired
+    total: PropTypes.number.isRequired,
+    onItemClick: PropTypes.func
+  };
+
+  static defaultProps = {
+    onItemClick: () => {}
   };
 
   state = {
@@ -46,6 +51,10 @@ class ProductList extends React.PureComponent {
 
   handleChangePage = params => {
     this.loadData(params);
+  };
+
+  handleItemClick = item => {
+    this.props.onItemClick(item);
   };
 
   render() {
@@ -80,7 +89,7 @@ class ProductList extends React.PureComponent {
             <RadioOption value="name">Name</RadioOption>
           </Dropdown>
         </div>
-        <ProductListItems data={data} />
+        <ProductListItems data={data} onItemClick={this.handleItemClick} />
         <div className="product-list__paginator">
           <Pagination totalItems={total} pageSize={24} onChange={this.handleChangePage} />
         </div>

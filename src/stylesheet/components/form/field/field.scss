@@ -100,3 +100,9 @@
     align-items: flex-end;
   }
 }
+
+input,
+textarea,
+select {
+  display: block;
+}

@@ -9,7 +9,12 @@
   cursor: pointer;
   transition: box-shadow 0.1s, background 0.2s ease-out;
 
-  &:hover {
+  &.button--disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(.button--disabled) {
     background: rgba(color("gray-lighten-3"), 0.2);
     box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.45);
   }
@@ -18,15 +23,45 @@
     outline: 0;
   }
 
+  &.button-size--small {
+    padding: 5px 10px;
+
+    &.icon {
+      line-height: 18px;
+      &::before {
+        font-size: 18px;
+      }
+    }
+  }
+
   &.button-icon {
+    line-height: 16px;
+
     &.icon::before {
       margin-right: 5px;
-      vertical-align: bottom;
+      vertical-align: sub;
+      font-size: 16px;
+    }
+
+    &.icon-size-18 {
+      line-height: 18px;
+      &::before {
+        font-size: 18px;
+      }
+    }
+
+    &.icon-size-20 {
+      line-height: 20px;
+      &::before {
+        font-size: 20px;
+      }
     }
 
     &.icon-size-24 {
       line-height: 24px;
+
       &::before {
+        font-size: 24px;
         margin-right: 8px;
       }
     }
@@ -34,12 +69,26 @@
 
   &.button-plain {
     box-shadow: none;
+    background: color("gray-lighten-3");
     border-color: color("gray-lighten-3");
-    transition: background 0.3s ease-out;
 
-    &:hover {
-      opacity: 1;
+    &:hover:not(.button--disabled) {
       background: transparent;
+      transition: background 0.2s;
+      box-shadow: none;
+    }
+  }
+
+  &.button-link {
+    font-weight: 500;
+    background: transparent;
+    padding: 0;
+    box-shadow: none;
+
+    &:hover:not(.button--disabled) {
+      opacity: 0.8;
+      box-shadow: none;
+      transition: opacity 0.2s;
     }
   }
 
@@ -48,14 +97,15 @@
     background: theme-color("primary");
     color: color("white");
 
-    &:hover {
+    &:hover:not(.button--disabled) {
       background: darken(theme-color("primary"), 5%);
     }
 
     &.button-plain {
       border-color: theme-color("primary");
 
-      &:hover {
+      &:hover:not(.button--disabled) {
+        background: transparent;
         color: theme-color("primary");
       }
     }

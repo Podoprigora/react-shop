@@ -11,7 +11,7 @@ class Field extends React.Component {
     onBlur: PropTypes.func,
     onKeyDown: PropTypes.func,
     onTriggerClick: PropTypes.func,
-    inputRef: PropTypes.object
+    forwardedRef: PropTypes.object
   };
 
   handleChange = ev => {
@@ -21,15 +21,15 @@ class Field extends React.Component {
   };
 
   render() {
-    const { inputRef, value, onChange, onTriggerClick, ...inputProps } = this.props;
+    const { forwardedRef, value, onChange, onTriggerClick, ...inputProps } = this.props;
 
     return (
       <React.Fragment>
-        <InputField {...inputProps} value={value} onChange={this.handleChange} inputRef={inputRef} />
+        <InputField {...inputProps} value={value} onChange={this.handleChange} ref={forwardedRef} />
         <button className="field-trigger icon icon-search" onClick={ev => onTriggerClick(ev, value)} />
       </React.Fragment>
     );
   }
 }
 
-export default Field;
+export default React.forwardRef((props, ref) => <Field forwardedRef={ref} {...props} />);

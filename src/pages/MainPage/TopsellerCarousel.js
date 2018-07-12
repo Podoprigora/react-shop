@@ -5,7 +5,7 @@ import { format as moneyFormat } from "money-formatter";
 import FeedCarousel, { withDataLoader } from "../components/ui/FeedCarousel";
 import api from "../../modules/api";
 
-class BrandnewCarousel extends React.PureComponent {
+class TopsellerCarousel extends React.PureComponent {
   static propTypes = {
     data: PropTypes.arrayOf(
       PropTypes.shape({
@@ -20,14 +20,19 @@ class BrandnewCarousel extends React.PureComponent {
       })
     ).isRequired,
     onScrollEnd: PropTypes.func.isRequired,
-    showLoadingIndication: PropTypes.bool.isRequired
+    showLoadingIndication: PropTypes.bool.isRequired,
+    onItemClick: PropTypes.func
+  };
+
+  static defaultProps = {
+    onItemClick: () => {}
   };
 
   renderItem = data => {
     const { name, brand, picture, price, oldPrice, specialPrice, currency } = data;
     let discount = null;
     if (oldPrice && oldPrice > 0 && specialPrice && specialPrice > 0) {
-      discount = Math.round((oldPrice - specialPrice) / oldPrice * 100);
+      discount = Math.round(((oldPrice - specialPrice) / oldPrice) * 100);
     }
 
     return (
@@ -61,7 +66,7 @@ class BrandnewCarousel extends React.PureComponent {
   };
 
   render() {
-    const { data, showLoadingIndication, onScrollEnd } = this.props;
+    const { data, showLoadingIndication, onScrollEnd, onItemClick } = this.props;
 
     return (
       <div className="products-carousel carousel-container">
@@ -75,10 +80,11 @@ class BrandnewCarousel extends React.PureComponent {
           renderItem={this.renderItem}
           onScrollEnd={onScrollEnd}
           showLoadingIndication={showLoadingIndication}
+          onItemClick={onItemClick}
         />
       </div>
     );
   }
 }
 
-export default withDataLoader(BrandnewCarousel, api.topseller);
+export default withDataLoader(TopsellerCarousel, api.topseller);

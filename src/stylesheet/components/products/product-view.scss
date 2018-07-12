@@ -159,6 +159,13 @@
         background: theme-color("primary-lighten-1");
       }
     }
+
+    .header__counter {
+      padding-left: 5px;
+      font-size: 20px;
+      font-weight: 500;
+      color: theme-color("text");
+    }
   }
   & > .section__body {
     background: color("gray-lighten-5");

@@ -19,7 +19,12 @@ class BrandnewCarousel extends React.PureComponent {
       })
     ).isRequired,
     showLoadingIndication: PropTypes.bool,
-    onScrollEnd: PropTypes.func
+    onScrollEnd: PropTypes.func,
+    onItemClick: PropTypes.func
+  };
+
+  static defaultProps = {
+    onItemClick: () => {}
   };
 
   renderItem = data => {
@@ -42,7 +47,7 @@ class BrandnewCarousel extends React.PureComponent {
   };
 
   render() {
-    const { data, showLoadingIndication, onScrollEnd } = this.props;
+    const { data, showLoadingIndication, onScrollEnd, onItemClick } = this.props;
 
     return (
       <div className="products-carousel carousel-container">
@@ -56,6 +61,7 @@ class BrandnewCarousel extends React.PureComponent {
           renderItem={this.renderItem}
           showLoadingIndication={showLoadingIndication}
           onScrollEnd={onScrollEnd}
+          onItemClick={onItemClick}
         />
       </div>
     );
