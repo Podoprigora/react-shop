@@ -14,12 +14,14 @@ class Tooltip extends React.Component {
     title: PropTypes.string.isRequired,
     position: PropTypes.string,
     delay: PropTypes.number,
-    disableTouchListener: PropTypes.bool
+    disableTouchListener: PropTypes.bool,
+    className: PropTypes.string,
+    style: PropTypes.object
   };
 
   static defaultProps = {
     position: "bottom",
-    delay: 1000,
+    delay: 300,
     disableTouchListener: true
   };
 
@@ -64,7 +66,7 @@ class Tooltip extends React.Component {
 
   render() {
     const { isOpened } = this.state;
-    const { children, title, position, disableTouchListener } = this.props;
+    const { children, title, position, disableTouchListener, className, style: mainStyle } = this.props;
 
     return (
       <Manager>
@@ -84,7 +86,12 @@ class Tooltip extends React.Component {
               <CSSTransition classNames="anim-tooltip" timeout={300}>
                 <Popper placement={position}>
                   {({ ref, style, placement }) => (
-                    <div ref={ref} style={style} data-placement={placement} className="tooltip">
+                    <div
+                      ref={ref}
+                      style={{ ...style, ...mainStyle }}
+                      data-placement={placement}
+                      className={classNames("tooltip", className)}
+                    >
                       <div className={classNames("tooltip__content", `tooltip-position-${position}`)}>{title}</div>
                     </div>
                   )}

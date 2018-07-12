@@ -4,19 +4,12 @@ import classNames from "classnames";
 import { format as moneyFormat } from "money-formatter";
 
 import DocumentScroll from "../components/ui/DocumentScroll";
-import Layout from "../components/ui/Layout";
-
-import { Section, SectionHeader, SectionContent } from "../components/ui/Section";
-import Gallery from "../components/ui/Gallery";
 import ProductShowcase from "./ProductShowcase";
-import FeatureList from "../components/FeatureList";
-import FeatureText from "../components/FeatureText";
+import ProductCenterContent from "./ProductCenterContent";
 
 import productData from "../../../data/product-view";
 
 class ProductViewPage extends React.Component {
-  state = {};
-
   stickyContainerRef = React.createRef();
 
   render() {
@@ -43,38 +36,7 @@ class ProductViewPage extends React.Component {
           return (
             <div className="product-view">
               <div className="product-view__center">
-                <Gallery images={productData.images} className="product-showcase__gallery" />
-
-                <Section className="product-section">
-                  <SectionHeader title="Product information" />
-                  <SectionContent>
-                    <Section className="product-section__card">
-                      <SectionHeader title="Features" />
-                      <SectionContent>
-                        <FeatureList data={productData.features} />
-                      </SectionContent>
-                    </Section>
-
-                    <Section className="product-section__card">
-                      <SectionHeader title="Material" />
-                      <SectionContent>
-                        <FeatureText>{productData.material}</FeatureText>
-                      </SectionContent>
-                    </Section>
-
-                    <Section className="product-section__card">
-                      <SectionHeader title="Model Size" />
-                      <SectionContent>
-                        <FeatureText>{productData.modelSize}</FeatureText>
-                      </SectionContent>
-                    </Section>
-                  </SectionContent>
-                </Section>
-
-                <Section className="product-section">
-                  <SectionHeader title="Comments" />
-                  <SectionContent>Comments list</SectionContent>
-                </Section>
+                <ProductCenterContent {...productData} />
               </div>
 
               <div className="product-view__aside">

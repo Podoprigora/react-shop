@@ -286,7 +286,7 @@ class AutocompleteField extends React.Component {
         <EventListener target="document" onClick={this.handleDocumentBlur} />
         <Field
           {...inputProps}
-          inputRef={this.inputRef}
+          ref={this.inputRef}
           value={inputValue}
           onFocus={this.handleInputFocus}
           onBlur={this.handleInputBlur}

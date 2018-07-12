@@ -3,20 +3,14 @@ import PropTypes from "prop-types";
 
 import createFieldUI from "./createFieldUI";
 
-const InputField = React.forwardRef(({ defaultValue, ...props }, ref) => <input {...props} ref={ref} />);
+const TextareaField = React.forwardRef((props, ref) => <textarea {...props} ref={ref} />);
 
-InputField.propTypes = {
+TextareaField.propTypes = {
   name: PropTypes.string,
   id: PropTypes.string,
-  type: PropTypes.string,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   placeholder: PropTypes.string
 };
 
-InputField.defaultProps = {
-  type: "text",
-  value: ""
-};
-
-export default createFieldUI(InputField);
+export default createFieldUI(TextareaField);

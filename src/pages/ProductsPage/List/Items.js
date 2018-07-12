@@ -22,7 +22,12 @@ class ProductListItems extends React.PureComponent {
         rating: PropTypes.number,
         comments: PropTypes.number
       })
-    ).isRequired
+    ).isRequired,
+    onItemClick: PropTypes.func
+  };
+
+  handleItemClick = item => ev => {
+    this.props.onItemClick(item);
   };
 
   renderSizes = sizes => {
@@ -51,7 +56,7 @@ class ProductListItems extends React.PureComponent {
     return (
       <li className="product-list-item" key={id}>
         <div className="product-item__content">
-          <a className="product-item__img">
+          <a role="presentation" className="product-item__img" onClick={this.handleItemClick(item)}>
             <img src={picture} alt={name} title={name} />
           </a>
           <h4 className="product-item__head">

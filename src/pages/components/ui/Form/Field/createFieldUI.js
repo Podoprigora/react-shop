@@ -2,15 +2,16 @@ import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
-const createFieldUI = InputComponent =>
-  class extends React.Component {
+const createFieldUI = InputComponent => {
+  class CreateFieldUI extends React.Component {
     static propTypes = {
       name: PropTypes.string,
       label: PropTypes.string,
       labelAlign: PropTypes.oneOf(["top", "left"]),
       style: PropTypes.object,
       onBlur: PropTypes.func,
-      onFocus: PropTypes.func
+      onFocus: PropTypes.func,
+      forwardedRef: PropTypes.object
     };
     static defaultProps = {
       onBlur: () => {},
@@ -32,7 +33,7 @@ const createFieldUI = InputComponent =>
     };
 
     render() {
-      const { label, labelAlign, style, ...inputProps } = this.props;
+      const { forwardedRef, label, labelAlign, style, ...inputProps } = this.props;
       const { name } = inputProps;
       const { isFocused } = this.state;
 
@@ -56,12 +57,16 @@ const createFieldUI = InputComponent =>
                 className="field__input"
                 onFocus={this.handleInputFocus}
                 onBlur={this.handleInputBlur}
+                ref={forwardedRef}
               />
             </div>
           </div>
         </div>
       );
     }
-  };
+  }
+
+  return React.forwardRef((props, ref) => <CreateFieldUI {...props} forwardedRef={ref} />);
+};
 
 export default createFieldUI;
