@@ -12,8 +12,6 @@ import productData from "../../../data/product-view";
 class ProductViewPage extends React.Component {
   stickyContainerRef = React.createRef();
 
-  stickyContainerRef = React.createRef();
-
   render() {
     return (
       <DocumentScroll>
