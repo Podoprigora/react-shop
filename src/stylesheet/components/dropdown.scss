@@ -3,8 +3,7 @@
 
   &.dropdown--active .dropdown__trigger button,
   .dropdown__trigger button:hover {
-    border: 1px solid theme-color("primary");
-    color: theme-color("primary-darken-1");
+    background: color("gray-lighten-4");
   }
 
   &.dropdown--active .dropdown__trigger button::after {
@@ -17,19 +16,20 @@
       padding: 10px 30px 10px 10px;
       margin: 0;
       background: transparent;
-      border: 1px solid color("gray-lighten-2");
+      border: 2px solid transparent;
       border-radius: 3px;
       outline: 0;
       cursor: pointer;
+      transition: background 0.25s;
 
       span {
-        padding: 0 6px;
+        padding: 0 5px;
       }
 
       &.icon {
         padding-left: 30px;
         &::before {
-          left: 10px;
+          left: 5px;
         }
       }
 
@@ -37,8 +37,8 @@
       &::before {
         position: absolute;
         font-family: "materialicon";
-        font-size: 20px;
-        color: inherit;
+        font-size: 24px;
+        color: rgba(color("gray-darken-1"), 0.8);
         top: 50%;
         transform: translateY(-50%);
       }
@@ -46,6 +46,7 @@
       &::after {
         content: "\e5cf";
         right: 10px;
+        font-size: 20px;
       }
     }
   }
