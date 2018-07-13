@@ -65,7 +65,7 @@ class ProductCenterContent extends React.PureComponent {
           </SectionHeader>
           <SectionContent>
             <div className="tbar section__tbar">
-              <Dropdown value="top-rated" displayText="Top rated" iconCls="icon-swap_vert" className="tbar__item">
+              <Dropdown value="top-rated" displayText="Top rated" iconCls="icon-sort" className="tbar__item">
                 <RadioOption value="top-rated">Top rated</RadioOption>
                 <RadioOption value="most-recent">Most recent</RadioOption>
               </Dropdown>

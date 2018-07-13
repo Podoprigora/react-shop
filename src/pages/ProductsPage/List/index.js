@@ -75,7 +75,7 @@ class ProductList extends React.PureComponent {
           <Dropdown
             value="relevance"
             displayText="Relevance"
-            iconCls="icon-swap_vert"
+            iconCls="icon-sort"
             className="tbar__item"
             onChange={value => {
               console.log(value);
