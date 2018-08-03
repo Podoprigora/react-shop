@@ -10,62 +10,67 @@ import GalleryPrevButton from "./PrevButton";
 import GalleryNextButton from "./NextButton";
 
 class Gallery extends React.PureComponent {
-  static propTypes = {
-    images: PropTypes.arrayOf(PropTypes.string).isRequired,
-    className: PropTypes.string
-  };
+    static propTypes = {
+        images: PropTypes.arrayOf(PropTypes.string).isRequired,
+        className: PropTypes.string
+    };
 
-  state = {
-    activeIdx: 0,
-    showFullSize: false
-  };
+    state = {
+        activeIdx: 0,
+        showFullSize: false
+    };
 
-  handlePrevButtonClick = ev => {
-    const { images } = this.props;
+    showFullSizeTimeoutId = null;
 
-    this.setState(prevState => ({
-      activeIdx: prevState.activeIdx > 0 ? prevState.activeIdx - 1 : images.length - 1
-    }));
-  };
+    handlePrevButtonClick = ev => {
+        const { images } = this.props;
 
-  handleNextButtonClick = ev => {
-    const { images } = this.props;
+        this.setState(prevState => ({
+            activeIdx: prevState.activeIdx > 0 ? prevState.activeIdx - 1 : images.length - 1
+        }));
+    };
 
-    this.setState(prevState => ({
-      activeIdx: prevState.activeIdx < images.length - 1 ? prevState.activeIdx + 1 : 0
-    }));
-  };
+    handleNextButtonClick = ev => {
+        const { images } = this.props;
 
-  handleThumbnailSelect = index => {
-    this.setState({ activeIdx: index });
-  };
+        this.setState(prevState => ({
+            activeIdx: prevState.activeIdx < images.length - 1 ? prevState.activeIdx + 1 : 0
+        }));
+    };
 
-  handleShowFullSizeImage = ev => {
-    this.setState({ showFullSize: true });
-  };
+    handleThumbnailSelect = index => {
+        this.setState({ activeIdx: index });
+    };
 
-  handleHideFullSizeImage = ev => {
-    this.setState({ showFullSize: false });
-  };
+    handleShowFullSizeImage = ev => {
+        this.showFullSizeTimeoutId = setTimeout(() => {
+            this.setState({ showFullSize: true });
+        }, 166);
+    };
 
-  render() {
-    const { images, className } = this.props;
-    const { activeIdx, showFullSize } = this.state;
+    handleHideFullSizeImage = ev => {
+        clearTimeout(this.showFullSizeTimeoutId);
+        this.setState({ showFullSize: false });
+    };
 
-    return (
-      <div className={classNames("gallery", className)}>
-        <div className="gallery__viewport" onMouseLeave={this.handleHideFullSizeImage}>
-          <GalleryImage src={images[activeIdx]} onMouseEnter={this.handleShowFullSizeImage} />
-          <GalleryFloatingFullsizeImage src={images[activeIdx]} show={showFullSize} />
-          <nav className="gallery__nav" onMouseEnter={this.handleHideFullSizeImage}>
-            <GalleryPrevButton onClick={this.handlePrevButtonClick} />
-            <GalleryNextButton onClick={this.handleNextButtonClick} />
-          </nav>
-        </div>
-        <GalleryThumbnailList images={images} selectedIdx={activeIdx} onSelect={this.handleThumbnailSelect} />
-      </div>
-    );
-  }
+    render() {
+        const { images, className } = this.props;
+        const { activeIdx, showFullSize } = this.state;
+
+        return (
+            <div className={classNames("gallery", className)}>
+                <div className="gallery__viewport" onMouseLeave={this.handleHideFullSizeImage}>
+                    <GalleryImage src={images[activeIdx]} onMouseEnter={this.handleShowFullSizeImage} />
+                    <GalleryFloatingFullsizeImage src={images[activeIdx]} show={showFullSize} />
+                    <nav className="gallery__nav" onMouseEnter={this.handleHideFullSizeImage}>
+                        <GalleryPrevButton onClick={this.handlePrevButtonClick} />
+                        <GalleryNextButton onClick={this.handleNextButtonClick} />
+                    </nav>
+                </div>
+                <GalleryThumbnailList images={images} selectedIdx={activeIdx} onSelect={this.handleThumbnailSelect} />
+            </div>
+        );
+    }
 }
 
 export default Gallery;
