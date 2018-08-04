@@ -4,6 +4,7 @@ import { format as moneyFormat } from "money-formatter";
 import classNames from "classnames";
 
 import Button from "../components/ui/Button";
+import Badge from "../components/ui/Badge";
 import OptionsList, { OptionItem } from "../components/ui/OptionsList";
 
 class ProductShowcase extends React.PureComponent {

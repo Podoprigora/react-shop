@@ -25,9 +25,9 @@ const Header = params => (
       <div className="main__buttons">
         <IconButton icon="icon-person_outline" />
         <IconButton icon="icon-favorite_border" />
-        <Badge content="4" style={{ right: "8px" }}>
-          <IconButton icon="icon-shopping_cart" />
-        </Badge>
+        <IconButton icon="icon-shopping_cart">
+          <Badge content="4" />
+        </IconButton>
       </div>
     </div>
   </div>

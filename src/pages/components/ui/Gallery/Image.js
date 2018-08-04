@@ -1,11 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
+import classNames from "classnames";
 
 class GalleryImage extends React.PureComponent {
   static propTypes = {
     src: PropTypes.string.isRequired,
     onMouseEnter: PropTypes.func,
-    onMouseLeave: PropTypes.func
+    onMouseLeave: PropTypes.func,
+    className: PropTypes.string
   };
   static defaultProps = {
     onMouseEnter: () => {},
@@ -13,10 +15,10 @@ class GalleryImage extends React.PureComponent {
   };
 
   render() {
-    const { src, onMouseEnter, onMouseLeave } = this.props;
+    const { src, onMouseEnter, onMouseLeave, className } = this.props;
 
     return (
-      <div className="gallery__item" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+      <div className={classNames("gallery__item", className)} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
         <img src={src} alt="" />
       </div>
     );

@@ -1,4 +1,5 @@
 .button {
+  position: relative;
   padding: 8px 16px;
   color: theme-color("text");
   background: color("gray-lighten-4");
@@ -110,6 +111,15 @@
         color: theme-color("primary");
       }
     }
+  }
+
+  .badge {
+    top: 50%;
+    transform: translateY(-50%);
+    right: 5px;
+    width: 20px;
+    height: 20px;
+    box-shadow: none;
   }
 }
 

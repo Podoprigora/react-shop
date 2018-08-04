@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import debounce from "lodash/debounce";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 import GalleryImage from "./Image";
 import GalleryThumbnailList from "./ThumbnailList";
@@ -10,67 +11,90 @@ import GalleryPrevButton from "./PrevButton";
 import GalleryNextButton from "./NextButton";
 
 class Gallery extends React.PureComponent {
-    static propTypes = {
-        images: PropTypes.arrayOf(PropTypes.string).isRequired,
-        className: PropTypes.string
-    };
+  static propTypes = {
+    images: PropTypes.arrayOf(PropTypes.string).isRequired,
+    className: PropTypes.string
+  };
 
-    state = {
-        activeIdx: 0,
-        showFullSize: false
-    };
+  state = {
+    prevIdx: 0,
+    activeIdx: 0,
+    showFullSize: false
+  };
 
-    showFullSizeTimeoutId = null;
+  showFullSizeTimeoutId = null;
 
-    handlePrevButtonClick = ev => {
-        const { images } = this.props;
+  handlePrevButtonClick = ev => {
+    const { images } = this.props;
 
-        this.setState(prevState => ({
-            activeIdx: prevState.activeIdx > 0 ? prevState.activeIdx - 1 : images.length - 1
-        }));
-    };
+    this.setState(prevState => ({
+      prevIdx: 9999,
+      activeIdx: prevState.activeIdx > 0 ? prevState.activeIdx - 1 : images.length - 1
+    }));
+  };
 
-    handleNextButtonClick = ev => {
-        const { images } = this.props;
+  handleNextButtonClick = ev => {
+    const { images } = this.props;
 
-        this.setState(prevState => ({
-            activeIdx: prevState.activeIdx < images.length - 1 ? prevState.activeIdx + 1 : 0
-        }));
-    };
+    this.setState(prevState => ({
+      prevIdx: -1,
+      activeIdx: prevState.activeIdx < images.length - 1 ? prevState.activeIdx + 1 : 0
+    }));
+  };
 
-    handleThumbnailSelect = index => {
-        this.setState({ activeIdx: index });
-    };
+  handleThumbnailSelect = index => {
+    this.setState(prevState => ({
+      prevIdx: prevState.activeIdx,
+      activeIdx: index
+    }));
+  };
 
-    handleShowFullSizeImage = ev => {
-        this.showFullSizeTimeoutId = setTimeout(() => {
-            this.setState({ showFullSize: true });
-        }, 166);
-    };
+  handleShowFullSizeImage = ev => {
+    this.showFullSizeTimeoutId = setTimeout(() => {
+      this.setState({ showFullSize: true });
+    }, 166);
+  };
 
-    handleHideFullSizeImage = ev => {
-        clearTimeout(this.showFullSizeTimeoutId);
-        this.setState({ showFullSize: false });
-    };
+  handleHideFullSizeImage = ev => {
+    clearTimeout(this.showFullSizeTimeoutId);
+    this.setState({ showFullSize: false });
+  };
 
-    render() {
-        const { images, className } = this.props;
-        const { activeIdx, showFullSize } = this.state;
+  render() {
+    const { images, className } = this.props;
+    const { activeIdx, prevIdx, showFullSize } = this.state;
 
-        return (
-            <div className={classNames("gallery", className)}>
-                <div className="gallery__viewport" onMouseLeave={this.handleHideFullSizeImage}>
-                    <GalleryImage src={images[activeIdx]} onMouseEnter={this.handleShowFullSizeImage} />
-                    <GalleryFloatingFullsizeImage src={images[activeIdx]} show={showFullSize} />
-                    <nav className="gallery__nav" onMouseEnter={this.handleHideFullSizeImage}>
-                        <GalleryPrevButton onClick={this.handlePrevButtonClick} />
-                        <GalleryNextButton onClick={this.handleNextButtonClick} />
-                    </nav>
-                </div>
-                <GalleryThumbnailList images={images} selectedIdx={activeIdx} onSelect={this.handleThumbnailSelect} />
-            </div>
-        );
-    }
+    return (
+      <div className={classNames("gallery", className)}>
+        <div className="gallery__viewport" onMouseLeave={this.handleHideFullSizeImage}>
+          <CSSTransition
+            in={activeIdx !== prevIdx}
+            classNames="anim-slide"
+            timeout={300}
+            exit={false}
+            onEntered={() => {
+              this.setState({ prevIdx: activeIdx });
+            }}
+          >
+            <GalleryImage
+              src={images[activeIdx]}
+              onMouseEnter={this.handleShowFullSizeImage}
+              className={classNames({
+                "slide-left": activeIdx > prevIdx,
+                "slide-right": activeIdx < prevIdx
+              })}
+            />
+          </CSSTransition>
+          <GalleryFloatingFullsizeImage src={images[activeIdx]} show={showFullSize} />
+          <nav className="gallery__nav" onMouseEnter={this.handleHideFullSizeImage}>
+            <GalleryPrevButton onClick={this.handlePrevButtonClick} />
+            <GalleryNextButton onClick={this.handleNextButtonClick} />
+          </nav>
+        </div>
+        <GalleryThumbnailList images={images} selectedIdx={activeIdx} onSelect={this.handleThumbnailSelect} />
+      </div>
+    );
+  }
 }
 
 export default Gallery;
