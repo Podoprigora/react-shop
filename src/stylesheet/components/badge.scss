@@ -1,0 +1,18 @@
+.badge {
+  position: absolute;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+  top: 2px;
+  right: 2px;
+  width: 18px;
+  height: 18px;
+  font-size: 11px;
+  font-weight: 700;
+  background: color("orange");
+  color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px #fff;
+  z-index: 1;
+}
