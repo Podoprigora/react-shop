@@ -83,7 +83,7 @@ class ProductShowcase extends React.PureComponent {
         )}
         <Button
           primary
-          icon="icon-shopping_basket"
+          icon="icon-add_shopping_cart"
           iconSize="24"
           className="product-showcase__button"
           onClick={this.handleAddToCart}
@@ -93,6 +93,7 @@ class ProductShowcase extends React.PureComponent {
         <Button icon="icon-favorite_border" iconSize="24" className="product-showcase__button">
           Add to Wishlist
         </Button>
+
         <div className="product-showcase__delivery-details">Delivery Time Is 4-6 Working Day(s)</div>
       </div>
     );

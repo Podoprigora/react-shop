@@ -3,13 +3,15 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 import AutocompleteField from "../ui/Form/Field/Autocomplete";
+import { IconButton } from "../ui/Button";
+import Badge from "../ui/Badge";
 import api from "../../../modules/api";
 
 const Header = params => (
   <div className="main__header">
     <div className="resp-content">
       <Link to="/">
-        <span className="logo" />
+        <span className="main__logo" />
       </Link>
       <AutocompleteField
         asyncRequest={q => api.mainSearch(q)}
@@ -17,13 +19,15 @@ const Header = params => (
           console.log(value);
         }}
         inputProps={{ placeholder: "What are you looking for? (jeans or shirt)" }}
-        className="search-bar"
+        className="main__search-bar"
         listHeight="300px"
       />
-      <div className="buttons">
-        <button className="icon icon-person_outline" />
-        <button className="icon icon-favorite_border" />
-        <button className="icon icon-shopping_basket" />
+      <div className="main__buttons">
+        <IconButton icon="icon-person_outline" />
+        <IconButton icon="icon-favorite_border" />
+        <Badge content="4" style={{ right: "8px" }}>
+          <IconButton icon="icon-shopping_cart" />
+        </Badge>
       </div>
     </div>
   </div>
