@@ -1,18 +1,28 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Badge = ({ children, content, ...other }) => (
-  <div style={{ position: "relative" }}>
-    {children}
+const Badge = ({ children, content, ...other }) => {
+  const badge = (
     <span className="badge" {...other}>
       {content}
     </span>
-  </div>
-);
+  );
+
+  if (!children) {
+    return badge;
+  }
+
+  return (
+    <div className="badge-wrap">
+      {children}
+      {badge}
+    </div>
+  );
+};
 
 Badge.propTypes = {
-  children: PropTypes.node.isRequired,
-  content: PropTypes.node.isRequired
+  content: PropTypes.node.isRequired,
+  children: PropTypes.node
 };
 
 export default Badge;

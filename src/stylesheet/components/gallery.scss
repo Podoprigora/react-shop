@@ -71,6 +71,23 @@
       max-height: 100%;
       border: 0;
     }
+
+    &.anim-slide-enter {
+      opacity: 0;
+      &.slide-left {
+        transform: translateX(30%);
+      }
+
+      &.slide-right {
+        transform: translateX(-30%);
+      }
+
+      &.anim-slide-enter-active {
+        opacity: 1;
+        transform: translateX(0);
+        transition: transform 0.2s ease-out, opacity 0.3s;
+      }
+    }
   }
 
   .gallery__fullsize {
