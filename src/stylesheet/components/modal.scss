@@ -79,22 +79,31 @@
 
   .modal-window__header {
     flex: 0 0 auto;
-    padding: 24px 24px 20px 24px;
+    padding: 18px;
+    color: theme-color("text");
+    border-bottom: 1px solid theme-color("border");
+
+    h2 {
+      font-size: 24px;
+      font-weight: 500;
+      margin: 0;
+    }
   }
 
   .modal-window__content {
     flex: 1 1 auto;
-    padding: 0 24px 24px 24px;
+    padding: 18px;
     overflow-y: auto;
   }
 
   .modal-window__buttons {
     flex: 0 0 auto;
-    margin: 18px 10px;
+    padding: 18px 10px;
     display: flex;
     flex-flow: row nowrap;
     justify-content: flex-end;
     align-items: center;
+    border-top: 1px solid theme-color("border");
 
     .button {
       margin: 0 8px;

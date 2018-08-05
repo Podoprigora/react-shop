@@ -110,7 +110,7 @@
     .scroll-slider__bar {
       min-width: 26px;
       height: 6px;
-      background: color("gray");
+      background: rgba(0, 0, 0, 0.2);
       border-radius: 10px;
       cursor: ew-resize;
     }

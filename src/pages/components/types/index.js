@@ -13,3 +13,20 @@ const commentShape = {
 commentShape.replies = arrayOf(shape(commentShape));
 
 export const commentType = commentShape;
+
+export const productType = {
+  id: number.isRequired,
+  name: string.isRequired,
+  picture: string,
+  brand: string,
+  price: number,
+  oldPrice: number,
+  specialPrice: number,
+  currency: string,
+  isNew: bool,
+  sizes: arrayOf(string),
+  size: string,
+  color: string,
+  rating: number,
+  comments: number
+};
