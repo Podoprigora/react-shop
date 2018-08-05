@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const CircularProgress = ({ preset, size, strokeWidth }) => {
+const CircularProgress = ({ preset, size, strokeWidth, style }) => {
   const circleSize = 50;
 
   let containerSize = size;
@@ -26,7 +26,7 @@ const CircularProgress = ({ preset, size, strokeWidth }) => {
   }
 
   return (
-    <div className="circular-progress" style={{ width: containerSize, height: containerSize }}>
+    <div className="circular-progress" style={{ ...style, width: containerSize, height: containerSize }}>
       <svg viewBox={`0 0 ${circleSize} ${circleSize}`} className="circular-progress__svg">
         <circle
           className="circular-progress__circle"
@@ -43,7 +43,8 @@ const CircularProgress = ({ preset, size, strokeWidth }) => {
 CircularProgress.propTypes = {
   preset: PropTypes.string,
   size: PropTypes.number,
-  strokeWidth: PropTypes.number
+  strokeWidth: PropTypes.number,
+  style: PropTypes.object
 };
 
 CircularProgress.defaultProps = {

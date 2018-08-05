@@ -2,10 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
+import withLoading from "./withLoading";
+
 const Button = React.forwardRef(
-  ({ children, primary, plain, link, size, icon, iconSize, className, style, disabled, ...props }, ref) => (
+  ({ children, primary, plain, link, size, icon, iconSize, className, style, disabled, onClick, ...props }, ref) => (
     <button
       {...props}
+      onClick={ev => !disabled && onClick(ev)}
       ref={ref}
       className={classNames(
         "button",
@@ -38,7 +41,12 @@ Button.propTypes = {
   iconSize: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   size: PropTypes.string,
   className: PropTypes.string,
-  style: PropTypes.object
+  style: PropTypes.object,
+  onClick: PropTypes.func
 };
 
-export default Button;
+Button.defaultProps = {
+  onClick: f => f
+};
+
+export default withLoading(Button);
