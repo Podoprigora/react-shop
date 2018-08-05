@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
-import withPreventScrollingOfParentElement from "../../components/ui/utils/withPreventScrollingOfParentElement";
 import CollapsiblePanel from "../../components/ui/CollapsiblePanel";
 import OptionsList, { CheckboxOption, ColorOption, OptionItem } from "../../components/ui/OptionsList";
 import NumberRange from "../../components/ui/NumberRange";
@@ -16,16 +15,14 @@ const categoriesItems = categoriesData[0].items[1].items;
 
 class ProductFilters extends React.PureComponent {
   static propTypes = {
-    elRef: PropTypes.object.isRequired,
-    onMouseWheel: PropTypes.func.isRequired,
     className: PropTypes.string
   };
 
   render() {
-    const { elRef, onMouseWheel } = this.props;
+    const { className, ...other } = this.props;
 
     return (
-      <aside className="product-filters" ref={elRef} onWheel={onMouseWheel}>
+      <div className={classNames("product-filters", className)} {...other}>
         <CollapsiblePanel header="Categories">
           <OptionsList selected="all" size={8}>
             <OptionItem value="all" iconCls="icon-folder_open">
@@ -74,9 +71,8 @@ class ProductFilters extends React.PureComponent {
             }}
           />
         </CollapsiblePanel>
-      </aside>
+      </div>
     );
   }
 }
-
-export default withPreventScrollingOfParentElement(ProductFilters);
+export default ProductFilters;

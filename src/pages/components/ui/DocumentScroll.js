@@ -18,7 +18,8 @@ class DocumentScroll extends React.PureComponent {
     this.setState({
       isEnter: top <= 0 && bottom > docHeight,
       top,
-      bottom
+      bottom,
+      height
     });
   };
 

@@ -19,6 +19,10 @@ class CollapsiblePanel extends React.Component {
     height: this.props.collapsed ? 0 : "auto"
   };
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return nextProps.collapsed !== this.props.collapsed || nextState.height !== this.state.height;
+  }
+
   handleHeaderClick = ev => {
     ev.preventDefault();
 

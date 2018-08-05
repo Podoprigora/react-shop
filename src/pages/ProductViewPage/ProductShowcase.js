@@ -5,6 +5,7 @@ import classNames from "classnames";
 
 import Button from "../components/ui/Button";
 import Badge from "../components/ui/Badge";
+import CircularProgress from "../components/ui/Progress/Circular";
 import OptionsList, { OptionItem } from "../components/ui/OptionsList";
 
 class ProductShowcase extends React.PureComponent {
@@ -90,6 +91,10 @@ class ProductShowcase extends React.PureComponent {
           onClick={this.handleAddToCart}
         >
           Add to Cart
+        </Button>
+        <Button primary iconSize="24" className="product-showcase__button" onClick={this.handleAddToCart}>
+          <CircularProgress />
+          Loading ...
         </Button>
         <Button icon="icon-favorite_border" iconSize="24" className="product-showcase__button">
           Add to Wishlist

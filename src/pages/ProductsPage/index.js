@@ -1,9 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
+import { Scrollbars } from "react-custom-scrollbars";
 
 import DocumentScroll from "../components/ui/DocumentScroll";
-import Layout from "../components/ui/Layout";
+// import Layout from "../components/ui/Layout";
 
 import ProductFilters from "./Filters";
 import ProductList from "./List";
@@ -20,16 +21,32 @@ const ProductsPage = ({ history }) => {
   return (
     <React.Fragment>
       <DocumentScroll>
-        {({ isEnter }) => (
-          <Layout type="with-slidebar">
-            <Layout.Slidebar freezed={isEnter}>
-              <ProductFilters />
-            </Layout.Slidebar>
-            <Layout.Flex>
+        {({ isEnter, top, bottom, height }) => {
+          let stickyStyle = { position: "relative", height: "100%" };
+
+          if (bottom > 200) {
+            if (top <= 0) {
+              stickyStyle = { ...stickyStyle, position: "fixed", top: 0, bottom: 0, width: "240px" };
+            }
+
+            if (bottom < document.documentElement.clientHeight) {
+              stickyStyle = { ...stickyStyle, height: bottom };
+            }
+          }
+
+          return (
+            <div className="products-container">
+              <div className="products-container__aside">
+                <div style={stickyStyle}>
+                  <Scrollbars>
+                    <ProductFilters />
+                  </Scrollbars>
+                </div>
+              </div>
               <ProductList data={productsData} total={364} onItemClick={handleItemClick} />
-            </Layout.Flex>
-          </Layout>
-        )}
+            </div>
+          );
+        }}
       </DocumentScroll>
       <TopsellerCarousel data={topsellerData} total={45} pageSize={15} onItemClick={handleItemClick} />
     </React.Fragment>
