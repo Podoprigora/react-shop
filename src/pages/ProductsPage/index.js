@@ -4,7 +4,6 @@ import classNames from "classnames";
 import { Scrollbars } from "react-custom-scrollbars";
 
 import DocumentScroll from "../components/ui/DocumentScroll";
-// import Layout from "../components/ui/Layout";
 
 import ProductFilters from "./Filters";
 import ProductList from "./List";

@@ -4,25 +4,11 @@ import { format as moneyFormat } from "money-formatter";
 
 import StarRating from "../../components/ui/StarRating";
 import CircularProgress from "../../components/ui/Progress/Circular";
+import { productType } from "../../components/types";
 
 class ProductListItems extends React.PureComponent {
   static propTypes = {
-    data: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        name: PropTypes.string.isRequired,
-        picture: PropTypes.string.isRequired,
-        brand: PropTypes.string.isRequired,
-        price: PropTypes.number,
-        oldPrice: PropTypes.number,
-        specialPrice: PropTypes.number,
-        currency: PropTypes.string.isRequired,
-        isNew: PropTypes.bool,
-        sizes: PropTypes.arrayOf(PropTypes.string),
-        rating: PropTypes.number,
-        comments: PropTypes.number
-      })
-    ).isRequired,
+    data: PropTypes.arrayOf(PropTypes.shape(productType)).isRequired,
     onItemClick: PropTypes.func
   };
 

@@ -1,0 +1,17 @@
+.table-view {
+  .table-view__row {
+    display: flex;
+    flex-flow: row nowrap;
+    background: #fff;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid theme-color("border");
+    }
+  }
+
+  .table-view__col {
+    &:not(:first-child) {
+      padding-left: 10px;
+    }
+  }
+}

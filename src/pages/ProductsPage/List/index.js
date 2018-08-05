@@ -9,8 +9,6 @@ import api from "../../../modules/api";
 import { RadioOption } from "../../components/ui/OptionsList";
 import Dropdown from "../../components/ui/Dropdown";
 
-import AddToCartPreviewWindow from "../AddToCartPreviewWindow";
-
 class ProductList extends React.PureComponent {
   static propTypes = {
     data: PropTypes.array.isRequired,
