@@ -171,3 +171,17 @@
     }
   }
 }
+
+.products-container {
+  display: flex;
+  flex-flow: row nowrap;
+
+  .products-container__aside {
+    position: relative;
+    flex: 0 0 240px;
+  }
+
+  .product-list {
+    flex: 1;
+  }
+}

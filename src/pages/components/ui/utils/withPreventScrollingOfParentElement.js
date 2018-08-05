@@ -5,10 +5,11 @@ const withPreventScrollingOfParentElement = ComposedComponent =>
     elRef = React.createRef();
 
     handleMouseWheel = ev => {
-      const { scrollHeight, clientHeight, scrollTop } = this.elRef.current;
+      const { scrollHeight, clientHeight, scrollTop } = this.elRef.current || {};
       const { deltaY } = ev;
 
       if (
+        scrollHeight &&
         scrollHeight !== clientHeight &&
         ((deltaY > 0 && scrollTop === scrollHeight - clientHeight) || (deltaY < 0 && scrollTop === 0))
       ) {
@@ -17,7 +18,7 @@ const withPreventScrollingOfParentElement = ComposedComponent =>
     };
 
     render() {
-      return <ComposedComponent {...this.props} elRef={this.elRef} onMouseWheel={this.handleMouseWheel} />;
+      return <ComposedComponent elRef={this.elRef} onMouseWheel={this.handleMouseWheel} {...this.props} />;
     }
   };
 
