@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 import AutocompleteField from "../ui/Form/Field/Autocomplete";
+import Tooltip from "../ui/Popover/Tooltip";
 import { IconButton } from "../ui/Button";
 import Badge from "../ui/Badge";
 import api from "../../../modules/api";
@@ -23,11 +24,17 @@ const Header = params => (
         listHeight="300px"
       />
       <div className="main__buttons">
-        <IconButton icon="icon-person_outline" />
-        <IconButton icon="icon-favorite_border" />
-        <IconButton icon="icon-shopping_cart">
-          <Badge content="4" />
-        </IconButton>
+        <Tooltip title="Person details">
+          <IconButton icon="icon-person_outline" />
+        </Tooltip>
+        <Tooltip title="Favorites">
+          <IconButton icon="icon-favorite_border" />
+        </Tooltip>
+        <Tooltip title="Cart">
+          <IconButton icon="icon-shopping_cart">
+            <Badge content="4" />
+          </IconButton>
+        </Tooltip>
       </div>
     </div>
   </div>
