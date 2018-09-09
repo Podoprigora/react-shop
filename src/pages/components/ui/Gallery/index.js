@@ -29,7 +29,8 @@ class Gallery extends React.PureComponent {
 
     this.setState(prevState => ({
       prevIdx: 9999,
-      activeIdx: prevState.activeIdx > 0 ? prevState.activeIdx - 1 : images.length - 1
+      activeIdx:
+        prevState.activeIdx > 0 ? prevState.activeIdx - 1 : images.length - 1
     }));
   };
 
@@ -38,7 +39,8 @@ class Gallery extends React.PureComponent {
 
     this.setState(prevState => ({
       prevIdx: -1,
-      activeIdx: prevState.activeIdx < images.length - 1 ? prevState.activeIdx + 1 : 0
+      activeIdx:
+        prevState.activeIdx < images.length - 1 ? prevState.activeIdx + 1 : 0
     }));
   };
 
@@ -66,11 +68,14 @@ class Gallery extends React.PureComponent {
 
     return (
       <div className={classNames("gallery", className)}>
-        <div className="gallery__viewport" onMouseLeave={this.handleHideFullSizeImage}>
+        <div
+          className="gallery__viewport"
+          onMouseLeave={this.handleHideFullSizeImage}
+        >
           <CSSTransition
             in={activeIdx !== prevIdx}
-            classNames="anim-slide"
-            timeout={300}
+            classNames="anim-fade"
+            timeout={600}
             exit={false}
             onEntered={() => {
               this.setState({ prevIdx: activeIdx });
@@ -79,19 +84,25 @@ class Gallery extends React.PureComponent {
             <GalleryImage
               src={images[activeIdx]}
               onMouseEnter={this.handleShowFullSizeImage}
-              className={classNames({
-                "slide-left": activeIdx > prevIdx,
-                "slide-right": activeIdx < prevIdx
-              })}
             />
           </CSSTransition>
-          <GalleryFloatingFullsizeImage src={images[activeIdx]} show={showFullSize} />
-          <nav className="gallery__nav" onMouseEnter={this.handleHideFullSizeImage}>
+          <GalleryFloatingFullsizeImage
+            src={images[activeIdx]}
+            show={showFullSize}
+          />
+          <nav
+            className="gallery__nav"
+            onMouseEnter={this.handleHideFullSizeImage}
+          >
             <GalleryPrevButton onClick={this.handlePrevButtonClick} />
             <GalleryNextButton onClick={this.handleNextButtonClick} />
           </nav>
         </div>
-        <GalleryThumbnailList images={images} selectedIdx={activeIdx} onSelect={this.handleThumbnailSelect} />
+        <GalleryThumbnailList
+          images={images}
+          selectedIdx={activeIdx}
+          onSelect={this.handleThumbnailSelect}
+        />
       </div>
     );
   }

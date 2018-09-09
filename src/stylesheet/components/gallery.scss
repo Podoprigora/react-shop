@@ -72,6 +72,15 @@
       border: 0;
     }
 
+    &.anim-fade-enter {
+      opacity: 0.4;
+
+      &.anim-fade-enter-active {
+        opacity: 1;
+        transition: opacity 0.6s ease-out;
+      }
+    }
+
     &.anim-slide-enter {
       opacity: 0;
       &.slide-left {

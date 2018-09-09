@@ -1,7 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { Section, SectionHeader, SectionContent } from "../components/ui/Section";
+import {
+  Section,
+  SectionHeader,
+  SectionContent
+} from "../components/ui/Section";
 import Button from "../components/ui/Button";
 import { RadioOption } from "../components/ui/OptionsList";
 import Dropdown from "../components/ui/Dropdown";
@@ -19,10 +23,6 @@ class ProductCenterContent extends React.PureComponent {
     modelSize: PropTypes.string,
     material: PropTypes.string
   };
-
-  // componentDidMount() {
-  //   this.commentsSectionRef.current.scrollIntoView();
-  // }
 
   commentsSectionRef = React.createRef();
 
@@ -65,11 +65,20 @@ class ProductCenterContent extends React.PureComponent {
           </SectionHeader>
           <SectionContent>
             <div className="tbar section__tbar">
-              <Dropdown value="top-rated" displayText="Top rated" iconCls="icon-sort" className="tbar__item">
+              <Dropdown
+                value="top-rated"
+                displayText="Top rated"
+                iconCls="icon-sort"
+                className="tbar__item"
+              >
                 <RadioOption value="top-rated">Top rated</RadioOption>
                 <RadioOption value="most-recent">Most recent</RadioOption>
               </Dropdown>
-              <Button primary className="tbar__item" style={{ marginLeft: "auto" }}>
+              <Button
+                primary
+                className="tbar__item"
+                style={{ marginLeft: "auto" }}
+              >
                 Add comment
               </Button>
             </div>
