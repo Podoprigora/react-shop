@@ -75,7 +75,7 @@ class Gallery extends React.PureComponent {
           <CSSTransition
             in={activeIdx !== prevIdx}
             classNames="anim-fade"
-            timeout={600}
+            timeout={500}
             exit={false}
             onEntered={() => {
               this.setState({ prevIdx: activeIdx });
