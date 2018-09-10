@@ -19,7 +19,9 @@ const Header = params => (
         onSelect={(value, el) => {
           console.log(value);
         }}
-        inputProps={{ placeholder: "What are you looking for? (jeans or shirt)" }}
+        inputProps={{
+          placeholder: "What are you looking for? (jeans or shirt)"
+        }}
         className="main__search-bar"
         listHeight="300px"
       />
@@ -28,11 +30,13 @@ const Header = params => (
           <IconButton icon="icon-person_outline" />
         </Tooltip>
         <Tooltip title="Favorites">
-          <IconButton icon="icon-favorite_border" />
+          <IconButton icon="icon-favorite_border">
+            <Badge content="10" />
+          </IconButton>
         </Tooltip>
         <Tooltip title="Cart">
           <IconButton icon="icon-shopping_cart">
-            <Badge content="4" />
+            <Badge content="2" />
           </IconButton>
         </Tooltip>
       </div>
