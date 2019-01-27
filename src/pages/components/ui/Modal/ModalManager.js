@@ -1,35 +1,35 @@
 class ModalManager {
-  constructor() {
-    this.modals = [];
-  }
-
-  add(modal) {
-    let modalIdx = this.modals.indexOf(modal);
-
-    if (modalIdx !== -1) {
-      return modalIdx;
+    constructor() {
+        this.modals = [];
     }
 
-    modalIdx = this.modals.length;
-    this.modals.push(modal);
+    add(modal) {
+        let modalIdx = this.modals.indexOf(modal);
 
-    return modalIdx;
-  }
+        if (modalIdx !== -1) {
+            return modalIdx;
+        }
 
-  remove(modal) {
-    const modalIdx = this.modals.indexOf(modal);
+        modalIdx = this.modals.length;
+        this.modals.push(modal);
 
-    if (modalIdx === -1) {
-      return modalIdx;
+        return modalIdx;
     }
-    this.modals.splice(modalIdx, 1);
 
-    return modalIdx;
-  }
+    remove(modal) {
+        const modalIdx = this.modals.indexOf(modal);
 
-  isTopModal(modal) {
-    return !!this.modals.length && this.modals[this.modals.length - 1] === modal;
-  }
+        if (modalIdx === -1) {
+            return modalIdx;
+        }
+        this.modals.splice(modalIdx, 1);
+
+        return modalIdx;
+    }
+
+    isTopModal(modal) {
+        return !!this.modals.length && this.modals[this.modals.length - 1] === modal;
+    }
 }
 
 export default ModalManager;

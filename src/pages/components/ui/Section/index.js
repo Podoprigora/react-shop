@@ -1,4 +1,6 @@
-export Section from "./Section";
-export SectionHeader from "./SectionHeader";
-export SectionTitle from "./SectionTitle";
-export SectionContent from "./SectionContent";
+import SectionHeader from "./SectionHeader";
+import SectionTitle from "./SectionTitle";
+import SectionContent from "./SectionContent";
+
+export { default } from "./Section";
+export { SectionHeader, SectionTitle, SectionContent };

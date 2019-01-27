@@ -1,2 +1,4 @@
-export SimpleList from "./SimpleList";
-export SimpleListItem from "./SimpleListItem";
+import SimpleListItem from "./SimpleListItem";
+
+export { default } from "./SimpleList";
+export { SimpleListItem };

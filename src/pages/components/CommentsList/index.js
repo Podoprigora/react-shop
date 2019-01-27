@@ -6,20 +6,20 @@ import Comment from "./Comment";
 import Pagination from "../ui/Pagination";
 
 class CommentsList extends React.PureComponent {
-  static propTypes = {
-    data: PropTypes.arrayOf(PropTypes.shape(commentType))
-  };
+    static propTypes = {
+        data: PropTypes.arrayOf(PropTypes.shape(commentType))
+    };
 
-  render() {
-    const { data } = this.props;
+    render() {
+        const { data } = this.props;
 
-    return (
-      <div className="comments-list" ref={this.listRef}>
-        {data.map(comment => <Comment key={comment.id} {...comment} />)}
-        <Pagination totalItems={20} pageSize={5} className="comments-list__paginator" />
-      </div>
-    );
-  }
+        return (
+            <div className="comments-list">
+                {data.map(comment => <Comment key={comment.id} {...comment} />)}
+                <Pagination totalItems={20} pageSize={5} className="comments-list__paginator" />
+            </div>
+        );
+    }
 }
 
 export default CommentsList;

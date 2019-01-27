@@ -4,52 +4,52 @@ import classNames from "classnames";
 import AnimateHeight from "react-animate-height";
 
 class CollapsiblePanel extends React.Component {
-  static propTypes = {
-    children: PropTypes.node,
-    header: PropTypes.string,
-    collapsed: PropTypes.bool
-  };
+    static propTypes = {
+        children: PropTypes.node,
+        header: PropTypes.string,
+        collapsed: PropTypes.bool
+    };
 
-  static defaultProps = {
-    header: "",
-    collapsed: false
-  };
+    static defaultProps = {
+        header: "",
+        collapsed: false
+    };
 
-  state = {
-    height: this.props.collapsed ? 0 : "auto"
-  };
+    state = {
+        height: this.props.collapsed ? 0 : "auto"
+    };
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return nextProps.collapsed !== this.props.collapsed || nextState.height !== this.state.height;
-  }
+    shouldComponentUpdate(nextProps, nextState) {
+        return nextProps.collapsed !== this.props.collapsed || nextState.height !== this.state.height;
+    }
 
-  handleHeaderClick = ev => {
-    ev.preventDefault();
+    handleHeaderClick = ev => {
+        ev.preventDefault();
 
-    this.setState(prevState => ({
-      height: prevState.height === 0 ? "auto" : 0
-    }));
-  };
+        this.setState(prevState => ({
+            height: prevState.height === 0 ? "auto" : 0
+        }));
+    };
 
-  render() {
-    const { height } = this.state;
-    const { children, header } = this.props;
+    render() {
+        const { height } = this.state;
+        const { children, header } = this.props;
 
-    return (
-      <div
-        className={classNames("panel panel-collapsible", {
-          "panel-collapsible--collapsed": height === 0
-        })}
-      >
-        <header className="panel__header" role="presentation" onClick={this.handleHeaderClick}>
-          <h4 className="header__title">{header}</h4>
-        </header>
-        <section className="panel__body">
-          <AnimateHeight height={height}>{children}</AnimateHeight>
-        </section>
-      </div>
-    );
-  }
+        return (
+            <div
+                className={classNames("panel panel-collapsible", {
+                    "panel-collapsible--collapsed": height === 0
+                })}
+            >
+                <header className="panel__header" role="presentation" onClick={this.handleHeaderClick}>
+                    <h4 className="header__title">{header}</h4>
+                </header>
+                <section className="panel__body">
+                    <AnimateHeight height={height}>{children}</AnimateHeight>
+                </section>
+            </div>
+        );
+    }
 }
 
 export default CollapsiblePanel;

@@ -1,5 +1,7 @@
-export FieldContainer from "./FieldContainer";
-export Autocomplete from "./Autocomplete";
-export InputField from "./InputField";
-export TextareaField from "./TextareaField";
-export NumberField from "./NumberField";
+import FieldContainer from "./FieldContainer";
+import Autocomplete from "./Autocomplete";
+import InputField from "./InputField";
+import TextareaField from "./TextareaField";
+import NumberField from "./NumberField";
+
+export { FieldContainer, Autocomplete, InputField, TextareaField, NumberField };

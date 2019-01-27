@@ -1,27 +1,24 @@
 @mixin media-breakpoint-up($name) {
-  $value: map-get($breakpoints, $name);
-
-  @if $value != null {
-    @media (min-width: $value) {
-      @content;
+    $value: map-get($breakpoints, $name);
+    @if $value !=null {
+        @media (min-width: $value) {
+            @content;
+        }
     }
-  }
 }
 
 @mixin media-breakpoint-down($name) {
-  $value: map-get($breakpoints, $name);
-
-  @if $value != null {
-    @media (max-width: $value) {
-      @content;
+    $value: map-get($breakpoints, $name);
+    @if $value !=null {
+        @media (max-width: $value) {
+            @content;
+        }
     }
-  }
 }
 
 @mixin container-max-width($name) {
-  $value: map-get($container-max-widths, $name);
-
-  @if $value != null {
-    max-width: $value;
-  }
+    $value: map-get($container-max-widths, $name);
+    @if $value !=null {
+        max-width: $value;
+    }
 }

@@ -11,21 +11,21 @@ import TopsellerCarousel from "./TopsellerCarousel";
 import topsellerData from "../../../data/topseller-products";
 
 const MainPage = ({ history }) => {
-  const handleItemClick = ({ id }) => {
-    history.push(`/product/${id}`);
-  };
+    const handleItemClick = ({ id }) => {
+        history.push(`/product/${id}`);
+    };
 
-  return (
-    <div>
-      <BrandsCarousel data={brandsData} />
-      <BrandnewCarousel data={brandnewData} total={45} onItemClick={handleItemClick} />
-      <TopsellerCarousel data={topsellerData} total={45} onItemClick={handleItemClick} />
-    </div>
-  );
+    return (
+        <div>
+            <BrandsCarousel data={brandsData} />
+            <BrandnewCarousel data={brandnewData} total={45} onItemClick={handleItemClick} />
+            <TopsellerCarousel data={topsellerData} total={45} onItemClick={handleItemClick} />
+        </div>
+    );
 };
 
 MainPage.propTypes = {
-  history: PropTypes.object.isRequired
+    history: PropTypes.object.isRequired
 };
 
 export default MainPage;

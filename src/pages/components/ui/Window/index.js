@@ -1,4 +1,6 @@
+import WindowHeader from "./WindowHeader";
+import WindowContent from "./WindowContent";
+import WindowButtons from "./WindowButtons";
+
 export { default } from "./Window";
-export WindowHeader from "./WindowHeader";
-export WindowContent from "./WindowContent";
-export WindowButtons from "./WindowButtons";
+export { WindowHeader, WindowContent, WindowButtons };
