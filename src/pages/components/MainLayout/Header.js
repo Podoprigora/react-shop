@@ -34,11 +34,13 @@ const Header = params => (
                         <Badge content="10" />
                     </IconButton>
                 </Tooltip>
-                <Tooltip title="Cart">
-                    <IconButton icon="icon-shopping_cart">
-                        <Badge content="2" />
-                    </IconButton>
-                </Tooltip>
+                <Link to="/cart">
+                    <Tooltip title="Cart">
+                        <IconButton icon="icon-shopping_cart">
+                            <Badge content="2" />
+                        </IconButton>
+                    </Tooltip>
+                </Link>
             </div>
         </div>
     </div>

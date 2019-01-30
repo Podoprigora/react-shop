@@ -2,8 +2,10 @@
     position: relative;
     overflow: hidden;
     min-height: 48px;
+
     .feed-carousel__viewport {
         display: flex;
+        
         .viewport__scroller {
             flex: 1 1 auto;
             display: inline-block;
@@ -11,10 +13,12 @@
             overflow: hidden;
             overflow-x: scroll;
             margin: 0px;
+            
             .scroller__body {
                 display: flex;
                 flex-flow: row nowrap;
                 justify-content: flex-start;
+                
                 .feed-carousel__item {
                     flex-shrink: 0;
                     display: flex;

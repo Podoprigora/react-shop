@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 import ModalWindow, { WindowHeader, WindowContent, WindowButtons } from "../../components/ui/Window";
 import Button from "../../components/ui/Button";
@@ -25,9 +26,11 @@ class AddToCartPreviewWindow extends React.PureComponent {
                     <Button plain onClick={onClose}>
                         Return to shoping
                     </Button>
-                    <Button primary plain>
-                        To Cart
-                    </Button>
+                    <Link to="/cart">
+                        <Button primary plain>
+                            To Cart
+                        </Button>
+                    </Link>
                 </WindowButtons>
             </ModalWindow>
         );

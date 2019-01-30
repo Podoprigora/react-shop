@@ -1,44 +1,37 @@
 .main__header {
-  border-bottom: 1px solid theme-color("border");
-
-  .resp-content {
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    height: 67px;
-  }
-
-  .main__logo {
-    display: block;
-    background-image: url("images/react-shop.png");
-    width: 120px;
-    height: 50px;
-  }
-
-  .main__search-bar {
-    margin: 0 40px;
-    max-width: 320px;
-
-    .field .field__wrap .field__wrap-input .field__input {
-      height: 40px;
-      background-color: color("gray-lighten-4");
-      border-color: transparent;
+    border-bottom: 1px solid theme-color("border");
+    .resp-content {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        height: 67px;
     }
-
-    .field.field--focused .field__wrap .field__wrap-input .field__input {
-      background: transparent;
-      border-color: color("gray-lighten-2");
+    .main__logo {
+        display: block;
+        background-image: url("images/react-shop.png");
+        width: 120px;
+        height: 50px;
     }
-  }
-
-  .main__buttons {
-    flex: 1;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: flex-end;
-
-    .icon-button {
-      margin-right: 8px;
+    .main__search-bar {
+        margin: 0 40px;
+        max-width: 320px;
+        .field .field__wrap .field__wrap-input .field__input {
+            height: 40px;
+            background-color: color("gray-lighten-4");
+            border-color: transparent;
+        }
+        .field.field--focused .field__wrap .field__wrap-input .field__input {
+            background: transparent;
+            border-color: color("gray-lighten-2");
+        }
     }
-  }
+    .main__buttons {
+        flex: 1;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: flex-end;
+        .icon-button {
+            margin-right: 8px;
+        }
+    }
 }

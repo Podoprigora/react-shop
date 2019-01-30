@@ -16,10 +16,7 @@ class TableColumn extends React.PureComponent {
         const { children, record, width, flex, className, style } = this.props;
 
         return (
-            <div
-                className={classNames("table-view__col", className)}
-                style={{ width: `${width}px`, flex, ...style }}
-            >
+            <div className={classNames("table-view__col", className)} style={{ width: `${width}px`, flex, ...style }}>
                 {children(record)}
             </div>
         );

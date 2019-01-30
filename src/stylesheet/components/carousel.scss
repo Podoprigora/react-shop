@@ -1,0 +1,77 @@
+.carousel-container {
+    padding: 20px 0;
+
+    .carousel-container__header {
+        position: relative;
+        margin-bottom: 12px;
+        
+        .carousel-container__title {
+            display: inline-block;
+            font-size: 24px;
+            line-height: 24px;
+            font-weight: 400;
+            color: theme-color("text");
+            margin: 0 15px;
+        }
+        
+        .carousel-container__viewall {
+            display: inline-block;
+            position: relative;
+            padding-right: 16px;
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+            color: theme-color("primary");
+            cursor: pointer;
+            
+            &:hover {
+                color: theme-color("link-hover");
+                &::before {
+                    transform: translateX(2px);
+                }
+            }
+            
+            &::before {
+                content: "\e409";
+                position: absolute;
+                top: -1px;
+                right: 0;
+                font-family: "materialicon";
+                transform: translateX(0);
+                transition: transform 0.2s;
+            }
+        }
+    }
+}
+
+.brands-carousel {
+    .brands-carousel__item {
+        width: 100px;
+        margin: 0 15px;
+        cursor: pointer;
+        img {
+            display: inline-block;
+            width: 100%;
+        }
+    }
+    .feed-carousel__control::before {
+        font-size: 24px;
+    }
+}
+
+.products-carousel {
+    .products-carousel__item {
+        position: relative;
+        width: 176px;
+        margin: 0 2px 6px 0;
+        padding: 10px;
+        border: 0px solid color("gray-lighten-3");
+        border-width: 0 1px 1px 0;
+        text-align: center;
+        cursor: pointer;
+
+        @include media-breakpoint-down(md) {
+            width: 120px;
+        }
+    }
+}

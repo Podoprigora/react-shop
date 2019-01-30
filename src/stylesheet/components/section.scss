@@ -1,45 +1,42 @@
 .section {
-  .section__header {
-    position: relative;
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-  }
-  .section__title {
-    font-weight: 500;
-    color: theme-color("text");
-    padding: 10px 0;
-    margin: 0;
-  }
-  .section__body {
-    padding: 15px;
-  }
-
-  .section__tbar {
-    .tbar__item {
-      margin-top: 0;
-      margin-bottom: 15px;
+    .section__header {
+        position: relative;
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
     }
-
-    .dropdown {
-      &.dropdown--active .dropdown__trigger button,
-      .dropdown__trigger button:hover {
-        border: 2px solid transparent;
-        color: theme-color("primary-darken-1");
-        box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.45);
-      }
-
-      button {
-        padding: 8px 30px 8px 8px;
+    .section__title {
+        font-weight: 500;
         color: theme-color("text");
-        background: #fff;
-        border: 2px solid transparent;
-        outline: none;
-        border-radius: 3px;
-        box-shadow: 0 2px 4px -2px rgba(0, 0, 0, 0.4);
-        cursor: pointer;
-        transition: box-shadow 0.1s, background 0.2s ease-out;
-      }
+        padding: 10px 0;
+        margin: 0;
     }
-  }
+    .section__body {
+        padding: 15px;
+    }
+    .section__tbar {
+        .tbar__item {
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        .dropdown {
+            &.dropdown--active .dropdown__trigger button,
+            .dropdown__trigger button:hover {
+                border: 2px solid transparent;
+                color: theme-color("primary-darken-1");
+                box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.45);
+            }
+            button {
+                padding: 8px 30px 8px 8px;
+                color: theme-color("text");
+                background: #fff;
+                border: 2px solid transparent;
+                outline: none;
+                border-radius: 3px;
+                box-shadow: 0 2px 4px -2px rgba(0, 0, 0, 0.4);
+                cursor: pointer;
+                transition: box-shadow 0.1s, background 0.2s ease-out;
+            }
+        }
+    }
 }

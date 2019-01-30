@@ -7,6 +7,7 @@ import MainPage from "./MainPage";
 import ProductsPage from "./ProductsPage";
 import ProductViewPage from "./ProductViewPage";
 import TestPage from "./TestPage";
+import CartPage from "./CartPage";
 
 import "../stylesheet/styles.scss";
 
@@ -28,6 +29,7 @@ const App = () => (
         <Switch>
             <Route exact path="/" component={MainPage} />
             <Route path="/products" component={ProductsPage} />
+            <Route path="/cart" component={CartPage} />
             <Route path="/test" component={TestPage} />
 
             <Route path="/product/:id" component={ProductViewPage} />
